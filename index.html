@@ -17,30 +17,23 @@
   font-family:Inter,sans-serif;
 }
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth;}
 
 body{
   color:#fff;
   overflow-x:hidden;
 }
 
-/* BACKGROUND */
-
 body::before{
   content:"";
   position:fixed;
   inset:0;
-
   background:
   linear-gradient(rgba(0,0,0,0.78),rgba(0,0,0,0.9)),
   url("bg.jpg");
-
   background-size:cover;
   background-position:center;
   background-attachment:fixed;
-
   z-index:-1;
 }
 
@@ -50,16 +43,12 @@ nav{
   position:fixed;
   top:0;
   width:100%;
-
   display:flex;
   justify-content:space-between;
   align-items:center;
-
   padding:16px 8%;
-
   background:rgba(0,0,0,0.35);
   backdrop-filter:blur(12px);
-
   z-index:1000;
 }
 
@@ -87,32 +76,24 @@ nav a:hover{
 
 header{
   height:100vh;
-
   display:flex;
   justify-content:center;
   align-items:center;
   text-align:center;
-
   padding:20px;
 }
 
 .hero{
   padding:55px;
-
   border-radius:24px;
-
   background:rgba(255,255,255,0.05);
-
   border:1px solid rgba(255,255,255,0.1);
-
   backdrop-filter:blur(18px);
 }
 
 .hero h1{
   font-size:clamp(55px,8vw,100px);
-
   background:linear-gradient(45deg,#fff,#ffb347);
-
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
@@ -140,20 +121,10 @@ h2{
 .about{
   max-width:900px;
   margin:auto;
-
   text-align:center;
   line-height:1.9;
-
   opacity:0.85;
   font-size:17px;
-}
-
-/* MENU */
-
-.menu-empty{
-  text-align:center;
-  opacity:0.6;
-  font-size:18px;
 }
 
 /* CONTACT */
@@ -167,15 +138,11 @@ h2{
 
 .contact a{
   padding:14px 22px;
-
   border-radius:14px;
-
   background:rgba(255,255,255,0.08);
-
   color:#fff;
   text-decoration:none;
   font-weight:600;
-
   transition:.3s;
 }
 
@@ -184,25 +151,20 @@ h2{
   background:#ff7a00;
 }
 
-/* REVIEW FORM */
+/* REVIEW */
 
 .review-box{
   max-width:720px;
   margin:auto;
 }
 
-input,
-textarea{
+input,textarea{
   width:100%;
-
   padding:14px;
   margin:8px 0;
-
   border:none;
   border-radius:14px;
-
   background:rgba(255,255,255,0.08);
-
   color:#fff;
   outline:none;
 }
@@ -212,101 +174,15 @@ textarea{
   resize:none;
 }
 
-input::file-selector-button{
-  background:#ff7a00;
-  border:none;
-
-  padding:8px 12px;
-
-  border-radius:8px;
-
-  color:#fff;
-  cursor:pointer;
-}
-
 button{
   width:100%;
-
   padding:14px;
-
   border:none;
   border-radius:14px;
-
   background:linear-gradient(45deg,#ff7a00,#ffb347);
-
   color:#fff;
   font-weight:700;
-
   cursor:pointer;
-
-  transition:.3s;
-}
-
-button:hover{
-  transform:scale(1.02);
-}
-
-/* STARS */
-
-.stars{
-  display:flex;
-  gap:8px;
-
-  margin:12px 0 16px;
-
-  font-size:34px;
-
-  cursor:pointer;
-  user-select:none;
-}
-
-.stars span{
-  color:#555;
-  transition:.2s;
-}
-
-.stars span.active{
-  color:#ffb347;
-}
-
-/* REVIEW CARD */
-
-.review{
-  margin-top:18px;
-
-  padding:16px;
-
-  border-radius:16px;
-
-  background:rgba(255,255,255,0.06);
-
-  border:1px solid rgba(255,255,255,0.08);
-}
-
-.review-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  margin-bottom:8px;
-}
-
-.review-date{
-  font-size:12px;
-  opacity:0.6;
-}
-
-.review-rating{
-  color:#ffb347;
-  font-size:20px;
-
-  margin:6px 0;
-}
-
-.review img{
-  width:100%;
-  margin-top:12px;
-  border-radius:12px;
 }
 
 /* FOOTER */
@@ -322,8 +198,6 @@ footer{
 
 <body>
 
-<!-- NAVBAR -->
-
 <nav>
 
 <div class="logo" onclick="home()">
@@ -332,62 +206,30 @@ STREET 93
 
 <div>
 <a href="#about">О нас</a>
-<a href="menu.html>Меню</a>
+<a href="menu.html">Меню</a>
 <a href="#reviews">Отзывы</a>
 <a href="#contact">Контакты</a>
 </div>
 
 </nav>
 
-<!-- HERO -->
-
 <header id="home">
 
 <div class="hero">
 <h1>Street 93</h1>
-
-<p>
-Современный ресторан в Намангане
-</p>
+<p>Современный ресторан в Намангане</p>
 </div>
 
 </header>
 
-<!-- ABOUT -->
-
 <section id="about">
-
 <h2>О нас</h2>
-
 <div class="about">
-
 Street 93 — это современный ресторан нового поколения, где каждая деталь создана для идеального гастрономического опыта.
-
-Мы используем только свежие продукты, премиальное мясо, натуральные овощи и авторские соусы.
-
-Наша цель — не просто еда, а эмоции, вкус и атмосфера.
-
-Каждое блюдо создаётся с вниманием к деталям и подаётся на ресторанном уровне.
-
-Street 93 — это место, куда хочется возвращаться снова и снова.
-
 </div>
-
 </section>
 
-<!-- MENU -->
-
-<section id="menu">
-
-<h2>Меню</h2>
-
-<div class="menu-empty">
-Меню временно пустое
-</div>
-
-</section>
-
-<!-- REVIEWS -->
+<!-- MENU SECTION OLIB TASHLANDI -->
 
 <section id="reviews">
 
@@ -396,26 +238,9 @@ Street 93 — это место, куда хочется возвращатьс�
 <div class="review-box">
 
 <input id="name" placeholder="Ваше имя">
-
 <textarea id="text" placeholder="Ваш отзыв"></textarea>
 
-<!-- STARS -->
-
-<div class="stars">
-
-<span onclick="setRating(1)">★</span>
-<span onclick="setRating(2)">★</span>
-<span onclick="setRating(3)">★</span>
-<span onclick="setRating(4)">★</span>
-<span onclick="setRating(5)">★</span>
-
-</div>
-
-<input type="file" id="img" accept="image/*">
-
-<button onclick="addReview()">
-Отправить отзыв
-</button>
+<button onclick="addReview()">Отправить отзыв</button>
 
 <div id="list"></div>
 
@@ -423,17 +248,13 @@ Street 93 — это место, куда хочется возвращатьс�
 
 </section>
 
-<!-- CONTACT -->
-
 <section id="contact">
 
 <h2>Контакты</h2>
 
 <div class="contact">
 
-<a href="tel:+998882081993">
-📞 Позвонить
-</a>
+<a href="tel:+998882081993">📞 Позвонить</a>
 
 <a href="https://www.google.com/maps?q=40.9981582,71.5957922" target="_blank">
 📍 Маршрут
@@ -460,18 +281,15 @@ const SUPABASE_KEY =
 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJyeXBuY2p6andmamFmanN3bmJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkwMjA0OTUsImV4cCI6MjA5NDU5NjQ5NX0.Q7-aT2rYdGqP_XxtAz8c-IB31S61s12Lhc4q7QQ-GY8";
 
 const sb =
-supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
-);
+supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 
 let rating = 0;
 
 function setRating(num){
 rating = num;
 document.querySelectorAll(".stars span").forEach((s,i)=>{
-if(i < num){ s.classList.add("active"); }
-else { s.classList.remove("active"); }
+if(i < num) s.classList.add("active");
+else s.classList.remove("active");
 });
 }
 
@@ -481,64 +299,27 @@ let {data} = await sb.from("reviews").select("*").order("id",{ascending:false});
 document.getElementById("list").innerHTML =
 data.map(r=>`
 <div class="review">
-<div class="review-top">
 <b>${r.name}</b>
-<div class="review-date">${r.date || ""}</div>
-</div>
-<div class="review-rating">${"★".repeat(r.rating || 0)}</div>
 <div>${r.text}</div>
-${r.img ? `<img src="${r.img}">` : ""}
 </div>
 `).join("");
-}
-
-async function uploadImage(file){
-const fileName = Date.now() + "_" + file.name;
-
-let {error} = await sb.storage.from("reviews").upload(fileName,file);
-
-if(error){
-alert("Ошибка загрузки фото");
-return "";
-}
-
-const {data} = sb.storage.from("reviews").getPublicUrl(fileName);
-return data.publicUrl;
 }
 
 async function addReview(){
 
 let name = document.getElementById("name").value;
 let text = document.getElementById("text").value;
-let file = document.getElementById("img").files[0];
 
 if(!name || !text){
 alert("Заполните все поля");
 return;
 }
 
-let imgUrl = "";
-if(file){ imgUrl = await uploadImage(file); }
-
-const now = new Date();
-
-const date =
-now.toLocaleDateString("ru-RU")+" "+
-now.toLocaleTimeString("ru-RU",{hour:"2-digit",minute:"2-digit"});
-
-await sb.from("reviews").insert([{
-name,
-text,
-img:imgUrl,
-rating,
-date
-}]);
+await sb.from("reviews").insert([{name,text,rating}]);
 
 document.getElementById("name").value="";
 document.getElementById("text").value="";
-document.getElementById("img").value="";
 
-setRating(0);
 load();
 }
 
@@ -546,7 +327,6 @@ function home(){
 document.getElementById("home").scrollIntoView({behavior:"smooth"});
 }
 
-setRating(0);
 load();
 
 </script>
