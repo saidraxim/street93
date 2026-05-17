@@ -1,13 +1,16 @@
 ```html
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Street 93 Menu</title>
+<title>STREET 93 MENU</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
@@ -42,7 +45,7 @@ position:fixed;
 inset:0;
 
 background:
-linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.92)),
+linear-gradient(rgba(0,0,0,.82),rgba(0,0,0,.92)),
 url("https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=1800&auto=format&fit=crop");
 
 background-size:cover;
@@ -60,11 +63,11 @@ inset:0;
 
 background:
 radial-gradient(circle at top left,
-rgba(255,80,0,.18),
+rgba(255,120,0,.18),
 transparent 35%),
 
 radial-gradient(circle at bottom right,
-rgba(255,120,0,.12),
+rgba(255,80,0,.12),
 transparent 35%);
 
 z-index:-1;
@@ -81,11 +84,11 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 
-padding:24px 7%;
+padding:22px 7%;
 
 background:rgba(0,0,0,.45);
 
-backdrop-filter:blur(14px);
+backdrop-filter:blur(12px);
 
 border-bottom:
 1px solid rgba(255,255,255,.08);
@@ -95,11 +98,11 @@ z-index:999;
 
 .logo{
 
-font-size:48px;
+font-size:52px;
 
 font-weight:900;
 
-letter-spacing:3px;
+letter-spacing:4px;
 
 text-decoration:none;
 
@@ -107,7 +110,8 @@ color:#fff;
 }
 
 .logo span{
-color:#ff3c00;
+
+color:#ffcc00;
 }
 
 .back{
@@ -117,22 +121,22 @@ padding:14px 24px;
 border-radius:14px;
 
 background:
-linear-gradient(45deg,#ff3c00,#ff7a00);
+linear-gradient(45deg,#ff7a00,#ffcc00);
 
-color:#fff;
+color:#000;
 
 text-decoration:none;
 
-font-weight:700;
+font-weight:800;
 }
 
-/* PAGE */
+/* LAYOUT */
 
 .menu-page{
 
 display:flex;
 
-gap:55px;
+gap:50px;
 
 padding:50px 7%;
 }
@@ -145,14 +149,14 @@ position:sticky;
 
 top:120px;
 
-width:260px;
+width:250px;
 
 height:max-content;
 
 display:flex;
 flex-direction:column;
 
-gap:18px;
+gap:16px;
 }
 
 .sidebar a{
@@ -171,7 +175,7 @@ color:#fff;
 
 text-decoration:none;
 
-font-size:18px;
+font-size:17px;
 
 font-weight:700;
 
@@ -181,12 +185,14 @@ transition:.35s;
 .sidebar a:hover{
 
 background:
-linear-gradient(45deg,#ff3c00,#ff7a00);
+linear-gradient(45deg,#ff7a00,#ffcc00);
+
+color:#000;
 
 transform:translateX(8px);
 
 box-shadow:
-0 10px 30px rgba(255,80,0,.35);
+0 10px 30px rgba(255,180,0,.35);
 }
 
 /* CONTENT */
@@ -204,7 +210,7 @@ margin-bottom:60px;
 
 .hero h1{
 
-font-size:95px;
+font-size:92px;
 
 font-weight:900;
 
@@ -235,9 +241,9 @@ margin-bottom:90px;
 
 font-size:54px;
 
-margin-bottom:34px;
+margin-bottom:30px;
 
-color:#ffb347;
+color:#ffcc00;
 
 letter-spacing:3px;
 }
@@ -249,9 +255,9 @@ letter-spacing:3px;
 display:grid;
 
 grid-template-columns:
-repeat(auto-fit,minmax(380px,1fr));
+repeat(auto-fit,minmax(320px,1fr));
 
-gap:36px;
+gap:32px;
 }
 
 /* CARD */
@@ -264,7 +270,7 @@ rgba(255,255,255,.05);
 border:
 1px solid rgba(255,255,255,.08);
 
-border-radius:30px;
+border-radius:28px;
 
 overflow:hidden;
 
@@ -283,16 +289,14 @@ translateY(-10px)
 scale(1.02);
 
 box-shadow:
-0 20px 50px rgba(255,80,0,.22);
+0 20px 50px rgba(255,170,0,.22);
 }
-
-/* IMAGE */
 
 .food-card img{
 
 width:100%;
 
-height:300px;
+height:260px;
 
 object-fit:cover;
 
@@ -304,25 +308,23 @@ transition:.4s;
 transform:scale(1.06);
 }
 
-/* INFO */
-
 .food-info{
 
-padding:26px;
+padding:24px;
 }
 
 .food-info h3{
 
-font-size:32px;
+font-size:28px;
 
-margin-bottom:12px;
+margin-bottom:10px;
 
 font-weight:800;
 }
 
 .food-info p{
 
-font-size:17px;
+font-size:15px;
 
 line-height:1.7;
 
@@ -331,15 +333,15 @@ opacity:.72;
 
 /* FOOTER */
 
-.footer-banner{
+.footer{
 
 margin-top:80px;
 
-padding:100px 30px;
+padding:80px 30px;
 
 text-align:center;
 
-border-radius:34px;
+border-radius:30px;
 
 background:
 linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.88)),
@@ -347,14 +349,11 @@ url("https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1800&auto=
 
 background-size:cover;
 background-position:center;
-
-border:
-1px solid rgba(255,255,255,.08);
 }
 
-.footer-banner h2{
+.footer h2{
 
-font-size:74px;
+font-size:72px;
 
 font-weight:900;
 
@@ -363,11 +362,12 @@ letter-spacing:6px;
 margin-bottom:18px;
 }
 
-.footer-banner span{
-color:#ff3c00;
+.footer span{
+
+color:#ffcc00;
 }
 
-.footer-banner p{
+.footer p{
 
 letter-spacing:6px;
 
@@ -419,6 +419,7 @@ grid-template-columns:1fr;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -464,261 +465,13 @@ STREET <span>93</span>
 
 </div>
 
-<!-- STEAK -->
-
-<section class="menu-section" id="steak">
-
-<h2>🥩 СТЕЙКИ</h2>
-
-<div class="food-grid">
-
-<div class="food-card">
-
-<img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1400&auto=format&fit=crop">
-
-<div class="food-info">
-
-<h3>Рибай Стейк</h3>
-
-<p>350 гр • мраморная говядина</p>
+<!-- MENU ITEMS HERE -->
 
 </div>
 
 </div>
 
-<div class="food-card">
-
-<img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=1400&auto=format&fit=crop">
-
-<div class="food-info">
-
-<h3>T-Bone Стейк</h3>
-
-<p>400 гр • фирменная прожарка</p>
-
-</div>
-
-</div>
-
-<div class="food-card">
-
-<img src="https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1400&auto=format&fit=crop">
-
-<div class="food-info">
-
-<h3>Томагавк Стейк</h3>
-
-<p>1000 гр • premium steak</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- MANGAL -->
-
-<section class="menu-section" id="mangal">
-
-<h2>🔥 МАНГАЛ</h2>
-
-<div class="food-grid">
-
-<div class="food-card">
-
-<img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?q=80&w=1400&auto=format&fit=crop">
-
-<div class="food-info">
-
-<h3>Шашлык из говядины</h3>
-
-<p>200 гр • grilled meat</p>
-
-</div>
-
-</div>
-
-<div class="food-card">
-
-<img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?q=80&w=1400&auto=format&fit=crop">
-
-<div class="food-info">
-
-<h3>Куриные крылышки</h3>
-
-<p>spicy grilled wings</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- SALADS -->
-
-<section class="menu-section" id="salads">
-
-<h2>🥗 САЛАТЫ</h2>
-
-<div class="food-grid">
-
-<div class="food-card">
-
-<img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1400&auto=format&fit=crop">
-
-<div class="food-info">
-
-<h3>Греческий</h3>
-
-<p>fresh vegetables & olives</p>
-
-</div>
-
-</div>
-
-<div class="food-card">
-
-<img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?q=80&w=1400&auto=format&fit=crop">
-
-<div class="food-info">
-
-<h3>Цезарь</h3>
-
-<p>parmesan & crispy chicken</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- GARNIR -->
-
-<section class="menu-section" id="garnir">
-
-<h2>🍟 ГАРНИРЫ</h2>
-
-<div class="food-grid">
-
-<div class="food-card">
-
-<img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=1400&auto=format&fit=crop">
-
-<div class="food-info">
-
-<h3>Картофель Фри</h3>
-
-<p>crispy fries</p>
-
-</div>
-
-</div>
-
-<div class="food-card">
-
-<img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?q=80&w=1400&auto=format&fit=crop">
-
-<div class="food-info">
-
-<h3>Овощи на пару</h3>
-
-<p>healthy vegetables</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- SAUCES -->
-
-<section class="menu-section" id="sauces">
-
-<h2>🥫 СОУСЫ</h2>
-
-<div class="food-grid">
-
-<div class="food-card">
-
-<img src="https://images.unsplash.com/photo-1472476443507-c7a5948772fc?q=80&w=1400&auto=format&fit=crop">
-
-<div class="food-info">
-
-<h3>Сырный</h3>
-
-<p>cheese sauce</p>
-
-</div>
-
-</div>
-
-<div class="food-card">
-
-<img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=1400&auto=format&fit=crop">
-
-<div class="food-info">
-
-<h3>BBQ</h3>
-
-<p>smoky bbq sauce</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- DRINKS -->
-
-<section class="menu-section" id="drinks">
-
-<h2>🥤 НАПИТКИ</h2>
-
-<div class="food-grid">
-
-<div class="food-card">
-
-<img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=1400&auto=format&fit=crop">
-
-<div class="food-info">
-
-<h3>COLA / FANTA / SPRITE</h3>
-
-<p>cold drinks 0.5L</p>
-
-</div>
-
-</div>
-
-<div class="food-card">
-
-<img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1400&auto=format&fit=crop">
-
-<div class="food-info">
-
-<h3>Кофе</h3>
-
-<p>espresso / americano</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<div class="footer-banner">
+<div class="footer">
 
 <h2>
 STREET <span>93</span>
@@ -727,10 +480,6 @@ STREET <span>93</span>
 <p>
 PREMIUM STEAK HOUSE
 </p>
-
-</div>
-
-</div>
 
 </div>
 
