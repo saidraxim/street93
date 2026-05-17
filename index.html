@@ -3,122 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Street93 PRO MAX</title>
+<title>Street93 Restaurant</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-body{
-  margin:0;
-  font-family:Arial;
-  background:#0f0f0f;
-  color:white;
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0f0f0f;
+  color: white;
 }
 
 /* HEADER */
-header{
-  text-align:center;
-  padding:40px;
-  background:#111;
-}
-
-/* NAV */
-nav{
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  padding:10px;
-  background:#1a1a1a;
-  position:sticky;
-  top:0;
-}
-nav a{
-  color:white;
-  text-decoration:none;
-}
-
-/* SECTIONS */
-section{
-  max-width:900px;
-  margin:auto;
-  padding:30px;
+header {
+  text-align: center;
+  padding: 30px;
+  background: #111;
 }
 
 /* MENU */
-.menu-item{
-  background:#1a1a1a;
-  padding:15px;
-  margin:10px 0;
-  border-radius:10px;
+.menu {
+  display: grid;
+  gap: 10px;
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
 }
-.menu-item h3{ color:gold; }
+
+.item {
+  background: #1a1a1a;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.item h3 {
+  color: gold;
+}
 
 /* MAP */
-iframe{
-  width:100%;
-  height:350px;
-  border:none;
-  border-radius:12px;
+.map {
+  text-align: center;
+  padding: 20px;
 }
 
-/* CONTACT */
-.contact{
-  background:#1a1a1a;
-  padding:15px;
-  border-radius:10px;
-}
-
-/* REVIEW BOX */
-.box{
-  max-width:500px;
-  margin:auto;
-  background:#1a1a1a;
-  padding:20px;
-  border-radius:12px;
-}
-
-input,textarea{
-  width:100%;
-  padding:10px;
-  margin-top:10px;
-  border:none;
-  border-radius:8px;
-  resize:none;
-}
-
-button{
-  width:100%;
-  padding:12px;
-  margin-top:10px;
-  background:gold;
-  border:none;
-  border-radius:8px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-/* STARS */
-.stars span{
-  font-size:26px;
-  cursor:pointer;
-  color:gray;
-}
-.stars span.active{
-  color:gold;
+iframe {
+  width: 100%;
+  max-width: 800px;
+  height: 300px;
+  border: none;
+  border-radius: 10px;
 }
 
 /* REVIEW */
-.review{
-  max-width:500px;
-  margin:10px auto;
-  background:#222;
-  padding:15px;
-  border-radius:10px;
+.box {
+  max-width: 500px;
+  margin: 20px auto;
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 12px;
 }
-.review img{
-  width:100%;
-  border-radius:10px;
-  margin-top:10px;
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: none;
+  resize: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background: gold;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.stars span {
+  font-size: 26px;
+  cursor: pointer;
+  color: gray;
+}
+
+.stars span.active {
+  color: gold;
+}
+
+.review {
+  max-width: 500px;
+  margin: 10px auto;
+  background: #222;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.review img {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
 }
 </style>
 </head>
@@ -126,76 +113,53 @@ button{
 <body>
 
 <header>
-  <h1>🍔 Street93 PRO MAX</h1>
-  <p>Real-time reviews system</p>
+  <h1>🍔 Street93 Restaurant</h1>
+  <p>Eng yaxshi taomlar va atmosfera</p>
 </header>
 
-<nav>
-  <a href="#menu">Menu</a>
-  <a href="#map">Map</a>
-  <a href="#contact">Contact</a>
-  <a href="#review">Reviews</a>
-</nav>
-
 <!-- MENU -->
-<section id="menu">
-  <h2>🍟 Menu</h2>
-
-  <div class="menu-item">
+<div class="menu">
+  <div class="item">
     <h3>Burger</h3>
     <p>Tarkibi: mol go‘shti, pishloq, sous, salat, non</p>
   </div>
 
-  <div class="menu-item">
+  <div class="item">
     <h3>Lavash</h3>
-    <p>Tarkibi: tovuq, sabzavot, sous</p>
+    <p>Tarkibi: tovuq, lavash noni, sabzavot, sous</p>
   </div>
-</section>
+</div>
 
 <!-- MAP -->
-<section id="map">
-  <h2>📍 Map</h2>
-
+<div class="map">
+  <h2>Bizning joylashuv</h2>
   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d546.3092619590175!2d71.59579257587136!3d40.998052485770316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bb4a6aabf1694f%3A0x6330bcfcea57bcca!2sStreet93!5e0!3m2!1sru!2s!4v1779025664681!5m2!1sru!2s"></iframe>
-</section>
+</div>
 
-<!-- CONTACT -->
-<section id="contact">
-  <h2>📞 Contact</h2>
-  <div class="contact">
-    <p>📍 Tashkent</p>
-    <p>📱 +998 90 000 00 00</p>
-    <p>🕒 12:00 - 01:00</p>
-  </div>
-</section>
+<!-- REVIEW FORM -->
+<div class="box">
+  <h2>Otziv qoldirish ⭐</h2>
 
-<!-- REVIEWS -->
-<section id="review">
-  <h2>⭐ Reviews (LIVE)</h2>
+  <input id="name" placeholder="Ismingiz">
 
-  <div class="box">
-    <input id="name" placeholder="Ismingiz">
-
-    <div class="stars" id="stars">
-      <span data-value="1">★</span>
-      <span data-value="2">★</span>
-      <span data-value="3">★</span>
-      <span data-value="4">★</span>
-      <span data-value="5">★</span>
-    </div>
-
-    <textarea id="text" placeholder="Otzivingiz..."></textarea>
-
-    <input type="file" id="image" accept="image/*">
-
-    <button onclick="sendReview()">Yuborish</button>
+  <div class="stars" id="stars">
+    <span data-value="1">★</span>
+    <span data-value="2">★</span>
+    <span data-value="3">★</span>
+    <span data-value="4">★</span>
+    <span data-value="5">★</span>
   </div>
 
-  <div id="reviews"></div>
-</section>
+  <textarea id="text" placeholder="Otzivingiz..."></textarea>
+
+  <input type="file" id="image" accept="image/*">
+
+  <button onclick="sendReview()">Yuborish</button>
+</div>
+
+<div id="reviews"></div>
 
 <script>
-// 🔥 SUPABASE
 const supabaseUrl = "YOUR_SUPABASE_URL";
 const supabaseKey = "YOUR_SUPABASE_ANON_KEY";
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
@@ -203,75 +167,71 @@ const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 let rating = 0;
 
 // ⭐ stars
-document.querySelectorAll(".stars span").forEach(star=>{
-  star.onclick=()=>{
+document.querySelectorAll(".stars span").forEach(star => {
+  star.onclick = () => {
     rating = star.dataset.value;
 
-    document.querySelectorAll(".stars span").forEach(s=>s.classList.remove("active"));
-    for(let i=0;i<rating;i++){
+    document.querySelectorAll(".stars span").forEach(s => s.classList.remove("active"));
+    for (let i = 0; i < rating; i++) {
       document.querySelectorAll(".stars span")[i].classList.add("active");
     }
-  }
+  };
 });
 
 // 🚀 SEND REVIEW
-async function sendReview(){
-  let name=document.getElementById("name").value;
-  let text=document.getElementById("text").value;
-  let image=document.getElementById("image").files[0];
+async function sendReview() {
+  let name = document.getElementById("name").value;
+  let text = document.getElementById("text").value;
+  let image = document.getElementById("image").files[0];
 
-  if(!name || !text || rating==0){
-    alert("To‘ldiring!");
+  // FIXED CONDITION
+  if (!name || !text || rating == 0) {
+    alert("Hammasini to‘ldiring!");
     return;
   }
 
-  let imageUrl=null;
+  let imageUrl = null;
 
-  if(image){
-    const fileName=Date.now()+"_"+image.name;
+  if (image) {
+    const fileName = Date.now() + "_" + image.name;
 
-    await supabase.storage.from("review-images").upload(fileName,image);
+    const { error } = await supabase.storage
+      .from("review-images")
+      .upload(fileName, image);
 
-    imageUrl=supabase.storage.from("review-images").getPublicUrl(fileName).data.publicUrl;
+    if (!error) {
+      imageUrl = supabase.storage
+        .from("review-images")
+        .getPublicUrl(fileName).data.publicUrl;
+    }
   }
 
   await supabase.from("reviews").insert({
     name,
     text,
     rating,
-    image_url:imageUrl
+    image_url: imageUrl
   });
 
   loadReviews();
 }
 
 // 📥 LOAD REVIEWS
-async function loadReviews(){
-  const {data}=await supabase
+async function loadReviews() {
+  const { data } = await supabase
     .from("reviews")
     .select("*")
-    .order("created_at",{ascending:false});
+    .order("created_at", { ascending: false });
 
-  document.getElementById("reviews").innerHTML = data.map(r=>`
+  document.getElementById("reviews").innerHTML = data.map(r => `
     <div class="review">
       <h3>${r.name}</h3>
       <p>${"⭐".repeat(r.rating)}</p>
       <p>${r.text}</p>
-      ${r.image_url?`<img src="${r.image_url}">`:""}
+      ${r.image_url ? `<img src="${r.image_url}">` : ""}
     </div>
   `).join("");
 }
-
-/* 🔥 REAL-TIME UPDATE */
-supabase
-  .channel('reviews-channel')
-  .on('postgres_changes',
-    { event: '*', schema: 'public', table: 'reviews' },
-    payload => {
-      loadReviews();
-    }
-  )
-  .subscribe();
 
 loadReviews();
 </script>
