@@ -1,47 +1,104 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Street 93 Restaurant</title>
+<title>Street 93 Restaurant | Namangan</title>
+
+<meta name="description" content="Street 93 — современный ресторан премиум класса в Намангане">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
-body{color:#fff;background:#000;}
+html{scroll-behavior:smooth;}
+body{color:#fff;overflow-x:hidden;}
 
-section{padding:60px 8%;}
-
-.review-box{
-  max-width:700px;margin:auto;
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:linear-gradient(rgba(0,0,0,0.78),rgba(0,0,0,0.9)),url("bg.jpg");
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+  z-index:-1;
 }
 
+nav{
+  position:fixed;top:0;width:100%;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:16px 8%;
+  background:rgba(0,0,0,0.35);
+  backdrop-filter:blur(12px);
+  z-index:1000;
+}
+
+.logo{font-size:22px;font-weight:800;color:#ffb347;cursor:pointer;}
+
+nav a{
+  color:#fff;text-decoration:none;margin-left:18px;opacity:0.7;
+}
+nav a:hover{opacity:1;color:#ffb347;}
+
+header{
+  height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;
+}
+
+.hero{
+  padding:55px;border-radius:24px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  backdrop-filter:blur(18px);
+}
+
+.hero h1{
+  font-size:clamp(55px,8vw,100px);
+  background:linear-gradient(45deg,#fff,#ffb347);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+section{padding:100px 8%;}
+h2{text-align:center;margin-bottom:35px;font-size:38px;}
+
+.about{max-width:900px;margin:auto;text-align:center;line-height:1.9;opacity:0.85;}
+
+.contact{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;}
+
+.contact a{
+  padding:14px 22px;border-radius:14px;
+  background:rgba(255,255,255,0.08);
+  color:#fff;text-decoration:none;font-weight:600;
+}
+
+/* ⭐ REVIEWS */
+.review-box{max-width:720px;margin:auto;}
+
 input,textarea{
-  width:100%;padding:12px;margin:8px 0;
-  border:none;border-radius:12px;
+  width:100%;padding:14px;margin:8px 0;
+  border:none;border-radius:14px;
   background:rgba(255,255,255,0.08);
   color:#fff;
 }
 
 button{
-  width:100%;padding:12px;
-  border:none;border-radius:12px;
+  width:100%;padding:14px;border:none;border-radius:14px;
   background:linear-gradient(45deg,#ff7a00,#ffb347);
-  cursor:pointer;font-weight:700;
+  font-weight:700;cursor:pointer;
 }
 
-.stars span{
-  font-size:28px;cursor:pointer;color:#555;
-}
+.stars{display:flex;gap:8px;font-size:34px;}
+.stars span{color:#555;cursor:pointer;}
 .stars span.active{color:#ffb347;}
 
 .review{
-  margin-top:15px;
-  padding:15px;
-  border-radius:12px;
+  margin-top:18px;
+  padding:16px;
+  border-radius:16px;
   background:rgba(255,255,255,0.06);
 }
 
@@ -50,40 +107,84 @@ button{
   margin-top:10px;
   border-radius:12px;
 }
+
+footer{text-align:center;padding:30px;opacity:0.5;}
+
 </style>
 </head>
 
 <body>
 
-<section>
-<h2>⭐ Отзывы</h2>
+<!-- NAV -->
+<nav>
+  <div class="logo" onclick="home()">STREET 93</div>
+  <div>
+    <a href="#about">О нас</a>
+    <a href="menu.html">Меню</a>
+    <a href="#reviews">Отзывы</a>
+    <a href="#contact">Контакты</a>
+  </div>
+</nav>
 
-<div class="review-box">
+<!-- HERO -->
+<header id="home">
+  <div class="hero">
+    <h1>Street 93</h1>
+    <p>Современный ресторан премиум класса</p>
+  </div>
+</header>
 
-<input id="name" placeholder="Ваше имя">
-<textarea id="text" placeholder="Ваш отзыв"></textarea>
-
-<!-- 📷 IMAGE -->
-<input type="file" id="image" accept="image/*">
-
-<div class="stars">
-  <span onclick="setRating(1)">★</span>
-  <span onclick="setRating(2)">★</span>
-  <span onclick="setRating(3)">★</span>
-  <span onclick="setRating(4)">★</span>
-  <span onclick="setRating(5)">★</span>
-</div>
-
-<button onclick="addReview()">Отправить</button>
-
-<div id="list"></div>
-
-</div>
+<!-- ABOUT -->
+<section id="about">
+  <h2>О нас</h2>
+  <div class="about">
+    Street 93 — современный ресторан в Намангане с премиальной кухней и атмосферой.
+  </div>
 </section>
 
+<!-- ⭐ REVIEWS -->
+<section id="reviews">
+  <h2>Отзывы</h2>
+
+  <div class="review-box">
+
+    <input id="name" placeholder="Ваше имя">
+    <textarea id="text" placeholder="Ваш отзыв"></textarea>
+
+    <!-- 📷 IMAGE -->
+    <input type="file" id="image" accept="image/*">
+
+    <div class="stars">
+      <span onclick="setRating(1)">★</span>
+      <span onclick="setRating(2)">★</span>
+      <span onclick="setRating(3)">★</span>
+      <span onclick="setRating(4)">★</span>
+      <span onclick="setRating(5)">★</span>
+    </div>
+
+    <button onclick="addReview()">Отправить отзыв</button>
+
+    <div id="list"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Контакты</h2>
+
+  <div class="contact">
+    <a href="tel:+998882081993">📞 Позвонить</a>
+    <a href="https://www.google.com/maps?q=40.9981582,71.5957922">📍 Маршрут</a>
+    <a href="https://www.instagram.com/street.93.restaurant/">📸 Instagram</a>
+  </div>
+</section>
+
+<footer>© 2026 Street 93</footer>
+
 <script>
+
 const SUPABASE_URL = "https://brypncjzjwfjafjswnbd.supabase.co";
-const SUPABASE_KEY = "PASTE_YOUR_SUPABASE_KEY";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJyeXBuY2p6andmamFmanN3bmJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkwMjA0OTUsImV4cCI6MjA5NDU5NjQ5NX0.Q7-aT2rYdGqP_XxtAz8c-IB31S61s12Lhc4q7QQ-GY8";
 
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -95,6 +196,11 @@ function setRating(num){
   document.querySelectorAll(".stars span").forEach((s,i)=>{
     s.classList.toggle("active", i < num);
   });
+}
+
+// 🏠 home scroll
+function home(){
+  document.getElementById("home").scrollIntoView({behavior:"smooth"});
 }
 
 // 📷 upload image
@@ -135,7 +241,7 @@ async function addReview(){
   }]);
 
   if(error){
-    alert("Xatolik!");
+    alert("Xatolik yuz berdi");
     return;
   }
 
@@ -147,7 +253,7 @@ async function loadReviews(){
   const { data } = await sb
     .from("reviews")
     .select("*")
-    .order("id", { ascending:false });
+    .order("id", {ascending:false});
 
   const list = document.getElementById("list");
   list.innerHTML = "";
@@ -164,6 +270,7 @@ async function loadReviews(){
 }
 
 loadReviews();
+
 </script>
 
 </body>
