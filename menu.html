@@ -8,13 +8,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 
 <style>
-
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
 font-family:'Inter',sans-serif;
 background:#0b0b0b;
 color:#fff;
+scroll-behavior:smooth;
 }
 
 /* BACKGROUND */
@@ -47,7 +47,7 @@ border-bottom:1px solid rgba(255,255,255,.08);
 font-size:42px;
 font-weight:900;
 letter-spacing:2px;
-color:#fff;
+cursor:pointer;
 }
 
 .logo span{color:#FFD000}
@@ -59,12 +59,13 @@ padding:10px 18px;
 border-radius:12px;
 font-weight:800;
 text-decoration:none;
+cursor:pointer;
 }
 
-/* TITLE */
+/* HERO */
 .hero{
 text-align:center;
-padding:50px 20px;
+padding:70px 20px;
 }
 
 .hero h1{
@@ -106,8 +107,9 @@ box-shadow:0 15px 35px rgba(255,208,0,.15);
 
 .card img{
 width:100%;
-height:170px;
+height:180px;
 object-fit:cover;
+display:block;
 }
 
 .card h3{
@@ -135,18 +137,17 @@ font-weight:900;
 }
 
 footer span{color:#FFD000}
-
 </style>
 </head>
 
 <body>
 
 <nav>
-<div class="logo">STREET <span>93</span></div>
-<a class="back" href="#">← Назад</a>
+<div class="logo" onclick="scrollTopPage()">STREET <span>93</span></div>
+<a class="back" href="#menu">← Назад</a>
 </nav>
 
-<div class="hero">
+<div class="hero" id="menu">
 <h1>МЕНЮ <span>РЕСТОРАНА</span></h1>
 </div>
 
@@ -155,13 +156,13 @@ footer span{color:#FFD000}
 <div class="container">
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1600891964092-4316c288032e">
+<img loading="lazy" src="https://source.unsplash.com/800x600/?steak,ribeye">
 <h3>Стриплойн стейк</h3>
 <p>Сочный премиальный стейк</p>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1544025162-d76694265947">
+<img loading="lazy" src="https://source.unsplash.com/800x600/?filet,mignon,steak">
 <h3>Филе миньон</h3>
 <p>Нежнейшая говядина</p>
 </div>
@@ -173,39 +174,27 @@ footer span{color:#FFD000}
 <div class="container">
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1">
+<img loading="lazy" src="https://source.unsplash.com/800x600/?lamb,kebab">
 <h3>Шашлык из баранины</h3>
 <p>Сочный шашлык</p>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143">
+<img loading="lazy" src="https://source.unsplash.com/800x600/?kebab,grill">
 <h3>Люля из говядины</h3>
 <p>Классический люля-кебаб</p>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d">
-<h3>Люля из баранины</h3>
-<p>Ароматное мясо</p>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1604908554161-3c8a3c3b5c8d">
+<img loading="lazy" src="https://source.unsplash.com/800x600/?bbq,chicken,wings">
 <h3>Куриные крылышки</h3>
 <p>BBQ крылья</p>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1604908177522-8a3f1c1c0c9a">
+<img loading="lazy" src="https://source.unsplash.com/800x600/?grilled,vegetables">
 <h3>Овощи на мангале</h3>
 <p>Гриль овощи</p>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1604908177200-2a3d5c9f0b11">
-<h3>Картофель на мангале</h3>
-<p>Запечённый картофель</p>
 </div>
 
 </div>
@@ -215,57 +204,15 @@ footer span{color:#FFD000}
 <div class="container">
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1551248429-40975aa4de74">
+<img loading="lazy" src="https://source.unsplash.com/800x600/?tomato,salad">
 <h3>Ачичук</h3>
 <p>Узбекский салат</p>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe">
+<img loading="lazy" src="https://source.unsplash.com/800x600/?vegetable,salad">
 <h3>Овощной салат</h3>
 <p>Свежие овощи</p>
-</div>
-
-</div>
-
-<!-- GARNIR -->
-<div class="section-title">🍟 ГАРНИРЫ</div>
-<div class="container">
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1604908177133-3b2f4c2a7b1c">
-<h3>Овощи на пару</h3>
-<p>Полезный гарнир</p>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1604908177299-8a3b4c1d2e5f">
-<h3>Рис с овощами</h3>
-<p>Ароматный рис</p>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1604908177400-7c3a2b1d9e6f">
-<h3>Пюре картофельное</h3>
-<p>Нежное пюре</p>
-</div>
-
-</div>
-
-<!-- SAUCES -->
-<div class="section-title">🥫 СОУСЫ</div>
-<div class="container">
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1604908177555-2a7b3c9d1e8f">
-<h3>Чесночный соус</h3>
-<p>Ароматный соус</p>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1604908177400">
-<h3>Аджика</h3>
-<p>Острый соус</p>
 </div>
 
 </div>
@@ -275,21 +222,15 @@ footer span{color:#FFD000}
 <div class="container">
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87">
+<img loading="lazy" src="https://source.unsplash.com/800x600/?tea,cup">
 <h3>Чай</h3>
 <p>Чёрный и зелёный</p>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1523362628745-0c100150b504">
+<img loading="lazy" src="https://source.unsplash.com/800x600/?water,bottle">
 <h3>Минеральная вода</h3>
 <p>Освежающая вода</p>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba">
-<h3>Сок в ассортименте</h3>
-<p>Фруктовые соки</p>
 </div>
 
 </div>
@@ -298,6 +239,12 @@ footer span{color:#FFD000}
 <h2>STREET <span>93</span></h2>
 <p>PREMIUM STEAK HOUSE</p>
 </footer>
+
+<script>
+function scrollTopPage(){
+window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
 
 </body>
 </html>
