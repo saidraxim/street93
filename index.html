@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Street 93</title>
+<title>Street93 Reviews</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -18,24 +18,12 @@ body {
 /* HEADER */
 header {
   text-align: center;
-  padding: 30px;
+  padding: 25px;
   background: #111;
 }
 
-/* MENU */
-.menu-item {
-  background: #1a1a1a;
-  margin: 10px;
-  padding: 15px;
-  border-radius: 10px;
-}
-
-.menu-item h3 {
-  color: gold;
-}
-
-/* REVIEW */
-.review-box {
+/* FORM */
+.box {
   max-width: 500px;
   margin: 20px auto;
   background: #1a1a1a;
@@ -43,19 +31,19 @@ header {
   border-radius: 15px;
 }
 
-.review-box input,
-.review-box textarea {
+input, textarea {
   width: 100%;
-  margin-top: 10px;
   padding: 10px;
+  margin-top: 10px;
   border-radius: 8px;
   border: none;
   resize: none;
 }
 
-.review-box button {
+/* BUTTON */
+button {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-top: 10px;
   background: gold;
   border: none;
@@ -64,8 +52,9 @@ header {
   cursor: pointer;
 }
 
+/* STARS */
 .stars span {
-  font-size: 25px;
+  font-size: 28px;
   cursor: pointer;
   color: gray;
 }
@@ -74,12 +63,13 @@ header {
   color: gold;
 }
 
+/* REVIEW */
 .review {
-  background: #222;
+  max-width: 500px;
   margin: 10px auto;
+  background: #222;
   padding: 15px;
   border-radius: 10px;
-  max-width: 500px;
 }
 
 .review img {
@@ -93,22 +83,11 @@ header {
 <body>
 
 <header>
-  <h1>🍔 Street 93</h1>
+  <h1>🍔 Street93 Reviews</h1>
 </header>
 
-<!-- MENU -->
-<div class="menu-item">
-  <h3>Burger</h3>
-  <p>Tarkibi: mol go‘shti, pishloq, sous, salat, non</p>
-</div>
-
-<div class="menu-item">
-  <h3>Lavash</h3>
-  <p>Tarkibi: tovuq, lavash noni, sous, sabzavot</p>
-</div>
-
 <!-- REVIEW FORM -->
-<div class="review-box">
+<div class="box">
   <h2>Otziv qoldirish ⭐</h2>
 
   <input id="name" placeholder="Ismingiz">
@@ -123,7 +102,8 @@ header {
 
   <textarea id="text" placeholder="Otzivingiz..."></textarea>
 
-  <input type="file" id="image">
+  <!-- 📸 GALEREYA / CAMERA -->
+  <input type="file" id="image" accept="image/*">
 
   <button onclick="sendReview()">Yuborish</button>
 </div>
@@ -131,19 +111,20 @@ header {
 <div id="reviews"></div>
 
 <script>
-// 🔥 SUPABASE CONFIG (SHUNI O'ZGARTIRASAN)
-const supabaseUrl = "YOUR_SUPABASE_URL";
-const supabaseKey = "YOUR_SUPABASE_ANON_KEY";
+// 🔥 SUPABASE
+const supabaseUrl = "https://brypncjzjwfjafjswnbd.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJyeXBuY2p6andmamFmanN3bmJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkwMjA0OTUsImV4cCI6MjA5NDU5NjQ5NX0.Q7-aT2rYdGqP_XxtAz8c-IB31S61s12Lhc4q7QQ-GY8";
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
 let rating = 0;
 
-// ⭐ stars
+// ⭐ STAR CLICK
 document.querySelectorAll(".stars span").forEach(star => {
   star.onclick = () => {
     rating = star.dataset.value;
 
     document.querySelectorAll(".stars span").forEach(s => s.classList.remove("active"));
+
     for (let i = 0; i < rating; i++) {
       document.querySelectorAll(".stars span")[i].classList.add("active");
     }
@@ -157,17 +138,17 @@ async function sendReview() {
   let imageFile = document.getElementById("image").files[0];
 
   if (!name || !text || rating == 0) {
-    alert("To‘ldiring!");
+    alert("Hammasini to‘ldiring!");
     return;
   }
 
   let imageUrl = null;
 
-  // 📸 upload image
+  // 📸 UPLOAD IMAGE TO SUPABASE STORAGE
   if (imageFile) {
-    const fileName = Date.now() + imageFile.name;
+    const fileName = Date.now() + "_" + imageFile.name;
 
-    const { data, error } = await supabase.storage
+    const { error } = await supabase.storage
       .from("review-images")
       .upload(fileName, imageFile);
 
@@ -178,14 +159,15 @@ async function sendReview() {
     }
   }
 
-  // 💾 save review
+  // 💾 SAVE REVIEW TO DB
   await supabase.from("reviews").insert({
-    name,
-    text,
-    rating,
+    name: name,
+    text: text,
+    rating: rating,
     image_url: imageUrl
   });
 
+  // refresh
   loadReviews();
 }
 
