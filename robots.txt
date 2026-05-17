@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://saidraxim.github.io/street93/sitemap.xml
