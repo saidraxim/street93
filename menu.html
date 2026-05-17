@@ -142,7 +142,7 @@ footer span{color:#FFD000}
 
 <nav>
 <div class="logo" onclick="scrollTopPage()">STREET <span>93</span></div>
-<a class="back" href="#menu">← Назад</a>
+<div class="back" onclick="goMenu()">← Назад</div>
 </nav>
 
 <div class="hero" id="menu">
@@ -259,6 +259,18 @@ footer span{color:#FFD000}
 <script>
 function scrollTopPage(){
 window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+  <script>
+function scrollTopPage(){
+window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function goMenu(){
+document.getElementById("menu").scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
 }
 </script>
 
