@@ -1,392 +1,19 @@
-```html
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Street 93 Menu</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Oswald:wght@300;400;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
-body{
-background:#050505;
-color:#fff;
-font-family:Inter,sans-serif;
-overflow-x:hidden;
-}
-
-body::before{
-content:"";
-position:fixed;
-inset:0;
-
-background:
-linear-gradient(rgba(0,0,0,.82),rgba(0,0,0,.92)),
-url("bg.jpg");
-
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
-
-z-index:-1;
-}
-
-/* NAV */
-
-nav{
-
-position:sticky;
-top:0;
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-padding:20px 7%;
-
-background:rgba(0,0,0,.45);
-
-backdrop-filter:blur(14px);
-
-border-bottom:1px solid rgba(255,255,255,.08);
-
-z-index:1000;
-}
-
-.logo{
-
-font-family:Oswald,sans-serif;
-
-font-size:42px;
-font-weight:700;
-
-text-decoration:none;
-
-color:#fff;
-}
-
-.logo span{
-color:#ff2d2d;
-}
-
-.back{
-
-padding:12px 22px;
-
-background:linear-gradient(45deg,#ff2d2d,#ff7a00);
-
-border-radius:14px;
-
-text-decoration:none;
-color:#fff;
-
-font-weight:700;
-}
-
-/* PAGE */
-
-.menu-page{
-
-display:flex;
-gap:40px;
-
-padding:40px 7%;
-}
-
-/* SIDEBAR */
-
-.sidebar{
-
-position:sticky;
-top:120px;
-
-width:240px;
-height:max-content;
-
-display:flex;
-flex-direction:column;
-gap:14px;
-}
-
-.sidebar a{
-
-padding:16px 18px;
-
-background:rgba(255,255,255,.05);
-
-border:1px solid rgba(255,255,255,.08);
-
-border-radius:16px;
-
-text-decoration:none;
-
-color:#fff;
-
-font-weight:600;
-
-transition:.3s;
-}
-
-.sidebar a:hover{
-
-background:#ff7a00;
-
-transform:translateX(8px);
-}
-
-/* CONTENT */
-
-.menu-content{
-flex:1;
-}
-
-.hero{
-margin-bottom:40px;
-}
-
-.hero h1{
-
-font-family:Oswald,sans-serif;
-
-font-size:76px;
-
-letter-spacing:8px;
-
-margin-bottom:10px;
-}
-
-.hero p{
-
-opacity:.7;
-
-letter-spacing:4px;
-}
-
-/* SECTION */
-
-.menu-section{
-margin-bottom:70px;
-}
-
-.menu-section h2{
-
-font-family:Oswald,sans-serif;
-
-font-size:42px;
-
-margin-bottom:28px;
-
-color:#ffb347;
-}
-
-/* GRID */
-
-.food-grid{
-
-display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(290px,1fr));
-
-gap:28px;
-}
-
-/* CARD */
-
-.food-card{
-
-background:rgba(255,255,255,.05);
-
-border:1px solid rgba(255,255,255,.08);
-
-border-radius:26px;
-
-overflow:hidden;
-
-backdrop-filter:blur(10px);
-
-transition:.35s;
-
-box-shadow:0 0 30px rgba(0,0,0,.3);
-}
-
-.food-card:hover{
-
-transform:translateY(-10px);
-}
-
-.food-card img{
-
-width:100%;
-height:240px;
-
-object-fit:cover;
-}
-
-.food-info{
-padding:20px;
-}
-
-.food-info h3{
-
-font-size:24px;
-
-margin-bottom:10px;
-}
-
-.food-info p{
-
-opacity:.7;
-
-line-height:1.6;
-
-margin-bottom:18px;
-}
-
-.price{
-
-font-size:26px;
-
-font-weight:800;
-
-color:#ffb347;
-}
-
-/* FOOTER */
-
-.footer-banner{
-
-margin-top:70px;
-
-padding:60px 30px;
-
-text-align:center;
-
-border-radius:30px;
-
-background:
-linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.85)),
-url("bg.jpg");
-
-background-size:cover;
-background-position:center;
-
-border:1px solid rgba(255,255,255,.08);
-}
-
-.footer-banner h2{
-
-font-family:Oswald,sans-serif;
-
-font-size:62px;
-
-letter-spacing:6px;
-
-margin-bottom:12px;
-}
-
-.footer-banner span{
-color:#ff2d2d;
-}
-
-.footer-banner p{
-
-opacity:.75;
-
-letter-spacing:4px;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-.menu-page{
-flex-direction:column;
-}
-
-.sidebar{
-
-position:relative;
-top:0;
-
-width:100%;
-
-flex-direction:row;
-
-overflow:auto;
-}
-
-.sidebar a{
-white-space:nowrap;
-}
-
-.hero h1{
-font-size:52px;
-}
-
-.menu-section h2{
-font-size:34px;
-}
-
-}
-
-</style>
-</head>
-
-<body>
-
-<nav>
-
-<a href="index.html" class="logo">
-STREET <span>93</span>
-</a>
-
-<a href="index.html" class="back">
-← Назад
-</a>
-
-</nav>
-
-<div class="menu-page">
-
+```html id="z6k2pm"
 <!-- SIDEBAR -->
 
 <div class="sidebar">
 
 <a href="#steak">🥩 Стейки</a>
+
 <a href="#mangal">🔥 Мангал</a>
-<a href="#burgers">🍔 Бургеры</a>
-<a href="#pizza">🍕 Пицца</a>
-<a href="#sallads">🥗 Салаты</a>
-<a href="#dessert">🍰 Десерты</a>
+
+<a href="#salads">🥗 Салаты</a>
+
+<a href="#garnir">🍟 Гарниры</a>
+
+<a href="#sauces">🥫 Соусы</a>
+
 <a href="#drinks">🥤 Напитки</a>
-
-</div>
-
-<!-- CONTENT -->
-
-<div class="menu-content">
-
-<div class="hero">
-
-<h1>STEAK MENU</h1>
-
-<p>
-МЯСО • ОГОНЬ • ХАРАКТЕР
-</p>
 
 </div>
 
@@ -399,21 +26,51 @@ STREET <span>93</span>
 <div class="food-grid">
 
 <div class="food-card">
-<img src="steak.jpg">
+
+<img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop">
+
 <div class="food-info">
+
 <h3>Рибай Стейк</h3>
-<p>350 гр • premium beef steak</p>
+
+<p>350 гр • мраморная говядина</p>
+
 <div class="price">145 000 сум</div>
+
 </div>
+
 </div>
 
 <div class="food-card">
-<img src="steak.jpg">
+
+<img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=1200&auto=format&fit=crop">
+
 <div class="food-info">
+
 <h3>T-Bone Стейк</h3>
+
 <p>400 гр • фирменная прожарка</p>
+
 <div class="price">150 000 сум</div>
+
 </div>
+
+</div>
+
+<div class="food-card">
+
+<img src="https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1200&auto=format&fit=crop">
+
+<div class="food-info">
+
+<h3>Томагавк Стейк</h3>
+
+<p>1000 гр • premium steak</p>
+
+<div class="price">280 000 сум</div>
+
+</div>
+
 </div>
 
 </div>
@@ -429,141 +86,215 @@ STREET <span>93</span>
 <div class="food-grid">
 
 <div class="food-card">
-<img src="mangal.jpg">
+
+<img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?q=80&w=1200&auto=format&fit=crop">
+
 <div class="food-info">
+
 <h3>Шашлык из говядины</h3>
-<p>200 гр • grilled on fire</p>
+
+<p>200 гр • grilled meat</p>
+
 <div class="price">58 000 сум</div>
+
 </div>
+
 </div>
 
 <div class="food-card">
-<img src="mangal.jpg">
+
+<img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop">
+
 <div class="food-info">
+
+<h3>Люля из баранины</h3>
+
+<p>200 гр • juicy kebab</p>
+
+<div class="price">50 000 сум</div>
+
+</div>
+
+</div>
+
+<div class="food-card">
+
+<img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?q=80&w=1200&auto=format&fit=crop">
+
+<div class="food-info">
+
 <h3>Куриные крылышки</h3>
+
 <p>spicy grilled wings</p>
+
 <div class="price">42 000 сум</div>
-</div>
-</div>
 
 </div>
 
-</section>
-
-<!-- BURGER -->
-
-<section class="menu-section" id="burgers">
-
-<h2>🍔 БУРГЕРЫ</h2>
-
-<div class="food-grid">
-
-<div class="food-card">
-<img src="burger.jpg">
-<div class="food-info">
-<h3>Classic Burger</h3>
-<p>double cheese & beef</p>
-<div class="price">45 000 сум</div>
-</div>
-</div>
-
-<div class="food-card">
-<img src="burger.jpg">
-<div class="food-info">
-<h3>Double Burger</h3>
-<p>premium beef burger</p>
-<div class="price">58 000 сум</div>
-</div>
 </div>
 
 </div>
 
 </section>
 
-<!-- PIZZA -->
+<!-- SALADS -->
 
-<section class="menu-section" id="pizza">
-
-<h2>🍕 ПИЦЦА</h2>
-
-<div class="food-grid">
-
-<div class="food-card">
-<img src="pizza.jpg">
-<div class="food-info">
-<h3>Pepperoni</h3>
-<p>mozzarella & pepperoni</p>
-<div class="price">75 000 сум</div>
-</div>
-</div>
-
-<div class="food-card">
-<img src="pizza.jpg">
-<div class="food-info">
-<h3>4 Cheese</h3>
-<p>premium cheese mix</p>
-<div class="price">82 000 сум</div>
-</div>
-</div>
-
-</div>
-
-</section>
-
-<!-- salladS -->
-
-<section class="menu-section" id="sallads">
+<section class="menu-section" id="salads">
 
 <h2>🥗 САЛАТЫ</h2>
 
 <div class="food-grid">
 
 <div class="food-card">
-<img src="sallad.jpg">
+
+<img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1200&auto=format&fit=crop">
+
 <div class="food-info">
+
 <h3>Греческий</h3>
+
 <p>fresh vegetables & olives</p>
+
 <div class="price">38 000 сум</div>
+
 </div>
+
 </div>
 
 <div class="food-card">
-<img src="sallad.jpg">
+
+<img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?q=80&w=1200&auto=format&fit=crop">
+
 <div class="food-info">
-<h3>Цезарь</h3>
-<p>chicken & parmesan</p>
+
+<h3>Цезарь с курицей</h3>
+
+<p>parmesan & crispy chicken</p>
+
 <div class="price">42 000 сум</div>
+
 </div>
+
+</div>
+
+<div class="food-card">
+
+<img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1200&auto=format&fit=crop">
+
+<div class="food-info">
+
+<h3>Ачичук</h3>
+
+<p>traditional fresh salad</p>
+
+<div class="price">28 000 сум</div>
+
+</div>
+
 </div>
 
 </div>
 
 </section>
 
-<!-- DESSERT -->
+<!-- GARNIR -->
 
-<section class="menu-section" id="dessert">
+<section class="menu-section" id="garnir">
 
-<h2>🍰 ДЕСЕРТЫ</h2>
+<h2>🍟 ГАРНИРЫ</h2>
 
 <div class="food-grid">
 
 <div class="food-card">
-<img src="dessert.jpg">
+
+<img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=1200&auto=format&fit=crop">
+
 <div class="food-info">
-<h3>Chocolate Cake</h3>
-<p>premium dark chocolate</p>
-<div class="price">35 000 сум</div>
+
+<h3>Картофель Фри</h3>
+
+<p>crispy fries</p>
+
+<div class="price">25 000 сум</div>
+
 </div>
+
 </div>
 
 <div class="food-card">
-<img src="dessert.jpg">
+
+<img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?q=80&w=1200&auto=format&fit=crop">
+
 <div class="food-info">
-<h3>Ice Cream</h3>
-<p>vanilla & chocolate mix</p>
-<div class="price">25 000 сум</div>
+
+<h3>Овощи на пару</h3>
+
+<p>healthy vegetables</p>
+
+<div class="price">28 000 сум</div>
+
 </div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SAUCES -->
+
+<section class="menu-section" id="sauces">
+
+<h2>🥫 СОУСЫ</h2>
+
+<div class="food-grid">
+
+<div class="food-card">
+
+<img src="https://images.unsplash.com/photo-1472476443507-c7a5948772fc?q=80&w=1200&auto=format&fit=crop">
+
+<div class="food-info">
+
+<h3>Сырный</h3>
+
+<p>cheese sauce</p>
+
+<div class="price">10 000 сум</div>
+
+</div>
+
+</div>
+
+<div class="food-card">
+
+<img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=1200&auto=format&fit=crop">
+
+<div class="food-info">
+
+<h3>BBQ</h3>
+
+<p>smoky bbq sauce</p>
+
+<div class="price">10 000 сум</div>
+
+</div>
+
+</div>
+
+<div class="food-card">
+
+<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=1200&auto=format&fit=crop">
+
+<div class="food-info">
+
+<h3>Терияки</h3>
+
+<p>sweet japanese sauce</p>
+
+<div class="price">10 000 сум</div>
+
+</div>
+
 </div>
 
 </div>
@@ -579,43 +310,38 @@ STREET <span>93</span>
 <div class="food-grid">
 
 <div class="food-card">
-<img src="drinks.jpg">
+
+<img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=1200&auto=format&fit=crop">
+
 <div class="food-info">
+
 <h3>COLA / FANTA / SPRITE</h3>
+
 <p>cold drinks 0.5L</p>
+
 <div class="price">15 000 сум</div>
+
 </div>
+
 </div>
 
 <div class="food-card">
-<img src="drinks.jpg">
+
+<img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop">
+
 <div class="food-info">
+
 <h3>Кофе</h3>
+
 <p>espresso / americano</p>
+
 <div class="price">15 000 сум</div>
+
 </div>
+
 </div>
 
 </div>
 
 </section>
-
-<div class="footer-banner">
-
-<h2>
-STREET <span>93</span>
-</h2>
-
-<p>
-PREMIUM STEAK HOUSE
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</body>
-</html>
 ```
