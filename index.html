@@ -15,20 +15,18 @@ body {
   color: white;
 }
 
-/* HEADER */
 header {
   text-align: center;
-  padding: 25px;
+  padding: 20px;
   background: #111;
 }
 
-/* FORM */
 .box {
   max-width: 500px;
   margin: 20px auto;
   background: #1a1a1a;
   padding: 20px;
-  border-radius: 15px;
+  border-radius: 12px;
 }
 
 input, textarea {
@@ -40,7 +38,6 @@ input, textarea {
   resize: none;
 }
 
-/* BUTTON */
 button {
   width: 100%;
   padding: 12px;
@@ -48,13 +45,12 @@ button {
   background: gold;
   border: none;
   border-radius: 8px;
-  font-weight: bold;
   cursor: pointer;
+  font-weight: bold;
 }
 
-/* STARS */
 .stars span {
-  font-size: 28px;
+  font-size: 26px;
   cursor: pointer;
   color: gray;
 }
@@ -63,7 +59,6 @@ button {
   color: gold;
 }
 
-/* REVIEW */
 .review {
   max-width: 500px;
   margin: 10px auto;
@@ -74,8 +69,8 @@ button {
 
 .review img {
   width: 100%;
-  border-radius: 10px;
   margin-top: 10px;
+  border-radius: 10px;
 }
 </style>
 </head>
@@ -86,7 +81,6 @@ button {
   <h1>🍔 Street93 Reviews</h1>
 </header>
 
-<!-- REVIEW FORM -->
 <div class="box">
   <h2>Otziv qoldirish ⭐</h2>
 
@@ -102,7 +96,6 @@ button {
 
   <textarea id="text" placeholder="Otzivingiz..."></textarea>
 
-  <!-- 📸 GALEREYA / CAMERA -->
   <input type="file" id="image" accept="image/*">
 
   <button onclick="sendReview()">Yuborish</button>
@@ -111,14 +104,14 @@ button {
 <div id="reviews"></div>
 
 <script>
-// 🔥 SUPABASE
+// 🔥 SUPABASE SETUP (TO‘G‘RI)
 const supabaseUrl = "https://brypncjzjwfjafjswnbd.supabase.co";
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJyeXBuY2p6andmamFmanN3bmJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkwMjA0OTUsImV4cCI6MjA5NDU5NjQ5NX0.Q7-aT2rYdGqP_XxtAz8c-IB31S61s12Lhc4q7QQ-GY8";
-const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
 let rating = 0;
 
-// ⭐ STAR CLICK
+// ⭐ stars
 document.querySelectorAll(".stars span").forEach(star => {
   star.onclick = () => {
     rating = star.dataset.value;
@@ -135,7 +128,7 @@ document.querySelectorAll(".stars span").forEach(star => {
 async function sendReview() {
   let name = document.getElementById("name").value;
   let text = document.getElementById("text").value;
-  let imageFile = document.getElementById("image").files[0];
+  let image = document.getElementById("image").files[0];
 
   if (!name || !text || rating == 0) {
     alert("Hammasini to‘ldiring!");
@@ -144,13 +137,13 @@ async function sendReview() {
 
   let imageUrl = null;
 
-  // 📸 UPLOAD IMAGE TO SUPABASE STORAGE
-  if (imageFile) {
-    const fileName = Date.now() + "_" + imageFile.name;
+  // 📸 upload image
+  if (image) {
+    const fileName = Date.now() + "_" + image.name;
 
     const { error } = await supabase.storage
       .from("review-images")
-      .upload(fileName, imageFile);
+      .upload(fileName, image);
 
     if (!error) {
       imageUrl = supabase.storage
@@ -159,15 +152,14 @@ async function sendReview() {
     }
   }
 
-  // 💾 SAVE REVIEW TO DB
+  // 💾 save DB
   await supabase.from("reviews").insert({
-    name: name,
-    text: text,
-    rating: rating,
+    name,
+    text,
+    rating,
     image_url: imageUrl
   });
 
-  // refresh
   loadReviews();
 }
 
@@ -178,14 +170,18 @@ async function loadReviews() {
     .select("*")
     .order("created_at", { ascending: false });
 
-  document.getElementById("reviews").innerHTML = data.map(r => `
-    <div class="review">
-      <h3>${r.name}</h3>
-      <p>${"⭐".repeat(r.rating)}</p>
-      <p>${r.text}</p>
-      ${r.image_url ? `<img src="${r.image_url}">` : ""}
-    </div>
-  `).join("");
+  document.getElementById("reviews").innerHTML = "";
+
+  data.forEach(r => {
+    document.getElementById("reviews").innerHTML += `
+      <div class="review">
+        <h3>${r.name}</h3>
+        <p>${"⭐".repeat(r.rating)}</p>
+        <p>${r.text}</p>
+        ${r.image_url ? `<img src="${r.image_url}">` : ""}
+      </div>
+    `;
+  });
 }
 
 loadReviews();
