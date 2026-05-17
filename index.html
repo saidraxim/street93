@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Street93 Reviews</title>
+<title>Street93 Restaurant</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -15,12 +15,47 @@ body {
   color: white;
 }
 
+/* HEADER */
 header {
   text-align: center;
-  padding: 20px;
+  padding: 30px;
   background: #111;
 }
 
+/* MENU */
+.menu {
+  display: grid;
+  gap: 10px;
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+}
+
+.item {
+  background: #1a1a1a;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.item h3 {
+  color: gold;
+}
+
+/* MAP */
+.map {
+  text-align: center;
+  padding: 20px;
+}
+
+iframe {
+  width: 100%;
+  max-width: 800px;
+  height: 300px;
+  border: none;
+  border-radius: 10px;
+}
+
+/* REVIEW */
 .box {
   max-width: 500px;
   margin: 20px auto;
@@ -45,8 +80,8 @@ button {
   background: gold;
   border: none;
   border-radius: 8px;
-  cursor: pointer;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .stars span {
@@ -69,8 +104,8 @@ button {
 
 .review img {
   width: 100%;
-  margin-top: 10px;
   border-radius: 10px;
+  margin-top: 10px;
 }
 </style>
 </head>
@@ -78,9 +113,30 @@ button {
 <body>
 
 <header>
-  <h1>🍔 Street93 Reviews</h1>
+  <h1>🍔 Street93 Restaurant</h1>
+  <p>Eng yaxshi taomlar va atmosfera</p>
 </header>
 
+<!-- MENU -->
+<div class="menu">
+  <div class="item">
+    <h3>Burger</h3>
+    <p>Tarkibi: mol go‘shti, pishloq, sous, salat, non</p>
+  </div>
+
+  <div class="item">
+    <h3>Lavash</h3>
+    <p>Tarkibi: tovuq, lavash noni, sabzavot, sous</p>
+  </div>
+</div>
+
+<!-- MAP -->
+<div class="map">
+  <h2>Bizning joylashuv</h2>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d546.3092619590175!2d71.59579257587136!3d40.998052485770316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bb4a6aabf1694f%3A0x6330bcfcea57bcca!2sStreet93!5e0!3m2!1sru!2s!4v1779025664681!5m2!1sru!2s"></iframe>
+</div>
+
+<!-- REVIEW FORM -->
 <div class="box">
   <h2>Otziv qoldirish ⭐</h2>
 
@@ -104,10 +160,9 @@ button {
 <div id="reviews"></div>
 
 <script>
-// 🔥 SUPABASE SETUP (TO‘G‘RI)
 const supabaseUrl = "https://brypncjzjwfjafjswnbd.supabase.co";
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJyeXBuY2p6andmamFmanN3bmJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkwMjA0OTUsImV4cCI6MjA5NDU5NjQ5NX0.Q7-aT2rYdGqP_XxtAz8c-IB31S61s12Lhc4q7QQ-GY8";
-const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
 let rating = 0;
 
@@ -117,7 +172,6 @@ document.querySelectorAll(".stars span").forEach(star => {
     rating = star.dataset.value;
 
     document.querySelectorAll(".stars span").forEach(s => s.classList.remove("active"));
-
     for (let i = 0; i < rating; i++) {
       document.querySelectorAll(".stars span")[i].classList.add("active");
     }
@@ -137,7 +191,6 @@ async function sendReview() {
 
   let imageUrl = null;
 
-  // 📸 upload image
   if (image) {
     const fileName = Date.now() + "_" + image.name;
 
@@ -152,7 +205,6 @@ async function sendReview() {
     }
   }
 
-  // 💾 save DB
   await supabase.from("reviews").insert({
     name,
     text,
@@ -163,25 +215,21 @@ async function sendReview() {
   loadReviews();
 }
 
-// 📥 LOAD REVIEWS
+// 📥 LOAD
 async function loadReviews() {
   const { data } = await supabase
     .from("reviews")
     .select("*")
     .order("created_at", { ascending: false });
 
-  document.getElementById("reviews").innerHTML = "";
-
-  data.forEach(r => {
-    document.getElementById("reviews").innerHTML += `
-      <div class="review">
-        <h3>${r.name}</h3>
-        <p>${"⭐".repeat(r.rating)}</p>
-        <p>${r.text}</p>
-        ${r.image_url ? `<img src="${r.image_url}">` : ""}
-      </div>
-    `;
-  });
+  document.getElementById("reviews").innerHTML = data.map(r => `
+    <div class="review">
+      <h3>${r.name}</h3>
+      <p>${"⭐".repeat(r.rating)}</p>
+      <p>${r.text}</p>
+      ${r.image_url ? `<img src="${r.image_url}">` : ""}
+    </div>
+  `).join("");
 }
 
 loadReviews();
