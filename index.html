@@ -8,82 +8,83 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+/* 🌌 BACKGROUND */
 body {
   margin: 0;
   font-family: Arial;
-  background: #0f0f0f;
   color: white;
+  background: url("https://images.unsplash.com/photo-1600891964599-f61ba0e24092") no-repeat center/cover;
+  min-height: 100vh;
+}
+
+/* DARK OVERLAY */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.65);
+  z-index: -1;
+}
+
+/* 🧊 GLASS CARD */
+.glass {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 900px;
 }
 
 /* HEADER */
 header {
   text-align: center;
-  padding: 30px;
-  background: #111;
+  padding: 40px;
 }
 
 /* MENU */
-.menu {
-  display: grid;
-  gap: 10px;
-  max-width: 700px;
-  margin: auto;
-  padding: 20px;
+.menu-item {
+  margin: 10px 0;
 }
 
-.item {
-  background: #1a1a1a;
-  padding: 15px;
-  border-radius: 10px;
-}
-
-.item h3 {
+.menu-item h3 {
   color: gold;
 }
 
 /* MAP */
-.map {
-  text-align: center;
-  padding: 20px;
-}
-
 iframe {
   width: 100%;
-  max-width: 800px;
-  height: 300px;
-  border: none;
-  border-radius: 10px;
-}
-
-/* REVIEW */
-.box {
-  max-width: 500px;
-  margin: 20px auto;
-  background: #1a1a1a;
-  padding: 20px;
+  height: 350px;
   border-radius: 12px;
+  border: none;
 }
 
+/* INPUTS */
 input, textarea {
   width: 100%;
   padding: 10px;
   margin-top: 10px;
-  border-radius: 8px;
+  border-radius: 10px;
   border: none;
-  resize: none;
+  outline: none;
 }
 
+/* BUTTON */
 button {
   width: 100%;
   padding: 12px;
   margin-top: 10px;
   background: gold;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: bold;
   cursor: pointer;
 }
 
+/* STARS */
 .stars span {
   font-size: 26px;
   cursor: pointer;
@@ -94,12 +95,13 @@ button {
   color: gold;
 }
 
+/* REVIEW */
 .review {
-  max-width: 500px;
-  margin: 10px auto;
-  background: #222;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
   padding: 15px;
-  border-radius: 10px;
+  margin-top: 10px;
 }
 
 .review img {
@@ -112,33 +114,43 @@ button {
 
 <body>
 
-<header>
+<header class="glass">
   <h1>🍔 Street93 Restaurant</h1>
-  <p>Eng yaxshi taomlar va atmosfera</p>
+  <p>Eng yaxshi atmosfera va taomlar</p>
 </header>
 
 <!-- MENU -->
-<div class="menu">
-  <div class="item">
+<div class="glass">
+  <h2>🍟 Menu</h2>
+
+  <div class="menu-item">
     <h3>Burger</h3>
     <p>Tarkibi: mol go‘shti, pishloq, sous, salat, non</p>
   </div>
 
-  <div class="item">
+  <div class="menu-item">
     <h3>Lavash</h3>
-    <p>Tarkibi: tovuq, lavash noni, sabzavot, sous</p>
+    <p>Tarkibi: tovuq, sabzavot, sous</p>
   </div>
 </div>
 
 <!-- MAP -->
-<div class="map">
-  <h2>Bizning joylashuv</h2>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d546.3092619590175!2d71.59579257587136!3d40.998052485770316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bb4a6aabf1694f%3A0x6330bcfcea57bcca!2sStreet93!5e0!3m2!1sru!2s!4v1779025664681!5m2!1sru!2s"></iframe>
+<div class="glass">
+  <h2>📍 Map</h2>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d546.3092619590175!2d71.59579257587136!3d40.998052485770316!2m3!1f0!2f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bb4a6aabf1694f%3A0x6330bcfcea57bcca!2sStreet93!5e0!3m2!1sru!2s!4v1779025664681!5m2!1sru!2s"></iframe>
 </div>
 
-<!-- REVIEW FORM -->
-<div class="box">
-  <h2>Otziv qoldirish ⭐</h2>
+<!-- CONTACT -->
+<div class="glass">
+  <h2>📞 Contact</h2>
+  <p>📍 Tashkent</p>
+  <p>📱 +998 90 000 00 00</p>
+  <p>🕒 12:00 - 01:00</p>
+</div>
+
+<!-- REVIEW -->
+<div class="glass">
+  <h2>⭐ Otziv qoldirish</h2>
 
   <input id="name" placeholder="Ismingiz">
 
@@ -155,9 +167,9 @@ button {
   <input type="file" id="image" accept="image/*">
 
   <button onclick="sendReview()">Yuborish</button>
-</div>
 
-<div id="reviews"></div>
+  <div id="reviews"></div>
+</div>
 
 <script>
 const supabaseUrl = "YOUR_SUPABASE_URL";
@@ -167,68 +179,60 @@ const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 let rating = 0;
 
 // ⭐ stars
-document.querySelectorAll(".stars span").forEach(star => {
-  star.onclick = () => {
+document.querySelectorAll(".stars span").forEach(star=>{
+  star.onclick=()=>{
     rating = star.dataset.value;
 
-    document.querySelectorAll(".stars span").forEach(s => s.classList.remove("active"));
-    for (let i = 0; i < rating; i++) {
+    document.querySelectorAll(".stars span").forEach(s=>s.classList.remove("active"));
+    for(let i=0;i<rating;i++){
       document.querySelectorAll(".stars span")[i].classList.add("active");
     }
-  };
+  }
 });
 
 // 🚀 SEND REVIEW
-async function sendReview() {
-  let name = document.getElementById("name").value;
-  let text = document.getElementById("text").value;
-  let image = document.getElementById("image").files[0];
+async function sendReview(){
+  let name=document.getElementById("name").value;
+  let text=document.getElementById("text").value;
+  let image=document.getElementById("image").files[0];
 
-  // FIXED CONDITION
-  if (!name || !text || rating == 0) {
+  if(!name || !text || rating==0){
     alert("Hammasini to‘ldiring!");
     return;
   }
 
-  let imageUrl = null;
+  let imageUrl=null;
 
-  if (image) {
-    const fileName = Date.now() + "_" + image.name;
+  if(image){
+    const fileName=Date.now()+"_"+image.name;
 
-    const { error } = await supabase.storage
-      .from("review-images")
-      .upload(fileName, image);
+    await supabase.storage.from("review-images").upload(fileName,image);
 
-    if (!error) {
-      imageUrl = supabase.storage
-        .from("review-images")
-        .getPublicUrl(fileName).data.publicUrl;
-    }
+    imageUrl=supabase.storage.from("review-images").getPublicUrl(fileName).data.publicUrl;
   }
 
   await supabase.from("reviews").insert({
     name,
     text,
     rating,
-    image_url: imageUrl
+    image_url:imageUrl
   });
 
   loadReviews();
 }
 
-// 📥 LOAD REVIEWS
-async function loadReviews() {
-  const { data } = await supabase
-    .from("reviews")
-    .select("*")
-    .order("created_at", { ascending: false });
+// 📥 LOAD
+async function loadReviews(){
+  const {data}=await supabase.from("reviews")
+  .select("*")
+  .order("created_at",{ascending:false});
 
-  document.getElementById("reviews").innerHTML = data.map(r => `
+  document.getElementById("reviews").innerHTML=data.map(r=>`
     <div class="review">
       <h3>${r.name}</h3>
       <p>${"⭐".repeat(r.rating)}</p>
       <p>${r.text}</p>
-      ${r.image_url ? `<img src="${r.image_url}">` : ""}
+      ${r.image_url?`<img src="${r.image_url}">`:""}
     </div>
   `).join("");
 }
