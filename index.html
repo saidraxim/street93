@@ -1,178 +1,87 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Street 93 Restaurant | Namangan</title>
-
-<meta name="description"
-content="Street 93 — современный ресторан премиум класса в Намангане">
+<title>Street 93 Restaurant</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-/* (SIZNING OLDINGI CSS O‘ZGARMADI) */
-
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
-html{scroll-behavior:smooth;}
-body{color:#fff;overflow-x:hidden;}
+body{color:#fff;background:#000;}
 
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:linear-gradient(rgba(0,0,0,0.78),rgba(0,0,0,0.9)),url("bg.jpg");
-  background-size:cover;
-  background-position:center;
-  background-attachment:fixed;
-  z-index:-1;
+section{padding:60px 8%;}
+
+.review-box{
+  max-width:700px;margin:auto;
 }
-
-nav{
-  position:fixed;top:0;width:100%;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:16px 8%;
-  background:rgba(0,0,0,0.35);
-  backdrop-filter:blur(12px);
-  z-index:1000;
-}
-
-.logo{font-size:22px;font-weight:800;color:#ffb347;cursor:pointer;}
-
-nav a{
-  color:#fff;text-decoration:none;margin-left:18px;opacity:0.7;transition:.3s;
-}
-nav a:hover{opacity:1;color:#ffb347;}
-
-header{
-  height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;
-}
-
-.hero{
-  padding:55px;border-radius:24px;
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.1);
-  backdrop-filter:blur(18px);
-}
-
-.hero h1{
-  font-size:clamp(55px,8vw,100px);
-  background:linear-gradient(45deg,#fff,#ffb347);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-section{padding:100px 8%;}
-h2{text-align:center;margin-bottom:35px;font-size:38px;}
-
-.about{max-width:900px;margin:auto;text-align:center;line-height:1.9;opacity:0.85;}
-
-.contact{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;}
-
-.contact a{
-  padding:14px 22px;border-radius:14px;
-  background:rgba(255,255,255,0.08);
-  color:#fff;text-decoration:none;font-weight:600;
-}
-
-.review-box{max-width:720px;margin:auto;}
 
 input,textarea{
-  width:100%;padding:14px;margin:8px 0;
-  border:none;border-radius:14px;
+  width:100%;padding:12px;margin:8px 0;
+  border:none;border-radius:12px;
   background:rgba(255,255,255,0.08);
   color:#fff;
 }
 
 button{
-  width:100%;padding:14px;border:none;border-radius:14px;
+  width:100%;padding:12px;
+  border:none;border-radius:12px;
   background:linear-gradient(45deg,#ff7a00,#ffb347);
-  font-weight:700;cursor:pointer;
+  cursor:pointer;font-weight:700;
 }
 
-.stars{display:flex;gap:8px;font-size:34px;}
-.stars span{color:#555;cursor:pointer;}
+.stars span{
+  font-size:28px;cursor:pointer;color:#555;
+}
 .stars span.active{color:#ffb347;}
 
-.review{margin-top:18px;padding:16px;border-radius:16px;background:rgba(255,255,255,0.06);}
+.review{
+  margin-top:15px;
+  padding:15px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.06);
+}
 
-footer{text-align:center;padding:30px;opacity:0.5;}
+.review img{
+  width:100%;
+  margin-top:10px;
+  border-radius:12px;
+}
 </style>
-
 </head>
 
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="logo" onclick="home()">STREET 93</div>
+<section>
+<h2>⭐ Отзывы</h2>
 
-  <div>
-    <a href="#about">О нас</a>
-    <a href="menu.html">Меню</a>  <!-- ✅ MENU QAYTA QO‘SHILDI -->
-    <a href="#reviews">Отзывы</a>
-    <a href="#contact">Контакты</a>
-  </div>
-</nav>
+<div class="review-box">
 
-<!-- HERO -->
-<header id="home">
-  <div class="hero">
-    <h1>Street 93</h1>
-    <p>Современный ресторан премиум класса</p>
-  </div>
-</header>
+<input id="name" placeholder="Ваше имя">
+<textarea id="text" placeholder="Ваш отзыв"></textarea>
 
-<!-- ABOUT -->
-<section id="about">
-  <h2>О нас</h2>
-  <div class="about">
-    Street 93 — современный ресторан в Намангане с премиальной кухней и атмосферой.
-  </div>
+<!-- 📷 IMAGE -->
+<input type="file" id="image" accept="image/*">
+
+<div class="stars">
+  <span onclick="setRating(1)">★</span>
+  <span onclick="setRating(2)">★</span>
+  <span onclick="setRating(3)">★</span>
+  <span onclick="setRating(4)">★</span>
+  <span onclick="setRating(5)">★</span>
+</div>
+
+<button onclick="addReview()">Отправить</button>
+
+<div id="list"></div>
+
+</div>
 </section>
-
-<!-- MENU 🔥 QAYTA QO‘SHILDI -->
-
-<!-- REVIEWS -->
-<section id="reviews">
-  <h2>⭐ Отзывы</h2>
-
-  <div class="review-box">
-    <input id="name" placeholder="Ваше имя">
-    <textarea id="text" placeholder="Ваш отзыв"></textarea>
-
-    <div class="stars">
-      <span onclick="setRating(1)">★</span>
-      <span onclick="setRating(2)">★</span>
-      <span onclick="setRating(3)">★</span>
-      <span onclick="setRating(4)">★</span>
-      <span onclick="setRating(5)">★</span>
-    </div>
-
-    <button onclick="addReview()">Отправить отзыв</button>
-
-    <div id="list"></div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <h2>Контакты</h2>
-
-  <div class="contact">
-    <a href="tel:+998882081993">📞 Позвонить</a>
-    <a href="https://www.google.com/maps?q=40.9981582,71.5957922" target="_blank">📍 Маршрут</a>
-    <a href="https://www.instagram.com/street.93.restaurant/" target="_blank">📸 Instagram</a>
-  </div>
-</section>
-
-<footer>© 2026 Street 93</footer>
 
 <script>
-
 const SUPABASE_URL = "https://brypncjzjwfjafjswnbd.supabase.co";
 const SUPABASE_KEY = "PASTE_YOUR_SUPABASE_KEY";
 
@@ -180,6 +89,7 @@ const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 let rating = 0;
 
+// ⭐ rating
 function setRating(num){
   rating = num;
   document.querySelectorAll(".stars span").forEach((s,i)=>{
@@ -187,10 +97,73 @@ function setRating(num){
   });
 }
 
-function home(){
-  document.getElementById("home").scrollIntoView({behavior:"smooth"});
+// 📷 upload image
+async function uploadImage(file){
+  if(!file) return null;
+
+  const fileName = Date.now() + "_" + file.name;
+
+  const { error } = await sb.storage
+    .from("reviews")
+    .upload(fileName, file);
+
+  if(error){
+    console.log(error);
+    return null;
+  }
+
+  const { data } = sb.storage
+    .from("reviews")
+    .getPublicUrl(fileName);
+
+  return data.publicUrl;
 }
 
+// ➕ add review
+async function addReview(){
+  const name = document.getElementById("name").value;
+  const text = document.getElementById("text").value;
+  const file = document.getElementById("image").files[0];
+
+  const imageUrl = await uploadImage(file);
+
+  const { error } = await sb.from("reviews").insert([{
+    name,
+    text,
+    rating,
+    image: imageUrl
+  }]);
+
+  if(error){
+    alert("Xatolik!");
+    return;
+  }
+
+  loadReviews();
+}
+
+// 📥 load reviews
+async function loadReviews(){
+  const { data } = await sb
+    .from("reviews")
+    .select("*")
+    .order("id", { ascending:false });
+
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+
+  data.forEach(r=>{
+    list.innerHTML += `
+      <div class="review">
+        <b>${r.name}</b> ⭐ ${r.rating || 0}
+        <p>${r.text}</p>
+        ${r.image ? `<img src="${r.image}">` : ""}
+      </div>
+    `;
+  });
+}
+
+loadReviews();
 </script>
 
 </body>
