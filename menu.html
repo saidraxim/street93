@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Street 93 Menu</title>
+<title>STREET 93 MENU</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 
@@ -27,6 +27,8 @@ color:#fff;
 overflow-x:hidden;
 }
 
+/* BACKGROUND */
+
 body::before{
 content:"";
 position:fixed;
@@ -34,23 +36,31 @@ inset:0;
 
 background:
 linear-gradient(rgba(0,0,0,.84),rgba(0,0,0,.92)),
-url('https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg');
+url('https://source.unsplash.com/1920x1080/?luxury-restaurant');
 
 background-size:cover;
 background-position:center;
 z-index:-2;
 }
 
+/* NAVBAR */
+
 nav{
 position:sticky;
 top:0;
+
 display:flex;
 justify-content:space-between;
 align-items:center;
+
 padding:20px 7%;
-background:rgba(0,0,0,.6);
+
+background:rgba(0,0,0,.55);
+
 backdrop-filter:blur(10px);
+
 border-bottom:1px solid rgba(255,255,255,.08);
+
 z-index:999;
 }
 
@@ -58,8 +68,8 @@ z-index:999;
 font-size:54px;
 font-weight:900;
 letter-spacing:4px;
-color:#fff;
 text-decoration:none;
+color:#fff;
 }
 
 .logo span{
@@ -75,30 +85,42 @@ font-weight:800;
 text-decoration:none;
 }
 
+/* LAYOUT */
+
 .menu-page{
 display:flex;
 gap:40px;
 padding:50px 7%;
 }
 
+/* SIDEBAR */
+
 .sidebar{
 position:sticky;
 top:120px;
+
 width:250px;
 height:max-content;
+
 display:flex;
 flex-direction:column;
-gap:14px;
+gap:15px;
 }
 
 .sidebar a{
-padding:18px 20px;
+padding:18px 22px;
+
 background:rgba(255,255,255,.05);
+
 border:1px solid rgba(255,255,255,.08);
+
 border-radius:18px;
+
 text-decoration:none;
 color:#fff;
+
 font-weight:700;
+
 transition:.3s;
 }
 
@@ -108,9 +130,13 @@ color:#000;
 transform:translateX(8px);
 }
 
+/* CONTENT */
+
 .menu-content{
 flex:1;
 }
+
+/* HERO */
 
 .hero{
 margin-bottom:60px;
@@ -128,15 +154,19 @@ opacity:.7;
 letter-spacing:4px;
 }
 
+/* SECTION */
+
 .menu-section{
 margin-bottom:90px;
 }
 
 .menu-section h2{
-font-size:48px;
+font-size:50px;
 margin-bottom:30px;
 color:#ffcc00;
 }
+
+/* GRID */
 
 .food-grid{
 display:grid;
@@ -144,17 +174,23 @@ grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 gap:30px;
 }
 
+/* CARD */
+
 .food-card{
 background:rgba(255,255,255,.05);
+
 border:1px solid rgba(255,255,255,.08);
-border-radius:26px;
+
+border-radius:28px;
+
 overflow:hidden;
+
 transition:.4s;
 }
 
 .food-card:hover{
 transform:translateY(-10px);
-box-shadow:0 20px 40px rgba(255,170,0,.15);
+box-shadow:0 20px 40px rgba(255,180,0,.18);
 }
 
 .food-card img{
@@ -179,14 +215,16 @@ opacity:.7;
 line-height:1.6;
 }
 
+/* FOOTER */
+
 .footer{
-margin-top:70px;
+margin-top:80px;
 padding:80px 20px;
 text-align:center;
 
 background:
-linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.9)),
-url('https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg');
+linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.92)),
+url('https://source.unsplash.com/1920x1080/?steakhouse');
 
 background-size:cover;
 background-position:center;
@@ -203,9 +241,11 @@ color:#ffcc00;
 
 .footer p{
 margin-top:15px;
-letter-spacing:4px;
+letter-spacing:5px;
 opacity:.7;
 }
+
+/* MOBILE */
 
 @media(max-width:950px){
 
@@ -254,6 +294,8 @@ STREET <span>93</span>
 
 <div class="menu-page">
 
+<!-- SIDEBAR -->
+
 <div class="sidebar">
 
 <a href="#steak">🥩 Стейки</a>
@@ -265,6 +307,8 @@ STREET <span>93</span>
 
 </div>
 
+<!-- CONTENT -->
+
 <div class="menu-content">
 
 <div class="hero">
@@ -275,6 +319,8 @@ STREET <span>93</span>
 
 </div>
 
+<!-- STEAK -->
+
 <section class="menu-section" id="steak">
 
 <h2>🥩 СТЕЙКИ</h2>
@@ -282,7 +328,7 @@ STREET <span>93</span>
 <div class="food-grid">
 
 <div class="food-card">
-<img src="https://images.pexels.com/photos/675951/pexels-photo-675951.jpeg">
+<img src="https://source.unsplash.com/800x600/?ribeye-steak">
 <div class="food-info">
 <h3>Рибай Стейк</h3>
 <p>Мраморная говядина на гриле</p>
@@ -290,7 +336,7 @@ STREET <span>93</span>
 </div>
 
 <div class="food-card">
-<img src="https://images.pexels.com/photos/299348/pexels-photo-299348.jpeg">
+<img src="https://source.unsplash.com/800x600/?striploin-steak">
 <div class="food-info">
 <h3>Стриплойн Стейк</h3>
 <p>Сочный премиальный стейк</p>
@@ -298,16 +344,18 @@ STREET <span>93</span>
 </div>
 
 <div class="food-card">
-<img src="https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg">
+<img src="https://source.unsplash.com/800x600/?filet-mignon">
 <div class="food-info">
 <h3>Филе Миньон</h3>
-<p>Нежная говяжья вырезка</p>
+<p>Нежнейшая говяжья вырезка</p>
 </div>
 </div>
 
 </div>
 
 </section>
+
+<!-- MANGAL -->
 
 <section class="menu-section" id="mangal">
 
@@ -316,7 +364,7 @@ STREET <span>93</span>
 <div class="food-grid">
 
 <div class="food-card">
-<img src="https://images.pexels.com/photos/2233729/pexels-photo-2233729.jpeg">
+<img src="https://source.unsplash.com/800x600/?lamb-kebab">
 <div class="food-info">
 <h3>Шашлык из баранины</h3>
 <p>Сочный шашлык на углях</p>
@@ -324,7 +372,7 @@ STREET <span>93</span>
 </div>
 
 <div class="food-card">
-<img src="https://images.pexels.com/photos/410648/pexels-photo-410648.jpeg">
+<img src="https://source.unsplash.com/800x600/?beef-kebab">
 <div class="food-info">
 <h3>Люля из говядины</h3>
 <p>Традиционный люля-кебаб</p>
@@ -332,7 +380,7 @@ STREET <span>93</span>
 </div>
 
 <div class="food-card">
-<img src="https://images.pexels.com/photos/616354/pexels-photo-616354.jpeg">
+<img src="https://source.unsplash.com/800x600/?chicken-wings">
 <div class="food-info">
 <h3>Куриные крылышки</h3>
 <p>Острые крылышки BBQ</p>
@@ -343,6 +391,8 @@ STREET <span>93</span>
 
 </section>
 
+<!-- SALADS -->
+
 <section class="menu-section" id="salads">
 
 <h2>🥗 САЛАТЫ</h2>
@@ -350,7 +400,7 @@ STREET <span>93</span>
 <div class="food-grid">
 
 <div class="food-card">
-<img src="https://images.pexels.com/photos/1213710/pexels-photo-1213710.jpeg">
+<img src="https://source.unsplash.com/800x600/?greek-salad">
 <div class="food-info">
 <h3>Греческий</h3>
 <p>Свежие овощи и сыр фета</p>
@@ -358,16 +408,26 @@ STREET <span>93</span>
 </div>
 
 <div class="food-card">
-<img src="https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg">
+<img src="https://source.unsplash.com/800x600/?caesar-salad">
 <div class="food-info">
 <h3>Цезарь с курицей</h3>
 <p>Курица, салат и пармезан</p>
 </div>
 </div>
 
+<div class="food-card">
+<img src="https://source.unsplash.com/800x600/?vegetable-salad">
+<div class="food-info">
+<h3>Ачичук</h3>
+<p>Традиционный узбекский салат</p>
+</div>
+</div>
+
 </div>
 
 </section>
+
+<!-- GARNIR -->
 
 <section class="menu-section" id="garnir">
 
@@ -376,7 +436,7 @@ STREET <span>93</span>
 <div class="food-grid">
 
 <div class="food-card">
-<img src="https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg">
+<img src="https://source.unsplash.com/800x600/?french-fries">
 <div class="food-info">
 <h3>Картофель Фри</h3>
 <p>Хрустящий картофель</p>
@@ -384,16 +444,26 @@ STREET <span>93</span>
 </div>
 
 <div class="food-card">
-<img src="https://images.pexels.com/photos/5938/food-salad-healthy-lunch.jpg">
+<img src="https://source.unsplash.com/800x600/?rice-vegetables">
 <div class="food-info">
-<h3>Овощи на пару</h3>
-<p>Полезные овощи</p>
+<h3>Рис с овощами</h3>
+<p>Ароматный гарнир</p>
+</div>
+</div>
+
+<div class="food-card">
+<img src="https://source.unsplash.com/800x600/?mashed-potatoes">
+<div class="food-info">
+<h3>Пюре картофельное</h3>
+<p>Нежное картофельное пюре</p>
 </div>
 </div>
 
 </div>
 
 </section>
+
+<!-- SAUCES -->
 
 <section class="menu-section" id="sauces">
 
@@ -402,24 +472,34 @@ STREET <span>93</span>
 <div class="food-grid">
 
 <div class="food-card">
-<img src="https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg">
+<img src="https://source.unsplash.com/800x600/?cheese-sauce">
 <div class="food-info">
 <h3>Сырный соус</h3>
-<p>Нежный сырный вкус</p>
+<p>Нежный сливочный вкус</p>
 </div>
 </div>
 
 <div class="food-card">
-<img src="https://images.pexels.com/photos/616401/pexels-photo-616401.jpeg">
+<img src="https://source.unsplash.com/800x600/?garlic-sauce">
 <div class="food-info">
 <h3>Чесночный соус</h3>
 <p>Пикантный чесночный аромат</p>
 </div>
 </div>
 
+<div class="food-card">
+<img src="https://source.unsplash.com/800x600/?adjika-sauce">
+<div class="food-info">
+<h3>Аджика</h3>
+<p>Острый кавказский соус</p>
+</div>
+</div>
+
 </div>
 
 </section>
+
+<!-- DRINKS -->
 
 <section class="menu-section" id="drinks">
 
@@ -428,7 +508,7 @@ STREET <span>93</span>
 <div class="food-grid">
 
 <div class="food-card">
-<img src="https://images.pexels.com/photos/338713/pexels-photo-338713.jpeg">
+<img src="https://source.unsplash.com/800x600/?cola-drink">
 <div class="food-info">
 <h3>COLA / FANTA / SPRITE</h3>
 <p>Прохладительные напитки</p>
@@ -436,10 +516,26 @@ STREET <span>93</span>
 </div>
 
 <div class="food-card">
-<img src="https://images.pexels.com/photos/1417945/pexels-photo-1417945.jpeg">
+<img src="https://source.unsplash.com/800x600/?tea-cup">
 <div class="food-info">
 <h3>Чай</h3>
 <p>Черный и зеленый чай</p>
+</div>
+</div>
+
+<div class="food-card">
+<img src="https://source.unsplash.com/800x600/?mineral-water">
+<div class="food-info">
+<h3>Минеральная вода</h3>
+<p>Газированная вода</p>
+</div>
+</div>
+
+<div class="food-card">
+<img src="https://source.unsplash.com/800x600/?juice">
+<div class="food-info">
+<h3>Сок в ассортименте</h3>
+<p>Свежие фруктовые соки</p>
 </div>
 </div>
 
