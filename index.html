@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Street93</title>
+<title>Street93 PRO MAX</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -22,11 +22,26 @@ header{
   background:#111;
 }
 
-/* SECTION */
+/* NAV */
+nav{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  padding:10px;
+  background:#1a1a1a;
+  position:sticky;
+  top:0;
+}
+nav a{
+  color:white;
+  text-decoration:none;
+}
+
+/* SECTIONS */
 section{
-  padding:30px;
   max-width:900px;
   margin:auto;
+  padding:30px;
 }
 
 /* MENU */
@@ -36,10 +51,7 @@ section{
   margin:10px 0;
   border-radius:10px;
 }
-
-.menu-item h3{
-  color:gold;
-}
+.menu-item h3{ color:gold; }
 
 /* MAP */
 iframe{
@@ -57,7 +69,7 @@ iframe{
 }
 
 /* REVIEW BOX */
-.review-box{
+.box{
   max-width:500px;
   margin:auto;
   background:#1a1a1a;
@@ -91,12 +103,11 @@ button{
   cursor:pointer;
   color:gray;
 }
-
 .stars span.active{
   color:gold;
 }
 
-/* REVIEWS */
+/* REVIEW */
 .review{
   max-width:500px;
   margin:10px auto;
@@ -104,11 +115,10 @@ button{
   padding:15px;
   border-radius:10px;
 }
-
 .review img{
   width:100%;
-  margin-top:10px;
   border-radius:10px;
+  margin-top:10px;
 }
 </style>
 </head>
@@ -116,12 +126,19 @@ button{
 <body>
 
 <header>
-  <h1>🍔 Street93 Restaurant</h1>
-  <p>Eng yaxshi taomlar</p>
+  <h1>🍔 Street93 PRO MAX</h1>
+  <p>Real-time reviews system</p>
 </header>
 
+<nav>
+  <a href="#menu">Menu</a>
+  <a href="#map">Map</a>
+  <a href="#contact">Contact</a>
+  <a href="#review">Reviews</a>
+</nav>
+
 <!-- MENU -->
-<section>
+<section id="menu">
   <h2>🍟 Menu</h2>
 
   <div class="menu-item">
@@ -136,16 +153,15 @@ button{
 </section>
 
 <!-- MAP -->
-<section>
+<section id="map">
   <h2>📍 Map</h2>
 
   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d546.3092619590175!2d71.59579257587136!3d40.998052485770316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bb4a6aabf1694f%3A0x6330bcfcea57bcca!2sStreet93!5e0!3m2!1sru!2s!4v1779025664681!5m2!1sru!2s"></iframe>
 </section>
 
 <!-- CONTACT -->
-<section>
+<section id="contact">
   <h2>📞 Contact</h2>
-
   <div class="contact">
     <p>📍 Tashkent</p>
     <p>📱 +998 90 000 00 00</p>
@@ -153,11 +169,11 @@ button{
   </div>
 </section>
 
-<!-- REVIEW -->
-<section>
-  <h2>⭐ Otziv</h2>
+<!-- REVIEWS -->
+<section id="review">
+  <h2>⭐ Reviews (LIVE)</h2>
 
-  <div class="review-box">
+  <div class="box">
     <input id="name" placeholder="Ismingiz">
 
     <div class="stars" id="stars">
@@ -168,7 +184,7 @@ button{
       <span data-value="5">★</span>
     </div>
 
-    <textarea id="text" placeholder="Otziv..."></textarea>
+    <textarea id="text" placeholder="Otzivingiz..."></textarea>
 
     <input type="file" id="image" accept="image/*">
 
@@ -179,7 +195,6 @@ button{
 </section>
 
 <script>
-
 // 🔥 SUPABASE
 const supabaseUrl = "YOUR_SUPABASE_URL";
 const supabaseKey = "YOUR_SUPABASE_ANON_KEY";
@@ -230,13 +245,14 @@ async function sendReview(){
   loadReviews();
 }
 
-// 📥 LOAD
+// 📥 LOAD REVIEWS
 async function loadReviews(){
-  const {data}=await supabase.from("reviews")
-  .select("*")
-  .order("created_at",{ascending:false});
+  const {data}=await supabase
+    .from("reviews")
+    .select("*")
+    .order("created_at",{ascending:false});
 
-  document.getElementById("reviews").innerHTML=data.map(r=>`
+  document.getElementById("reviews").innerHTML = data.map(r=>`
     <div class="review">
       <h3>${r.name}</h3>
       <p>${"⭐".repeat(r.rating)}</p>
@@ -245,6 +261,17 @@ async function loadReviews(){
     </div>
   `).join("");
 }
+
+/* 🔥 REAL-TIME UPDATE */
+supabase
+  .channel('reviews-channel')
+  .on('postgres_changes',
+    { event: '*', schema: 'public', table: 'reviews' },
+    payload => {
+      loadReviews();
+    }
+  )
+  .subscribe();
 
 loadReviews();
 </script>
