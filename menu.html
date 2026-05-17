@@ -3,265 +3,329 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Street 93 Menu</title>
 
-<title>STREET 93 MENU</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
 <style>
-/* (STYLES ARE THE SAME — NO CHANGES) */
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'Inter',sans-serif;background:#050505;color:#fff;overflow-x:hidden;}
 
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:#0a0a0a;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* BACKGROUND */
 body::before{
 content:"";
 position:fixed;
 inset:0;
 background:
-linear-gradient(rgba(0,0,0,.84),rgba(0,0,0,.92)),
-url('https://source.unsplash.com/1920x1080/?steak-restaurant-food');
+linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.92)),
+url('https://images.unsplash.com/photo-1555992336-03a23c8f1d55?auto=format&fit=crop&w=1920&q=80');
 background-size:cover;
 background-position:center;
-z-index:-2;
+z-index:-1;
 }
 
-/* ... qolgan CSS o‘zgarmadi ... */
+/* NAV */
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+position:sticky;
+top:0;
+backdrop-filter:blur(12px);
+background:rgba(0,0,0,.55);
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+font-size:44px;
+font-weight:900;
+text-decoration:none;
+color:#fff;
+letter-spacing:2px;
+}
+
+.logo span{
+color:#FFD000;
+}
+
+.back{
+padding:10px 18px;
+border-radius:12px;
+background:#FFD000;
+color:#000;
+font-weight:800;
+text-decoration:none;
+}
+
+/* HERO */
+.hero{
+text-align:center;
+padding:70px 20px 40px;
+}
+
+.hero h1{
+font-size:64px;
+font-weight:900;
+}
+
+.hero h1 span{
+color:#FFD000;
+}
+
+.hero p{
+opacity:.7;
+letter-spacing:3px;
+margin-top:10px;
+}
+
+/* MENU GRID */
+.container{
+padding:40px 8%;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+/* CARD */
+.card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+border-radius:20px;
+overflow:hidden;
+transition:.3s;
+cursor:pointer;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 15px 40px rgba(255,208,0,.15);
+}
+
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+display:block;
+}
+
+.card h3{
+font-size:18px;
+font-weight:800;
+margin:12px 15px 5px;
+}
+
+.card p{
+font-size:13px;
+opacity:.7;
+margin:0 15px 15px;
+}
+
+/* SECTION TITLE */
+.section-title{
+padding:20px 8%;
+font-size:30px;
+font-weight:900;
+color:#FFD000;
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:60px 20px;
+margin-top:60px;
+background:rgba(0,0,0,.6);
+}
+
+footer h2{
+font-size:50px;
+font-weight:900;
+}
+
+footer span{
+color:#FFD000;
+}
+
+footer p{
+opacity:.6;
+margin-top:10px;
+letter-spacing:2px;
+}
+
 </style>
 </head>
 
 <body>
 
 <nav>
-<a href="index.html" class="logo">STREET <span>93</span></a>
-<a href="index.html" class="back">← Назад</a>
+<a class="logo">STREET <span>93</span></a>
+<a href="#" class="back">← Назад</a>
 </nav>
 
-<div class="menu-page">
-
-<div class="sidebar">
-<a href="#steak">🥩 Стейки</a>
-<a href="#mangal">🔥 Мангал</a>
-<a href="#salads">🥗 Салаты</a>
-<a href="#garnir">🍟 Гарниры</a>
-<a href="#sauces">🥫 Соусы</a>
-<a href="#drinks">🥤 Напитки</a>
-</div>
-
-<div class="menu-content">
-
 <div class="hero">
-<h1>STEAK MENU</h1>
-<p>МЯСО • ОГОНЬ • ХАРАКТЕР</p>
+<h1>МЕНЮ <span>РЕСТОРАНА</span></h1>
+<p>МЯСО • ОГОНЬ • ВКУС</p>
 </div>
 
 <!-- STEAK -->
-<section class="menu-section" id="steak">
-<h2>🥩 СТЕЙКИ</h2>
-<div class="food-grid">
+<div class="section-title">🥩 СТЕЙКИ</div>
+<div class="container">
 
-<div class="food-card">
-<img src="https://source.unsplash.com/800x600/?ribeye-steak,grilled-beef">
-<div class="food-info">
-<h3>Рибай Стейк</h3>
-<p>Мраморная говядина на гриле</p>
-</div>
-</div>
-
-<div class="food-card">
-<img src="https://source.unsplash.com/800x600/?striploin-steak,beef-steak">
-<div class="food-info">
-<h3>Стриплойн Стейк</h3>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=800&q=80">
+<h3>Стриплойн стейк</h3>
 <p>Сочный премиальный стейк</p>
 </div>
-</div>
 
-<div class="food-card">
-<img src="https://source.unsplash.com/800x600/?filet-mignon,steak-beef-tenderloin">
-<div class="food-info">
-<h3>Филе Миньон</h3>
-<p>Нежнейшая говяжья вырезка</p>
-</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80">
+<h3>Филе миньон</h3>
+<p>Нежная говяжья вырезка</p>
 </div>
 
 </div>
-</section>
 
 <!-- MANGAL -->
-<section class="menu-section" id="mangal">
-<h2>🔥 МАНГАЛ</h2>
-<div class="food-grid">
+<div class="section-title">🔥 МАНГАЛ</div>
+<div class="container">
 
-<div class="food-card">
-<img src="https://source.unsplash.com/800x600/?lamb-kebab,shashlik">
-<div class="food-info">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80">
 <h3>Шашлык из баранины</h3>
 <p>Сочный шашлык на углях</p>
 </div>
-</div>
 
-<div class="food-card">
-<img src="https://source.unsplash.com/800x600/?beef-kebab,kebab-grill">
-<div class="food-info">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=800&q=80">
 <h3>Люля из говядины</h3>
 <p>Традиционный люля-кебаб</p>
 </div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=800&q=80">
+<h3>Люля из баранины</h3>
+<p>Ароматное мясо на углях</p>
 </div>
 
-<div class="food-card">
-<img src="https://source.unsplash.com/800x600/?bbq-chicken-wings,grilled-wings">
-<div class="food-info">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1604908554161-3c8a3c3b5c8d?auto=format&fit=crop&w=800&q=80">
 <h3>Куриные крылышки</h3>
-<p>Острые крылышки BBQ</p>
+<p>Острые BBQ крылья</p>
 </div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1604908177522-8a3f1c1c0c9a?auto=format&fit=crop&w=800&q=80">
+<h3>Овощи на мангале</h3>
+<p>Гриль овощи</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1604908177200-2a3d5c9f0b11?auto=format&fit=crop&w=800&q=80">
+<h3>Картофель на мангале</h3>
+<p>Запечённый картофель</p>
 </div>
 
 </div>
-</section>
 
 <!-- SALADS -->
-<section class="menu-section" id="salads">
-<h2>🥗 САЛАТЫ</h2>
-<div class="food-grid">
+<div class="section-title">🥗 САЛАТЫ</div>
+<div class="container">
 
-<div class="food-card">
-<img src="https://source.unsplash.com/800x600/?greek-salad,fresh-salad">
-<div class="food-info">
-<h3>Греческий</h3>
-<p>Свежие овощи и сыр фета</p>
-</div>
-</div>
-
-<div class="food-card">
-<img src="https://source.unsplash.com/800x600/?chicken-caesar-salad">
-<div class="food-info">
-<h3>Цезарь с курицей</h3>
-<p>Курица, салат и пармезан</p>
-</div>
-</div>
-
-<div class="food-card">
-<img src="https://source.unsplash.com/800x600/?uzbek-salad,tomato-onion-salad">
-<div class="food-info">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1551248429-40975aa4de74?auto=format&fit=crop&w=800&q=80">
 <h3>Ачичук</h3>
-<p>Традиционный узбекский салат</p>
+<p>Узбекский свежий салат</p>
 </div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=800&q=80">
+<h3>Овощной салат</h3>
+<p>Свежие овощи</p>
 </div>
 
 </div>
-</section>
 
 <!-- GARNIR -->
-<section class="menu-section" id="garnir">
-<h2>🍟 ГАРНИРЫ</h2>
-<div class="food-grid">
+<div class="section-title">🍟 ГАРНИРЫ</div>
+<div class="container">
 
-<div class="food-card">
-<img src="https://source.unsplash.com/800x600/?french-fries,crispy-fries">
-<div class="food-info">
-<h3>Картофель Фри</h3>
-<p>Хрустящий картофель</p>
-</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1604908177525-4f2a2c2d6f3d?auto=format&fit=crop&w=800&q=80">
+<h3>Овощи на пару</h3>
+<p>Полезный гарнир</p>
 </div>
 
-<div class="food-card">
-<img src="https://source.unsplash.com/800x600/?vegetable-rice,steamed-rice">
-<div class="food-info">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1604908177133-3b2f4c2a7b1c?auto=format&fit=crop&w=800&q=80">
 <h3>Рис с овощами</h3>
-<p>Ароматный гарнир</p>
-</div>
+<p>Ароматный рис</p>
 </div>
 
-<div class="food-card">
-<img src="https://source.unsplash.com/800x600/?mashed-potatoes,creamy-potatoes">
-<div class="food-info">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1604908177299-8a3b4c1d2e5f?auto=format&fit=crop&w=800&q=80">
 <h3>Пюре картофельное</h3>
-<p>Нежное картофельное пюре</p>
-</div>
+<p>Нежное пюре</p>
 </div>
 
 </div>
-</section>
 
 <!-- SAUCES -->
-<section class="menu-section" id="sauces">
-<h2>🥫 СОУСЫ</h2>
-<div class="food-grid">
+<div class="section-title">🥫 СОУСЫ</div>
+<div class="container">
 
-<div class="food-card">
-<img src="https://source.unsplash.com/800x600/?cheese-sauce,dip">
-<div class="food-info">
-<h3>Сырный соус</h3>
-<p>Нежный сливочный вкус</p>
-</div>
-</div>
-
-<div class="food-card">
-<img src="https://source.unsplash.com/800x600/?garlic-sauce,creamy-dip">
-<div class="food-info">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1604908177400-7c3a2b1d9e6f?auto=format&fit=crop&w=800&q=80">
 <h3>Чесночный соус</h3>
-<p>Пикантный чесночный аромат</p>
-</div>
+<p>Ароматный соус</p>
 </div>
 
-<div class="food-card">
-<img src="https://source.unsplash.com/800x600/?spicy-sauce,adjika">
-<div class="food-info">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1604908177555-2a7b3c9d1e8f?auto=format&fit=crop&w=800&q=80">
 <h3>Аджика</h3>
-<p>Острый кавказский соус</p>
-</div>
+<p>Острый соус</p>
 </div>
 
 </div>
-</section>
 
 <!-- DRINKS -->
-<section class="menu-section" id="drinks">
-<h2>🥤 НАПИТКИ</h2>
-<div class="food-grid">
+<div class="section-title">🥤 НАПИТКИ</div>
+<div class="container">
 
-<div class="food-card">
-<img src="https://source.unsplash.com/800x600/?cola,fanta,sprite,soft-drink">
-<div class="food-info">
-<h3>COLA / FANTA / SPRITE</h3>
-<p>Прохладительные напитки</p>
-</div>
-</div>
-
-<div class="food-card">
-<img src="https://source.unsplash.com/800x600/?tea,black-tea,green-tea">
-<div class="food-info">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80">
 <h3>Чай</h3>
-<p>Черный и зеленый чай</p>
-</div>
+<p>Чёрный и зелёный</p>
 </div>
 
-<div class="food-card">
-<img src="https://source.unsplash.com/800x600/?mineral-water,glass-water">
-<div class="food-info">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=800&q=80">
 <h3>Минеральная вода</h3>
-<p>Газированная вода</p>
-</div>
+<p>Освежающая вода</p>
 </div>
 
-<div class="food-card">
-<img src="https://source.unsplash.com/800x600/?fruit-juice,orange-juice">
-<div class="food-info">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=800&q=80">
 <h3>Сок в ассортименте</h3>
-<p>Свежие фруктовые соки</p>
-</div>
-</div>
-
-</div>
-</section>
-
-</div>
+<p>Фруктовые соки</p>
 </div>
 
-<div class="footer">
+</div>
+
+<footer>
 <h2>STREET <span>93</span></h2>
 <p>PREMIUM STEAK HOUSE</p>
-</div>
+</footer>
 
 </body>
 </html>
