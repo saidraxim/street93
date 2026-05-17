@@ -7,8 +7,6 @@
 
 <title>Street 93 Restaurant | Namangan</title>
 
-<meta name="description" content="Street 93 — современный ресторан премиум класса в Намангане">
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -39,9 +37,7 @@ nav{
 
 .logo{font-size:22px;font-weight:800;color:#ffb347;cursor:pointer;}
 
-nav a{
-  color:#fff;text-decoration:none;margin-left:18px;opacity:0.7;
-}
+nav a{color:#fff;text-decoration:none;margin-left:18px;opacity:0.7;}
 nav a:hover{opacity:1;color:#ffb347;}
 
 header{
@@ -75,7 +71,6 @@ h2{text-align:center;margin-bottom:35px;font-size:38px;}
   color:#fff;text-decoration:none;font-weight:600;
 }
 
-/* ⭐ REVIEWS */
 .review-box{max-width:720px;margin:auto;}
 
 input,textarea{
@@ -115,18 +110,15 @@ footer{text-align:center;padding:30px;opacity:0.5;}
 
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="logo" onclick="home()">STREET 93</div>
   <div>
     <a href="#about">О нас</a>
-    <a href="menu.html">Меню</a>
     <a href="#reviews">Отзывы</a>
     <a href="#contact">Контакты</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <header id="home">
   <div class="hero">
     <h1>Street 93</h1>
@@ -134,7 +126,6 @@ footer{text-align:center;padding:30px;opacity:0.5;}
   </div>
 </header>
 
-<!-- ABOUT -->
 <section id="about">
   <h2>О нас</h2>
   <div class="about">
@@ -142,7 +133,6 @@ footer{text-align:center;padding:30px;opacity:0.5;}
   </div>
 </section>
 
-<!-- ⭐ REVIEWS -->
 <section id="reviews">
   <h2>Отзывы</h2>
 
@@ -151,7 +141,6 @@ footer{text-align:center;padding:30px;opacity:0.5;}
     <input id="name" placeholder="Ваше имя">
     <textarea id="text" placeholder="Ваш отзыв"></textarea>
 
-    <!-- 📷 IMAGE -->
     <input type="file" id="image" accept="image/*">
 
     <div class="stars">
@@ -168,7 +157,6 @@ footer{text-align:center;padding:30px;opacity:0.5;}
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <h2>Контакты</h2>
 
@@ -184,13 +172,12 @@ footer{text-align:center;padding:30px;opacity:0.5;}
 <script>
 
 const SUPABASE_URL = "https://brypncjzjwfjafjswnbd.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJyeXBuY2p6andmamFmanN3bmJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkwMjA0OTUsImV4cCI6MjA5NDU5NjQ5NX0.Q7-aT2rYdGqP_XxtAz8c-IB31S61s12Lhc4q7QQ-GY8";
+const SUPABASE_KEY = "YOUR_ANON_KEY"; // ⚠️ shu yerga anon key qo'y
 
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 let rating = 0;
 
-// ⭐ rating
 function setRating(num){
   rating = num;
   document.querySelectorAll(".stars span").forEach((s,i)=>{
@@ -198,12 +185,10 @@ function setRating(num){
   });
 }
 
-// 🏠 home scroll
 function home(){
   document.getElementById("home").scrollIntoView({behavior:"smooth"});
 }
 
-// 📷 upload image
 async function uploadImage(file){
   if(!file) return null;
 
@@ -214,7 +199,7 @@ async function uploadImage(file){
     .upload(fileName, file);
 
   if(error){
-    console.log(error);
+    console.log("Upload error:", error);
     return null;
   }
 
@@ -225,35 +210,51 @@ async function uploadImage(file){
   return data.publicUrl;
 }
 
-// ➕ add review
 async function addReview(){
-  const name = document.getElementById("name").value;
-  const text = document.getElementById("text").value;
+
+  const name = document.getElementById("name").value.trim();
+  const text = document.getElementById("text").value.trim();
   const file = document.getElementById("image").files[0];
+
+  if(!name || !text){
+    alert("Ism va review to‘ldir!");
+    return;
+  }
 
   const imageUrl = await uploadImage(file);
 
   const { error } = await sb.from("reviews").insert([{
     name,
     text,
-    rating,
+    rating: rating || 0,
     image: imageUrl
   }]);
 
   if(error){
+    console.log(error);
     alert("Xatolik yuz berdi");
     return;
   }
 
+  document.getElementById("name").value = "";
+  document.getElementById("text").value = "";
+  document.getElementById("image").value = "";
+  rating = 0;
+
   loadReviews();
 }
 
-// 📥 load reviews
 async function loadReviews(){
-  const { data } = await sb
+
+  const { data, error } = await sb
     .from("reviews")
     .select("*")
     .order("id", {ascending:false});
+
+  if(error){
+    console.log(error);
+    return;
+  }
 
   const list = document.getElementById("list");
   list.innerHTML = "";
