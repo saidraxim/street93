@@ -8,10 +8,6 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-<meta name="description" content="Street 93 - premium steak house menu: steaks, mangal, salads and drinks.">
-<meta name="keywords" content="street 93, steak house, tashkent food, menu, steak, mangal">
-<meta name="author" content="Street 93">
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -23,7 +19,6 @@ font-family:Inter,sans-serif;
 overflow-x:hidden;
 }
 
-/* BACKGROUND */
 body::before{
 content:"";
 position:fixed;
@@ -77,8 +72,8 @@ padding:40px 7%;
 }
 
 .hero{
+margin-bottom:40px;
 text-align:center;
-margin-bottom:50px;
 }
 
 .hero h1{
@@ -88,10 +83,7 @@ letter-spacing:8px;
 margin-bottom:10px;
 }
 
-.hero p{
-opacity:.7;
-letter-spacing:3px;
-}
+.hero p{opacity:.7;letter-spacing:3px;}
 
 /* SECTION */
 .menu-section{
@@ -109,7 +101,7 @@ text-align:center;
 /* GRID */
 .food-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
 gap:28px;
 }
 
@@ -122,9 +114,7 @@ backdrop-filter:blur(12px);
 transition:.35s;
 }
 
-.food-card:hover{
-transform:translateY(-10px);
-}
+.food-card:hover{transform:translateY(-10px);}
 
 .food-card img{
 width:100%;
@@ -132,12 +122,10 @@ height:240px;
 object-fit:cover;
 }
 
-.food-info{
-padding:20px;
-}
+.food-info{padding:20px;}
 
 .food-info h3{
-font-size:22px;
+font-size:24px;
 margin-bottom:10px;
 }
 
@@ -190,7 +178,7 @@ margin-bottom:12px;
 <p>МЯСО • ОГОНЬ • ХАРАКТЕР</p>
 </div>
 
-<section class="menu-section">
+<section class="menu-section" id="steak">
 <h2>🥩 СТЕЙКИ</h2>
 <div class="food-grid">
 
@@ -206,14 +194,14 @@ margin-bottom:12px;
 <img src="steak.jpg">
 <div class="food-info">
 <h3>T-Bone Стейк</h3>
-<p>400 гр • фирменная прожарка</p>
+<p>400 гр • фирменная прожарка Street 93</p>
 </div>
 </div>
 
 </div>
 </section>
 
-<section class="menu-section">
+<section class="menu-section" id="mangal">
 <h2>🔥 МАНГАЛ</h2>
 <div class="food-grid">
 
@@ -229,14 +217,14 @@ margin-bottom:12px;
 <img src="mangal.jpg">
 <div class="food-info">
 <h3>Куриные крылышки</h3>
-<p>200 гр • spicy grill</p>
+<p>200 гр • spicy sauce & grill</p>
 </div>
 </div>
 
 </div>
 </section>
 
-<section class="menu-section">
+<section class="menu-section" id="salads">
 <h2>🥗 САЛАТЫ</h2>
 <div class="food-grid">
 
@@ -259,7 +247,7 @@ margin-bottom:12px;
 </div>
 </section>
 
-<section class="menu-section">
+<section class="menu-section" id="drinks">
 <h2>🥤 НАПИТКИ</h2>
 <div class="food-grid">
 
@@ -267,7 +255,7 @@ margin-bottom:12px;
 <img src="drinks.jpg">
 <div class="food-info">
 <h3>COLA / FANTA / SPRITE</h3>
-<p>0.5L cold drinks</p>
+<p>охлажденные напитки 0.5L</p>
 </div>
 </div>
 
