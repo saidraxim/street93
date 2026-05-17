@@ -3,316 +3,634 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Street 93 Restaurant</title>
 
-<title>Street 93 Menu</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter,sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
+}
 
 body{
-background:#050505;
-color:#fff;
-font-family:Inter,sans-serif;
-overflow-x:hidden;
+  color:#fff;
+  overflow-x:hidden;
 }
+
+/* BACKGROUND */
 
 body::before{
-content:"";
-position:fixed;
-inset:0;
-background:
-linear-gradient(rgba(0,0,0,.82),rgba(0,0,0,.9)),
-url("bg.jpg");
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
-z-index:-1;
+  content:"";
+  position:fixed;
+  inset:0;
+
+  background:
+  linear-gradient(rgba(0,0,0,0.78),rgba(0,0,0,0.9)),
+  url("bg.jpg");
+
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+
+  z-index:-1;
 }
 
-/* NAV */
+/* NAVBAR */
+
 nav{
-position:sticky;
-top:0;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 7%;
-background:rgba(0,0,0,.45);
-backdrop-filter:blur(14px);
-border-bottom:1px solid rgba(255,255,255,.08);
-z-index:1000;
+  position:fixed;
+  top:0;
+  width:100%;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:16px 8%;
+
+  background:rgba(0,0,0,0.35);
+  backdrop-filter:blur(12px);
+
+  z-index:1000;
 }
 
 .logo{
-font-family:Oswald;
-font-size:42px;
-font-weight:700;
-text-decoration:none;
-color:#fff;
-letter-spacing:2px;
+  font-size:22px;
+  font-weight:800;
+  color:#ffb347;
+  cursor:pointer;
 }
 
-.logo span{color:#ff2d2d;}
-
-.back{
-padding:12px 20px;
-border-radius:12px;
-background:linear-gradient(45deg,#ff2d2d,#ff7a00);
-text-decoration:none;
-color:#fff;
-font-weight:700;
+nav a{
+  color:#fff;
+  text-decoration:none;
+  margin-left:18px;
+  opacity:0.7;
+  transition:.3s;
 }
 
-/* LAYOUT */
-.menu-page{display:flex;gap:40px;padding:40px 7%;}
-
-.sidebar{
-position:sticky;
-top:120px;
-width:240px;
-display:flex;
-flex-direction:column;
-gap:14px;
+nav a:hover{
+  opacity:1;
+  color:#ffb347;
 }
 
-.sidebar a{
-padding:16px 18px;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-border-radius:16px;
-text-decoration:none;
-color:#fff;
-font-weight:600;
-transition:.3s;
+/* HERO */
+
+header{
+  height:100vh;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+
+  padding:20px;
 }
 
-.sidebar a:hover{
-background:#ff7a00;
-transform:translateX(8px);
+.hero{
+  padding:55px;
+
+  border-radius:24px;
+
+  background:rgba(255,255,255,0.05);
+
+  border:1px solid rgba(255,255,255,0.1);
+
+  backdrop-filter:blur(18px);
 }
-
-.menu-content{flex:1;}
-
-.hero{margin-bottom:40px;}
 
 .hero h1{
-font-family:Oswald;
-font-size:78px;
-letter-spacing:8px;
-margin-bottom:10px;
+  font-size:clamp(55px,8vw,100px);
+
+  background:linear-gradient(45deg,#fff,#ffb347);
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
-.hero p{opacity:.7;letter-spacing:3px;}
-
-.menu-section{margin-bottom:70px;}
-
-.menu-section h2{
-font-family:Oswald;
-font-size:42px;
-margin-bottom:28px;
-color:#ffb347;
+.hero p{
+  margin-top:14px;
+  opacity:0.85;
+  font-size:18px;
 }
 
-/* GRID */
-.food-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
-gap:28px;
+/* SECTIONS */
+
+section{
+  padding:100px 8%;
 }
 
-.food-card{
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-border-radius:26px;
-overflow:hidden;
-backdrop-filter:blur(12px);
-transition:.35s;
+h2{
+  text-align:center;
+  margin-bottom:35px;
+  font-size:38px;
 }
 
-.food-card:hover{transform:translateY(-10px);}
+/* ABOUT */
 
-.food-card img{
-width:100%;
-height:240px;
-object-fit:cover;
+.about{
+  max-width:900px;
+  margin:auto;
+
+  text-align:center;
+  line-height:1.9;
+
+  opacity:0.85;
+  font-size:17px;
 }
 
-.food-info{padding:20px;}
+/* MENU */
 
-.food-info h3{
-font-size:24px;
-margin-bottom:10px;
+.menu-empty{
+  text-align:center;
+  opacity:0.6;
+  font-size:18px;
 }
 
-.food-info p{
-opacity:.7;
-line-height:1.6;
+/* CONTACT */
+
+.contact{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:14px;
+}
+
+.contact a{
+  padding:14px 22px;
+
+  border-radius:14px;
+
+  background:rgba(255,255,255,0.08);
+
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+
+  transition:.3s;
+}
+
+.contact a:hover{
+  transform:translateY(-4px);
+  background:#ff7a00;
+}
+
+/* REVIEW FORM */
+
+.review-box{
+  max-width:720px;
+  margin:auto;
+}
+
+input,
+textarea{
+  width:100%;
+
+  padding:14px;
+  margin:8px 0;
+
+  border:none;
+  border-radius:14px;
+
+  background:rgba(255,255,255,0.08);
+
+  color:#fff;
+  outline:none;
+}
+
+textarea{
+  min-height:120px;
+  resize:none;
+}
+
+input::file-selector-button{
+  background:#ff7a00;
+  border:none;
+
+  padding:8px 12px;
+
+  border-radius:8px;
+
+  color:#fff;
+  cursor:pointer;
+}
+
+button{
+  width:100%;
+
+  padding:14px;
+
+  border:none;
+  border-radius:14px;
+
+  background:linear-gradient(45deg,#ff7a00,#ffb347);
+
+  color:#fff;
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:.3s;
+}
+
+button:hover{
+  transform:scale(1.02);
+}
+
+/* STARS */
+
+.stars{
+  display:flex;
+  gap:8px;
+
+  margin:12px 0 16px;
+
+  font-size:34px;
+
+  cursor:pointer;
+  user-select:none;
+}
+
+.stars span{
+  color:#555;
+  transition:.2s;
+}
+
+.stars span.active{
+  color:#ffb347;
+}
+
+/* REVIEW CARD */
+
+.review{
+  margin-top:18px;
+
+  padding:16px;
+
+  border-radius:16px;
+
+  background:rgba(255,255,255,0.06);
+
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+.review-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  margin-bottom:8px;
+}
+
+.review-date{
+  font-size:12px;
+  opacity:0.6;
+}
+
+.review-rating{
+  color:#ffb347;
+  font-size:20px;
+
+  margin:6px 0;
+}
+
+.review img{
+  width:100%;
+  margin-top:12px;
+  border-radius:12px;
 }
 
 /* FOOTER */
-.footer-banner{
-margin-top:70px;
-padding:60px 30px;
-text-align:center;
-border-radius:30px;
-background:
-linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.85)),
-url("steak.jpg");
-background-size:cover;
-background-position:center;
+
+footer{
+  text-align:center;
+  padding:30px;
+  opacity:0.5;
 }
 
-.footer-banner h2{
-font-family:Oswald;
-font-size:62px;
-letter-spacing:6px;
-margin-bottom:12px;
-}
-
-.footer-banner span{color:#ff2d2d;}
-
-.footer-banner p{opacity:.75;letter-spacing:4px;}
-
-/* MOBILE */
-@media(max-width:900px){
-.menu-page{flex-direction:column;}
-.sidebar{position:relative;width:100%;flex-direction:row;overflow:auto;}
-.sidebar a{white-space:nowrap;}
-.hero h1{font-size:52px;}
-.menu-section h2{font-size:34px;}
-}
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
+
 <nav>
-<a href="index.html" class="logo">STREET <span>93</span></a>
-<a href="index.html" class="back">← Назад</a>
+
+<div class="logo" onclick="home()">
+STREET 93
+</div>
+
+<div>
+<a href="#about">О нас</a>
+<a href="#menu">Меню</a>
+<a href="#reviews">Отзывы</a>
+<a href="#contact">Контакты</a>
+</div>
+
 </nav>
 
-<div class="menu-page">
+<!-- HERO -->
 
-<div class="sidebar">
-<a href="#steak">🥩 Стейки</a>
-<a href="#mangal">🔥 Мангал</a>
-<a href="#salads">🥗 Салаты</a>
-<a href="#drinks">🥤 Напитки</a>
-</div>
-
-<div class="menu-content">
+<header id="home">
 
 <div class="hero">
-<h1>STEAK MENU</h1>
-<p>МЯСО • ОГОНЬ • ХАРАКТЕР</p>
+<h1>Street 93</h1>
+
+<p>
+Современный ресторан в Намангане
+</p>
 </div>
 
-<!-- STEAK -->
-<section class="menu-section" id="steak">
-<h2>🥩 СТЕЙКИ</h2>
-<div class="food-grid">
+</header>
 
-<div class="food-card">
-<img src="steak.jpg">
-<div class="food-info">
-<h3>Рибай Стейк</h3>
-<p>350 гр • мраморная говядина premium quality</p>
-</div>
+<!-- ABOUT -->
+
+<section id="about">
+
+<h2>О нас</h2>
+
+<div class="about">
+
+Street 93 — это современный ресторан нового поколения, где каждая деталь создана для идеального гастрономического опыта.
+
+Мы используем только свежие продукты, премиальное мясо, натуральные овощи и авторские соусы.
+
+Наша цель — не просто еда, а эмоции, вкус и атмосфера.
+
+Каждое блюдо создаётся с вниманием к деталям и подаётся на ресторанном уровне.
+
+Street 93 — это место, куда хочется возвращаться снова и снова.
+
 </div>
 
-<div class="food-card">
-<img src="steak.jpg">
-<div class="food-info">
-<h3>T-Bone Стейк</h3>
-<p>400 гр • фирменная прожарка Street 93</p>
-</div>
-</div>
-
-</div>
 </section>
 
-<!-- MANGAL -->
-<section class="menu-section" id="mangal">
-<h2>🔥 МАНГАЛ</h2>
-<div class="food-grid">
+<!-- MENU -->
 
-<div class="food-card">
-<img src="mangal.jpg">
-<div class="food-info">
-<h3>Шашлык из говядины</h3>
-<p>200 гр • сочное мясо на углях</p>
-</div>
+<section id="menu">
+
+<h2>Меню</h2>
+
+<div class="menu-empty">
+Меню временно пустое
 </div>
 
-<div class="food-card">
-<img src="mangal.jpg">
-<div class="food-info">
-<h3>Куриные крылышки</h3>
-<p>200 гр • spicy sauce & grill</p>
-</div>
-</div>
-
-</div>
 </section>
 
-<!-- SALADS -->
-<section class="menu-section" id="salads">
-<h2>🥗 САЛАТЫ</h2>
-<div class="food-grid">
+<!-- REVIEWS -->
 
-<div class="food-card">
-<img src="salad.jpg">
-<div class="food-info">
-<h3>Греческий</h3>
-<p>свежие овощи, feta cheese, olives</p>
-</div>
+<section id="reviews">
+
+<h2>⭐ Отзывы</h2>
+
+<div class="review-box">
+
+<input id="name" placeholder="Ваше имя">
+
+<textarea id="text" placeholder="Ваш отзыв"></textarea>
+
+<!-- STARS -->
+
+<div class="stars">
+
+<span onclick="setRating(1)">★</span>
+<span onclick="setRating(2)">★</span>
+<span onclick="setRating(3)">★</span>
+<span onclick="setRating(4)">★</span>
+<span onclick="setRating(5)">★</span>
+
 </div>
 
-<div class="food-card">
-<img src="salad.jpg">
-<div class="food-info">
-<h3>Цезарь с курицей</h3>
-<p>parmesan, lettuce, crispy chicken</p>
-</div>
-</div>
+<input type="file" id="img" accept="image/*">
+
+<button onclick="addReview()">
+Отправить отзыв
+</button>
+
+<div id="list"></div>
 
 </div>
+
 </section>
 
-<!-- DRINKS -->
-<section class="menu-section" id="drinks">
-<h2>🥤 НАПИТКИ</h2>
-<div class="food-grid">
+<!-- CONTACT -->
 
-<div class="food-card">
-<img src="drinks.jpg">
-<div class="food-info">
-<h3>COLA / FANTA / SPRITE</h3>
-<p>охлажденные напитки 0.5L</p>
-</div>
+<section id="contact">
+
+<h2>Контакты</h2>
+
+<div class="contact">
+
+<a href="tel:+998882081993">
+📞 Позвонить
+</a>
+
+<a href="https://www.google.com/maps?q=40.9981582,71.5957922" target="_blank">
+📍 Маршрут
+</a>
+
+<a href="https://www.instagram.com/street.93.restaurant/" target="_blank">
+📸 Instagram
+</a>
+
 </div>
 
-<div class="food-card">
-<img src="drinks.jpg">
-<div class="food-info">
-<h3>Кофе</h3>
-<p>espresso / americano / cappuccino</p>
-</div>
-</div>
-
-</div>
 </section>
 
-<div class="footer-banner">
-<h2>STREET <span>93</span></h2>
-<p>PREMIUM STEAK HOUSE</p>
+<footer>
+© 2026 Street 93
+</footer>
+
+<script>
+
+/* SUPABASE */
+
+const SUPABASE_URL =
+"https://brypncjzjwfjafjswnbd.supabase.co";
+
+const SUPABASE_KEY =
+"PASTE_YOUR_SUPABASE_KEY";
+
+const sb =
+supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+/* RATING */
+
+let rating = 0;
+
+/* STAR SELECT */
+
+function setRating(num){
+
+rating = num;
+
+document
+.querySelectorAll(".stars span")
+.forEach((s,i)=>{
+
+if(i < num){
+s.classList.add("active");
+}else{
+s.classList.remove("active");
+}
+
+});
+
+}
+
+/* LOAD REVIEWS */
+
+async function load(){
+
+let {data} = await sb
+.from("reviews")
+.select("*")
+.order("id",{ascending:false});
+
+document.getElementById("list").innerHTML =
+data.map(r=>`
+
+<div class="review">
+
+<div class="review-top">
+
+<b>${r.name}</b>
+
+<div class="review-date">
+${r.date || ""}
 </div>
 
 </div>
+
+<div class="review-rating">
+${"★".repeat(r.rating || 0)}
 </div>
+
+<div>
+${r.text}
+</div>
+
+${r.img ? `<img src="${r.img}">` : ""}
+
+</div>
+
+`).join("");
+
+}
+
+/* IMAGE UPLOAD */
+
+async function uploadImage(file){
+
+const fileName =
+Date.now() + "_" + file.name;
+
+let {error} = await sb.storage
+.from("reviews")
+.upload(fileName,file);
+
+if(error){
+alert("Ошибка загрузки фото");
+return "";
+}
+
+const {data} =
+sb.storage
+.from("reviews")
+.getPublicUrl(fileName);
+
+return data.publicUrl;
+
+}
+
+/* ADD REVIEW */
+
+async function addReview(){
+
+let name =
+document.getElementById("name").value;
+
+let text =
+document.getElementById("text").value;
+
+let file =
+document.getElementById("img").files[0];
+
+if(!name || !text){
+alert("Заполните все поля");
+return;
+}
+
+let imgUrl = "";
+
+if(file){
+imgUrl = await uploadImage(file);
+}
+
+const now = new Date();
+
+const date =
+now.toLocaleDateString("ru-RU")
++
+" "
++
+now.toLocaleTimeString("ru-RU",{
+hour:"2-digit",
+minute:"2-digit"
+});
+
+await sb
+.from("reviews")
+.insert([{
+
+name,
+text,
+img:imgUrl,
+rating,
+date
+
+}]);
+
+document.getElementById("name").value="";
+document.getElementById("text").value="";
+document.getElementById("img").value="";
+
+setRating(0);
+
+load();
+
+}
+
+/* HOME */
+
+function home(){
+
+document
+.getElementById("home")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+setRating(0);
+
+load();
+
+</script>
 
 </body>
 </html>
