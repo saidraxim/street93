@@ -7,7 +7,7 @@
 
 <title>Street 93 Menu</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Oswald:wght@300;400;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -22,26 +22,19 @@ scroll-behavior:smooth;
 }
 
 body{
-
 background:#050505;
 color:#fff;
-
 font-family:Inter,sans-serif;
-
 overflow-x:hidden;
 }
 
-/* BACKGROUND */
-
 body::before{
-
 content:"";
-
 position:fixed;
 inset:0;
 
 background:
-linear-gradient(rgba(0,0,0,.82),rgba(0,0,0,.9)),
+linear-gradient(rgba(0,0,0,.82),rgba(0,0,0,.92)),
 url("bg.jpg");
 
 background-size:cover;
@@ -51,7 +44,7 @@ background-attachment:fixed;
 z-index:-1;
 }
 
-/* NAVBAR */
+/* NAV */
 
 nav{
 
@@ -83,8 +76,6 @@ font-weight:700;
 text-decoration:none;
 
 color:#fff;
-
-letter-spacing:2px;
 }
 
 .logo span{
@@ -93,11 +84,11 @@ color:#ff2d2d;
 
 .back{
 
-padding:12px 20px;
-
-border-radius:12px;
+padding:12px 22px;
 
 background:linear-gradient(45deg,#ff2d2d,#ff7a00);
+
+border-radius:14px;
 
 text-decoration:none;
 color:#fff;
@@ -163,7 +154,6 @@ flex:1;
 }
 
 .hero{
-
 margin-bottom:40px;
 }
 
@@ -171,7 +161,7 @@ margin-bottom:40px;
 
 font-family:Oswald,sans-serif;
 
-font-size:78px;
+font-size:76px;
 
 letter-spacing:8px;
 
@@ -182,7 +172,7 @@ margin-bottom:10px;
 
 opacity:.7;
 
-letter-spacing:3px;
+letter-spacing:4px;
 }
 
 /* SECTION */
@@ -200,8 +190,6 @@ font-size:42px;
 margin-bottom:28px;
 
 color:#ffb347;
-
-letter-spacing:2px;
 }
 
 /* GRID */
@@ -228,7 +216,7 @@ border-radius:26px;
 
 overflow:hidden;
 
-backdrop-filter:blur(12px);
+backdrop-filter:blur(10px);
 
 transition:.35s;
 
@@ -240,8 +228,6 @@ box-shadow:0 0 30px rgba(0,0,0,.3);
 transform:translateY(-10px);
 }
 
-/* IMAGE */
-
 .food-card img{
 
 width:100%;
@@ -249,8 +235,6 @@ height:240px;
 
 object-fit:cover;
 }
-
-/* INFO */
 
 .food-info{
 padding:20px;
@@ -295,7 +279,7 @@ border-radius:30px;
 
 background:
 linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.85)),
-url("steak.jpg");
+url("bg.jpg");
 
 background-size:cover;
 background-position:center;
@@ -364,8 +348,6 @@ font-size:34px;
 
 <body>
 
-<!-- NAV -->
-
 <nav>
 
 <a href="index.html" class="logo">
@@ -378,37 +360,25 @@ STREET <span>93</span>
 
 </nav>
 
-<!-- PAGE -->
-
 <div class="menu-page">
 
 <!-- SIDEBAR -->
 
 <div class="sidebar">
 
-<a href="#steak">
-🥩 Стейки
-</a>
-
-<a href="#mangal">
-🔥 Мангал
-</a>
-
-<a href="#salads">
-🥗 Салаты
-</a>
-
-<a href="#drinks">
-🥤 Напитки
-</a>
+<a href="#steak">🥩 Стейки</a>
+<a href="#mangal">🔥 Мангал</a>
+<a href="#burgers">🍔 Бургеры</a>
+<a href="#pizza">🍕 Пицца</a>
+<a href="#salads">🥗 Салаты</a>
+<a href="#dessert">🍰 Десерты</a>
+<a href="#drinks">🥤 Напитки</a>
 
 </div>
 
 <!-- CONTENT -->
 
 <div class="menu-content">
-
-<!-- HERO -->
 
 <div class="hero">
 
@@ -429,43 +399,21 @@ STREET <span>93</span>
 <div class="food-grid">
 
 <div class="food-card">
-
 <img src="steak.jpg">
-
 <div class="food-info">
-
 <h3>Рибай Стейк</h3>
-
-<p>
-350 гр • мраморная говядина premium quality
-</p>
-
-<div class="price">
-145 000 сум
+<p>350 гр • premium beef steak</p>
+<div class="price">145 000 сум</div>
 </div>
-
-</div>
-
 </div>
 
 <div class="food-card">
-
 <img src="steak.jpg">
-
 <div class="food-info">
-
 <h3>T-Bone Стейк</h3>
-
-<p>
-400 гр • фирменная прожарка Street 93
-</p>
-
-<div class="price">
-150 000 сум
+<p>400 гр • фирменная прожарка</p>
+<div class="price">150 000 сум</div>
 </div>
-
-</div>
-
 </div>
 
 </div>
@@ -481,43 +429,81 @@ STREET <span>93</span>
 <div class="food-grid">
 
 <div class="food-card">
-
 <img src="mangal.jpg">
-
 <div class="food-info">
-
 <h3>Шашлык из говядины</h3>
-
-<p>
-200 гр • сочное мясо на углях
-</p>
-
-<div class="price">
-58 000 сум
+<p>200 гр • grilled on fire</p>
+<div class="price">58 000 сум</div>
 </div>
-
-</div>
-
 </div>
 
 <div class="food-card">
-
 <img src="mangal.jpg">
-
 <div class="food-info">
-
 <h3>Куриные крылышки</h3>
-
-<p>
-200 гр • spicy sauce & grill
-</p>
-
-<div class="price">
-42 000 сум
+<p>spicy grilled wings</p>
+<div class="price">42 000 сум</div>
+</div>
 </div>
 
 </div>
 
+</section>
+
+<!-- BURGER -->
+
+<section class="menu-section" id="burgers">
+
+<h2>🍔 БУРГЕРЫ</h2>
+
+<div class="food-grid">
+
+<div class="food-card">
+<img src="burger.jpg">
+<div class="food-info">
+<h3>Classic Burger</h3>
+<p>double cheese & beef</p>
+<div class="price">45 000 сум</div>
+</div>
+</div>
+
+<div class="food-card">
+<img src="burger.jpg">
+<div class="food-info">
+<h3>Double Burger</h3>
+<p>premium beef burger</p>
+<div class="price">58 000 сум</div>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- PIZZA -->
+
+<section class="menu-section" id="pizza">
+
+<h2>🍕 ПИЦЦА</h2>
+
+<div class="food-grid">
+
+<div class="food-card">
+<img src="pizza.jpg">
+<div class="food-info">
+<h3>Pepperoni</h3>
+<p>mozzarella & pepperoni</p>
+<div class="price">75 000 сум</div>
+</div>
+</div>
+
+<div class="food-card">
+<img src="pizza.jpg">
+<div class="food-info">
+<h3>4 Cheese</h3>
+<p>premium cheese mix</p>
+<div class="price">82 000 сум</div>
+</div>
 </div>
 
 </div>
@@ -533,43 +519,51 @@ STREET <span>93</span>
 <div class="food-grid">
 
 <div class="food-card">
-
 <img src="salad.jpg">
-
 <div class="food-info">
-
 <h3>Греческий</h3>
-
-<p>
-свежие овощи, feta cheese, olives
-</p>
-
-<div class="price">
-38 000 сум
+<p>fresh vegetables & olives</p>
+<div class="price">38 000 сум</div>
 </div>
-
-</div>
-
 </div>
 
 <div class="food-card">
-
 <img src="salad.jpg">
-
 <div class="food-info">
-
-<h3>Цезарь с курицей</h3>
-
-<p>
-parmesan, lettuce, crispy chicken
-</p>
-
-<div class="price">
-42 000 сум
+<h3>Цезарь</h3>
+<p>chicken & parmesan</p>
+<div class="price">42 000 сум</div>
+</div>
 </div>
 
 </div>
 
+</section>
+
+<!-- DESSERT -->
+
+<section class="menu-section" id="dessert">
+
+<h2>🍰 ДЕСЕРТЫ</h2>
+
+<div class="food-grid">
+
+<div class="food-card">
+<img src="dessert.jpg">
+<div class="food-info">
+<h3>Chocolate Cake</h3>
+<p>premium dark chocolate</p>
+<div class="price">35 000 сум</div>
+</div>
+</div>
+
+<div class="food-card">
+<img src="dessert.jpg">
+<div class="food-info">
+<h3>Ice Cream</h3>
+<p>vanilla & chocolate mix</p>
+<div class="price">25 000 сум</div>
+</div>
 </div>
 
 </div>
@@ -585,50 +579,26 @@ parmesan, lettuce, crispy chicken
 <div class="food-grid">
 
 <div class="food-card">
-
 <img src="drinks.jpg">
-
 <div class="food-info">
-
 <h3>COLA / FANTA / SPRITE</h3>
-
-<p>
-охлажденные напитки 0.5L
-</p>
-
-<div class="price">
-15 000 сум
+<p>cold drinks 0.5L</p>
+<div class="price">15 000 сум</div>
 </div>
-
-</div>
-
 </div>
 
 <div class="food-card">
-
 <img src="drinks.jpg">
-
 <div class="food-info">
-
 <h3>Кофе</h3>
-
-<p>
-espresso / americano / cappuccino
-</p>
-
-<div class="price">
-15 000 сум
+<p>espresso / americano</p>
+<div class="price">15 000 сум</div>
 </div>
-
-</div>
-
 </div>
 
 </div>
 
 </section>
-
-<!-- FOOTER -->
 
 <div class="footer-banner">
 
