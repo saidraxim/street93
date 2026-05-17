@@ -26,26 +26,53 @@ body::before{
   z-index:-1;
 }
 
-nav{
-  position:fixed;top:0;width:100%;
-  display:flex;justify-content:space-between;align-items:center;
+/* NAV */
+.top-nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
   padding:16px 8%;
-  background:rgba(0,0,0,0.35);
+  background:rgba(0,0,0,0.45);
   backdrop-filter:blur(12px);
   z-index:1000;
 }
 
-.logo{font-size:22px;font-weight:800;color:#ffb347;cursor:pointer;}
+.top-nav .logo{
+  font-size:22px;
+  font-weight:800;
+  color:#ffb347;
+  cursor:pointer;
+}
 
-nav a{color:#fff;text-decoration:none;margin-left:18px;opacity:0.7;}
-nav a:hover{opacity:1;color:#ffb347;}
+.top-nav .links a{
+  color:#fff;
+  text-decoration:none;
+  margin-left:18px;
+  opacity:0.7;
+}
 
+.top-nav .links a:hover{
+  opacity:1;
+  color:#ffb347;
+}
+
+/* HERO */
 header{
-  height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding-top:70px;
 }
 
 .hero{
-  padding:55px;border-radius:24px;
+  padding:55px;
+  border-radius:24px;
   background:rgba(255,255,255,0.05);
   border:1px solid rgba(255,255,255,0.1);
   backdrop-filter:blur(18px);
@@ -58,37 +85,86 @@ header{
   -webkit-text-fill-color:transparent;
 }
 
+/* SECTIONS */
 section{padding:100px 8%;}
 h2{text-align:center;margin-bottom:35px;font-size:38px;}
 
-.about{max-width:900px;margin:auto;text-align:center;line-height:1.9;opacity:0.85;}
-
-.contact{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;}
-
-.contact a{
-  padding:14px 22px;border-radius:14px;
-  background:rgba(255,255,255,0.08);
-  color:#fff;text-decoration:none;font-weight:600;
+.about{
+  max-width:900px;
+  margin:auto;
+  text-align:center;
+  line-height:1.9;
+  opacity:0.85;
 }
 
-.review-box{max-width:720px;margin:auto;}
+/* MENU */
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+  max-width:1000px;
+  margin:auto;
+}
+
+.menu-item{
+  background:rgba(255,255,255,0.06);
+  padding:14px;
+  border-radius:16px;
+  text-align:center;
+}
+
+.menu-item img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+.menu-item h3{
+  color:#ffb347;
+  margin:8px 0;
+}
+
+/* REVIEWS */
+.review-box{
+  max-width:720px;
+  margin:auto;
+}
 
 input,textarea{
-  width:100%;padding:14px;margin:8px 0;
-  border:none;border-radius:14px;
+  width:100%;
+  padding:14px;
+  margin:8px 0;
+  border:none;
+  border-radius:14px;
   background:rgba(255,255,255,0.08);
   color:#fff;
 }
 
 button{
-  width:100%;padding:14px;border:none;border-radius:14px;
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:14px;
   background:linear-gradient(45deg,#ff7a00,#ffb347);
-  font-weight:700;cursor:pointer;
+  font-weight:700;
+  cursor:pointer;
 }
 
-.stars{display:flex;gap:8px;font-size:34px;}
-.stars span{color:#555;cursor:pointer;}
-.stars span.active{color:#ffb347;}
+.stars{
+  display:flex;
+  gap:8px;
+  font-size:34px;
+}
+
+.stars span{
+  color:#555;
+  cursor:pointer;
+}
+
+.stars span.active{
+  color:#ffb347;
+}
 
 .review{
   margin-top:18px;
@@ -103,22 +179,45 @@ button{
   border-radius:12px;
 }
 
-footer{text-align:center;padding:30px;opacity:0.5;}
+/* CONTACT */
+.contact{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:14px;
+}
 
+.contact a{
+  padding:14px 22px;
+  border-radius:14px;
+  background:rgba(255,255,255,0.08);
+  color:#fff;
+  text-decoration:none;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  opacity:0.5;
+}
 </style>
+
 </head>
 
 <body>
 
-<nav>
+<!-- NAV -->
+<nav class="top-nav">
   <div class="logo" onclick="home()">STREET 93</div>
-  <div>
+  <div class="links">
     <a href="#about">О нас</a>
+    <a href="#menu">Меню</a>
     <a href="#reviews">Отзывы</a>
     <a href="#contact">Контакты</a>
   </div>
 </nav>
 
+<!-- HERO -->
 <header id="home">
   <div class="hero">
     <h1>Street 93</h1>
@@ -126,6 +225,7 @@ footer{text-align:center;padding:30px;opacity:0.5;}
   </div>
 </header>
 
+<!-- ABOUT -->
 <section id="about">
   <h2>О нас</h2>
   <div class="about">
@@ -133,6 +233,34 @@ footer{text-align:center;padding:30px;opacity:0.5;}
   </div>
 </section>
 
+<!-- MENU -->
+<section id="menu">
+  <h2>Меню</h2>
+
+  <div class="menu-grid">
+
+    <div class="menu-item">
+      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
+      <h3>Рибай Стейк</h3>
+      <p>Сочный премиальный стейк</p>
+    </div>
+
+    <div class="menu-item">
+      <img src="https://images.unsplash.com/photo-1550547660-d9450f859349">
+      <h3>Филе Миньон</h3>
+      <p>Нежное мясо</p>
+    </div>
+
+    <div class="menu-item">
+      <img src="https://images.unsplash.com/photo-1604908177522-040f3b0c6a0c">
+      <h3>Шашлык</h3>
+      <p>Мангал стиль</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- REVIEWS -->
 <section id="reviews">
   <h2>Отзывы</h2>
 
@@ -140,7 +268,6 @@ footer{text-align:center;padding:30px;opacity:0.5;}
 
     <input id="name" placeholder="Ваше имя">
     <textarea id="text" placeholder="Ваш отзыв"></textarea>
-
     <input type="file" id="image" accept="image/*">
 
     <div class="stars">
@@ -151,19 +278,20 @@ footer{text-align:center;padding:30px;opacity:0.5;}
       <span onclick="setRating(5)">★</span>
     </div>
 
-    <button onclick="addReview()">Отправить отзыв</button>
+    <button onclick="addReview()">Отправить</button>
 
     <div id="list"></div>
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
   <h2>Контакты</h2>
 
   <div class="contact">
     <a href="tel:+998882081993">📞 Позвонить</a>
-    <a href="https://www.google.com/maps?q=40.9981582,71.5957922">📍 Маршрут</a>
-    <a href="https://www.instagram.com/street.93.restaurant/">📸 Instagram</a>
+    <a href="https://www.google.com/maps?q=40.9981582,71.5957922">📍 Карта</a>
+    <a href="https://instagram.com">📸 Instagram</a>
   </div>
 </section>
 
@@ -172,7 +300,7 @@ footer{text-align:center;padding:30px;opacity:0.5;}
 <script>
 
 const SUPABASE_URL = "https://brypncjzjwfjafjswnbd.supabase.co";
-const SUPABASE_KEY = "YOUR_ANON_KEY"; // ⚠️ shu yerga anon key qo'y
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJyeXBuY2p6andmamFmanN3bmJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkwMjA0OTUsImV4cCI6MjA5NDU5NjQ5NX0.Q7-aT2rYdGqP_XxtAz8c-IB31S61s12Lhc4q7QQ-GY8";
 
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -194,30 +322,21 @@ async function uploadImage(file){
 
   const fileName = Date.now() + "_" + file.name;
 
-  const { error } = await sb.storage
-    .from("reviews")
-    .upload(fileName, file);
+  const { error } = await sb.storage.from("reviews").upload(fileName, file);
+  if(error) return null;
 
-  if(error){
-    console.log("Upload error:", error);
-    return null;
-  }
-
-  const { data } = sb.storage
-    .from("reviews")
-    .getPublicUrl(fileName);
-
+  const { data } = sb.storage.from("reviews").getPublicUrl(fileName);
   return data.publicUrl;
 }
 
 async function addReview(){
 
-  const name = document.getElementById("name").value.trim();
-  const text = document.getElementById("text").value.trim();
+  const name = document.getElementById("name").value;
+  const text = document.getElementById("text").value;
   const file = document.getElementById("image").files[0];
 
   if(!name || !text){
-    alert("Ism va review to‘ldir!");
+    alert("To‘ldir!");
     return;
   }
 
@@ -231,30 +350,16 @@ async function addReview(){
   }]);
 
   if(error){
-    console.log(error);
-    alert("Xatolik yuz berdi");
+    alert("Xatolik");
     return;
   }
-
-  document.getElementById("name").value = "";
-  document.getElementById("text").value = "";
-  document.getElementById("image").value = "";
-  rating = 0;
 
   loadReviews();
 }
 
 async function loadReviews(){
 
-  const { data, error } = await sb
-    .from("reviews")
-    .select("*")
-    .order("id", {ascending:false});
-
-  if(error){
-    console.log(error);
-    return;
-  }
+  const { data } = await sb.from("reviews").select("*").order("id",{ascending:false});
 
   const list = document.getElementById("list");
   list.innerHTML = "";
@@ -262,7 +367,7 @@ async function loadReviews(){
   data.forEach(r=>{
     list.innerHTML += `
       <div class="review">
-        <b>${r.name}</b> ⭐ ${r.rating || 0}
+        <b>${r.name}</b> ⭐ ${r.rating}
         <p>${r.text}</p>
         ${r.image ? `<img src="${r.image}">` : ""}
       </div>
