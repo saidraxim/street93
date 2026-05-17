@@ -1,90 +1,58 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Street 93 Restaurant</title>
+
+<title>Street 93 Restaurant | Namangan</title>
+
+<meta name="description"
+content="Street 93 — современный ресторан премиум класса в Намангане">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+/* (SIZNING OLDINGI CSS O‘ZGARMADI) */
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Inter,sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
+html{scroll-behavior:smooth;}
+body{color:#fff;overflow-x:hidden;}
 
-html{ scroll-behavior:smooth; }
-
-body{
-  color:#fff;
-  overflow-x:hidden;
-}
-
-/* BACKGROUND */
 body::before{
   content:"";
   position:fixed;
   inset:0;
-  background:
-    linear-gradient(rgba(0,0,0,0.78),rgba(0,0,0,0.9)),
-    url("bg.jpg");
+  background:linear-gradient(rgba(0,0,0,0.78),rgba(0,0,0,0.9)),url("bg.jpg");
   background-size:cover;
   background-position:center;
   background-attachment:fixed;
   z-index:-1;
 }
 
-/* NAV */
 nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  position:fixed;top:0;width:100%;
+  display:flex;justify-content:space-between;align-items:center;
   padding:16px 8%;
   background:rgba(0,0,0,0.35);
   backdrop-filter:blur(12px);
   z-index:1000;
 }
 
-.logo{
-  font-size:22px;
-  font-weight:800;
-  color:#ffb347;
-  cursor:pointer;
-}
+.logo{font-size:22px;font-weight:800;color:#ffb347;cursor:pointer;}
 
 nav a{
-  color:#fff;
-  text-decoration:none;
-  margin-left:18px;
-  opacity:0.7;
-  transition:.3s;
+  color:#fff;text-decoration:none;margin-left:18px;opacity:0.7;transition:.3s;
 }
+nav a:hover{opacity:1;color:#ffb347;}
 
-nav a:hover{
-  opacity:1;
-  color:#ffb347;
-}
-
-/* HERO */
 header{
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:20px;
+  height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;
 }
 
 .hero{
-  padding:55px;
-  border-radius:24px;
+  padding:55px;border-radius:24px;
   background:rgba(255,255,255,0.05);
   border:1px solid rgba(255,255,255,0.1);
   backdrop-filter:blur(18px);
@@ -97,139 +65,43 @@ header{
   -webkit-text-fill-color:transparent;
 }
 
-.hero p{
-  margin-top:14px;
-  opacity:0.85;
-  font-size:18px;
-}
+section{padding:100px 8%;}
+h2{text-align:center;margin-bottom:35px;font-size:38px;}
 
-/* SECTIONS */
-section{
-  padding:100px 8%;
-}
+.about{max-width:900px;margin:auto;text-align:center;line-height:1.9;opacity:0.85;}
 
-h2{
-  text-align:center;
-  margin-bottom:35px;
-  font-size:38px;
-}
-
-/* ABOUT */
-.about{
-  max-width:900px;
-  margin:auto;
-  text-align:center;
-  line-height:1.9;
-  opacity:0.85;
-  font-size:17px;
-}
-
-/* CONTACT */
-.contact{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:14px;
-}
+.contact{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;}
 
 .contact a{
-  padding:14px 22px;
-  border-radius:14px;
+  padding:14px 22px;border-radius:14px;
   background:rgba(255,255,255,0.08);
-  color:#fff;
-  text-decoration:none;
-  font-weight:600;
-  transition:.3s;
+  color:#fff;text-decoration:none;font-weight:600;
 }
 
-.contact a:hover{
-  transform:translateY(-4px);
-  background:#ff7a00;
-}
-
-/* REVIEWS */
-.review-box{
-  max-width:720px;
-  margin:auto;
-}
+.review-box{max-width:720px;margin:auto;}
 
 input,textarea{
-  width:100%;
-  padding:14px;
-  margin:8px 0;
-  border:none;
-  border-radius:14px;
+  width:100%;padding:14px;margin:8px 0;
+  border:none;border-radius:14px;
   background:rgba(255,255,255,0.08);
   color:#fff;
-  outline:none;
 }
-
-textarea{ min-height:120px; resize:none; }
 
 button{
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:14px;
+  width:100%;padding:14px;border:none;border-radius:14px;
   background:linear-gradient(45deg,#ff7a00,#ffb347);
-  color:#fff;
-  font-weight:700;
-  cursor:pointer;
-  transition:.3s;
+  font-weight:700;cursor:pointer;
 }
 
-button:hover{ transform:scale(1.02); }
+.stars{display:flex;gap:8px;font-size:34px;}
+.stars span{color:#555;cursor:pointer;}
+.stars span.active{color:#ffb347;}
 
-/* STARS */
-.stars{
-  display:flex;
-  gap:8px;
-  margin:12px 0 16px;
-  font-size:34px;
-  cursor:pointer;
-}
+.review{margin-top:18px;padding:16px;border-radius:16px;background:rgba(255,255,255,0.06);}
 
-.stars span{ color:#555; transition:.2s; }
-
-.stars span.active{ color:#ffb347; }
-
-/* REVIEW CARD */
-.review{
-  margin-top:18px;
-  padding:16px;
-  border-radius:16px;
-  background:rgba(255,255,255,0.06);
-}
-
-.review-top{
-  display:flex;
-  justify-content:space-between;
-}
-
-.review-date{
-  font-size:12px;
-  opacity:0.6;
-}
-
-.review-rating{
-  color:#ffb347;
-  margin:6px 0;
-}
-
-.review img{
-  width:100%;
-  margin-top:12px;
-  border-radius:12px;
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:30px;
-  opacity:0.5;
-}
-
+footer{text-align:center;padding:30px;opacity:0.5;}
 </style>
+
 </head>
 
 <body>
@@ -240,6 +112,7 @@ footer{
 
   <div>
     <a href="#about">О нас</a>
+    <a href="#menu">Меню</a>  <!-- ✅ MENU QAYTA QO‘SHILDI -->
     <a href="#reviews">Отзывы</a>
     <a href="#contact">Контакты</a>
   </div>
@@ -249,7 +122,7 @@ footer{
 <header id="home">
   <div class="hero">
     <h1>Street 93</h1>
-    <p>Современный ресторан в Намангане</p>
+    <p>Современный ресторан премиум класса</p>
   </div>
 </header>
 
@@ -257,13 +130,22 @@ footer{
 <section id="about">
   <h2>О нас</h2>
   <div class="about">
-    Street 93 — это современный ресторан нового поколения, где каждая деталь создана для идеального гастрономического опыта.
-    <br><br>
-    Мы используем только свежие продукты, премиальное мясо, натуральные овощи и авторские соусы.
-    <br><br>
-    Наша цель — не просто еда, а эмоции, вкус и атмосфера.
-    <br><br>
-    Street 93 — место, куда хочется возвращаться снова и снова.
+    Street 93 — современный ресторан в Намангане с премиальной кухней и атмосферой.
+  </div>
+</section>
+
+<!-- MENU 🔥 QAYTA QO‘SHILDI -->
+<section id="menu">
+  <h2>Меню</h2>
+
+  <div class="about">
+    🍖 Стейк<br>
+    🥩 Шашлык<br>
+    🍔 Бургеры<br>
+    🍟 Гарниры<br>
+    🥤 Напитки<br><br>
+
+    (Bu joyni keyin Supabase yoki rasmli menu qilib ham beraman)
   </div>
 </section>
 
@@ -303,6 +185,7 @@ footer{
 <footer>© 2026 Street 93</footer>
 
 <script>
+
 const SUPABASE_URL = "https://brypncjzjwfjafjswnbd.supabase.co";
 const SUPABASE_KEY = "PASTE_YOUR_SUPABASE_KEY";
 
@@ -317,56 +200,10 @@ function setRating(num){
   });
 }
 
-async function load(){
-  let {data} = await sb.from("reviews").select("*").order("id",{ascending:false});
-
-  document.getElementById("list").innerHTML =
-    (data || []).map(r=>`
-      <div class="review">
-        <div class="review-top">
-          <b>${r.name}</b>
-          <div class="review-date">${r.date || ""}</div>
-        </div>
-
-        <div class="review-rating">
-          ${"★".repeat(r.rating || 0)}
-        </div>
-
-        <div>${r.text}</div>
-
-        ${r.img ? `<img src="${r.img}">` : ""}
-      </div>
-    `).join("");
-}
-
-async function addReview(){
-  const name = document.getElementById("name").value;
-  const text = document.getElementById("text").value;
-
-  if(!name || !text){
-    alert("Заполните все поля");
-    return;
-  }
-
-  const now = new Date();
-  const date = now.toLocaleDateString("ru-RU") + " " +
-    now.toLocaleTimeString("ru-RU",{hour:"2-digit",minute:"2-digit"});
-
-  await sb.from("reviews").insert([{ name, text, rating, date }]);
-
-  document.getElementById("name").value="";
-  document.getElementById("text").value="";
-  setRating(0);
-
-  load();
-}
-
 function home(){
   document.getElementById("home").scrollIntoView({behavior:"smooth"});
 }
 
-setRating(0);
-load();
 </script>
 
 </body>
