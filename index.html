@@ -1,243 +1,283 @@
 <!DOCTYPE html>
-<html lang="uz">
+<html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Street93 Restaurant</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Street 93 | Pro Max</title>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter,sans-serif;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  color:#fff;
+}
+
 /* 🌌 BACKGROUND */
-body {
-  margin: 0;
-  font-family: Arial;
-  color: white;
-  background: url("https://images.unsplash.com/photo-1600891964599-f61ba0e24092") no-repeat center/cover;
-  min-height: 100vh;
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.85)),
+    url("bg.jpg");
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+  z-index:-1;
 }
 
-/* DARK OVERLAY */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.65);
-  z-index: -1;
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  gap:22px;
+  padding:14px;
+  background:rgba(0,0,0,0.35);
+  backdrop-filter:blur(14px);
+  z-index:100;
 }
 
-/* 🧊 GLASS CARD */
-.glass {
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 15px;
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 900px;
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
+  opacity:0.6;
+  transition:0.3s;
 }
 
-/* HEADER */
-header {
-  text-align: center;
-  padding: 40px;
+nav a:hover{
+  opacity:1;
+  color:#ffb347;
+}
+
+/* HERO */
+header{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.hero{
+  max-width:700px;
+  padding:60px 40px;
+  border-radius:25px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.1);
+  backdrop-filter:blur(20px);
+}
+
+h1{
+  font-size:clamp(42px,6vw,80px);
+  background:linear-gradient(45deg,#fff,#ffb347);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* SECTIONS */
+section{
+  padding:100px 10%;
+}
+
+h2{
+  text-align:center;
+  margin-bottom:40px;
 }
 
 /* MENU */
-.menu-item {
-  margin: 10px 0;
+.menu{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:22px;
 }
 
-.menu-item h3 {
-  color: gold;
+.card{
+  padding:20px;
+  border-radius:18px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  backdrop-filter:blur(10px);
+  transition:0.3s;
 }
 
-/* MAP */
-iframe {
-  width: 100%;
-  height: 350px;
-  border-radius: 12px;
-  border: none;
+.card:hover{
+  transform:translateY(-8px);
+  background:rgba(255,122,0,0.08);
 }
 
-/* INPUTS */
-input, textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
+.card h3{color:#ffb347}
+.card span{color:#ff7a00;font-weight:700;display:block;margin-top:10px}
+
+/* CONTACT */
+.contact{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:14px;
 }
 
-/* BUTTON */
-button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  background: gold;
-  border: none;
-  border-radius: 10px;
-  font-weight: bold;
-  cursor: pointer;
+.contact a{
+  padding:14px 20px;
+  border-radius:14px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.15);
+  text-decoration:none;
+  color:#fff;
+  font-weight:600;
+  transition:0.3s;
 }
 
-/* STARS */
-.stars span {
-  font-size: 26px;
-  cursor: pointer;
-  color: gray;
+.contact a:hover{
+  transform:translateY(-5px);
+  color:#ffb347;
 }
 
-.stars span.active {
-  color: gold;
+/* ⭐ REVIEWS */
+.review-box{
+  max-width:600px;
+  margin:auto;
 }
 
-/* REVIEW */
-.review {
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  padding: 15px;
-  margin-top: 10px;
+input,textarea{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border-radius:12px;
+  border:none;
+  outline:none;
+  background:rgba(255,255,255,0.06);
+  color:#fff;
 }
 
-.review img {
-  width: 100%;
-  border-radius: 10px;
-  margin-top: 10px;
+button{
+  width:100%;
+  margin-top:10px;
+  padding:12px;
+  border:none;
+  border-radius:12px;
+  background:#ff7a00;
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.review{
+  margin-top:12px;
+  padding:12px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:30px;
+  opacity:0.5;
+  font-size:13px;
 }
 </style>
 </head>
 
 <body>
 
-<header class="glass">
-  <h1>🍔 Street93 Restaurant</h1>
-  <p>Eng yaxshi atmosfera va taomlar</p>
+<!-- NAV -->
+<nav>
+  <a href="#hero">Street 93</a>
+  <a href="#menu">Меню</a>
+  <a href="#contact">Контакты</a>
+  <a href="#reviews">Отзывы</a>
+</nav>
+
+<!-- HERO -->
+<header id="hero">
+  <div class="hero">
+    <h1>Street 93</h1>
+    <p>Современный ресторан в Ташкенте</p>
+  </div>
 </header>
 
 <!-- MENU -->
-<div class="glass">
-  <h2>🍟 Menu</h2>
+<section id="menu">
+  <h2>Меню</h2>
 
-  <div class="menu-item">
-    <h3>Burger</h3>
-    <p>Tarkibi: mol go‘shti, pishloq, sous, salat, non</p>
+  <div class="menu">
+    <div class="card"><h3>Бургер</h3><span>45 000 so'm</span></div>
+    <div class="card"><h3>Пицца</h3><span>75 000 so'm</span></div>
+    <div class="card"><h3>Лаваш</h3><span>35 000 so'm</span></div>
+    <div class="card"><h3>Напитки</h3><span>10 000 so'm</span></div>
   </div>
-
-  <div class="menu-item">
-    <h3>Lavash</h3>
-    <p>Tarkibi: tovuq, sabzavot, sous</p>
-  </div>
-</div>
-
-<!-- MAP -->
-<div class="glass">
-  <h2>📍 Map</h2>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d546.3092619590175!2d71.59579257587136!3d40.998052485770316!2m3!1f0!2f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bb4a6aabf1694f%3A0x6330bcfcea57bcca!2sStreet93!5e0!3m2!1sru!2s!4v1779025664681!5m2!1sru!2s"></iframe>
-</div>
+</section>
 
 <!-- CONTACT -->
-<div class="glass">
-  <h2>📞 Contact</h2>
-  <p>📍 Tashkent</p>
-  <p>📱 +998 90 000 00 00</p>
-  <p>🕒 12:00 - 01:00</p>
-</div>
+<section id="contact">
+  <h2>Контакты</h2>
 
-<!-- REVIEW -->
-<div class="glass">
-  <h2>⭐ Otziv qoldirish</h2>
-
-  <input id="name" placeholder="Ismingiz">
-
-  <div class="stars" id="stars">
-    <span data-value="1">★</span>
-    <span data-value="2">★</span>
-    <span data-value="3">★</span>
-    <span data-value="4">★</span>
-    <span data-value="5">★</span>
+  <div class="contact">
+    <a href="tel:+998917613315">📞 Позвонить</a>
+    <a href="https://www.google.com/maps?q=40.9981582,71.5957922" target="_blank">📍 Маршрут</a>
+    <a href="https://www.instagram.com/street.93.restaurant/" target="_blank">📸 Instagram</a>
   </div>
+</section>
 
-  <textarea id="text" placeholder="Otzivingiz..."></textarea>
+<!-- ⭐ REVIEWS -->
+<section id="reviews">
+  <h2>Отзывы</h2>
 
-  <input type="file" id="image" accept="image/*">
+  <div class="review-box">
+    <input id="name" placeholder="Ваше имя">
+    <textarea id="text" placeholder="Ваш отзыв"></textarea>
+    <button onclick="addReview()">Отправить</button>
 
-  <button onclick="sendReview()">Yuborish</button>
+    <div id="list"></div>
+  </div>
+</section>
 
-  <div id="reviews"></div>
-</div>
+<footer>
+  © 2026 Street 93
+</footer>
 
 <script>
-const supabaseUrl = "YOUR_SUPABASE_URL";
-const supabaseKey = "YOUR_SUPABASE_ANON_KEY";
-const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+function addReview(){
+  let n=document.getElementById("name").value;
+  let t=document.getElementById("text").value;
 
-let rating = 0;
+  if(!n||!t)return;
 
-// ⭐ stars
-document.querySelectorAll(".stars span").forEach(star=>{
-  star.onclick=()=>{
-    rating = star.dataset.value;
+  let data=JSON.parse(localStorage.getItem("r")||"[]");
+  data.unshift({n,t});
+  localStorage.setItem("r",JSON.stringify(data));
 
-    document.querySelectorAll(".stars span").forEach(s=>s.classList.remove("active"));
-    for(let i=0;i<rating;i++){
-      document.querySelectorAll(".stars span")[i].classList.add("active");
-    }
-  }
-});
-
-// 🚀 SEND REVIEW
-async function sendReview(){
-  let name=document.getElementById("name").value;
-  let text=document.getElementById("text").value;
-  let image=document.getElementById("image").files[0];
-
-  if(!name || !text || rating==0){
-    alert("Hammasini to‘ldiring!");
-    return;
-  }
-
-  let imageUrl=null;
-
-  if(image){
-    const fileName=Date.now()+"_"+image.name;
-
-    await supabase.storage.from("review-images").upload(fileName,image);
-
-    imageUrl=supabase.storage.from("review-images").getPublicUrl(fileName).data.publicUrl;
-  }
-
-  await supabase.from("reviews").insert({
-    name,
-    text,
-    rating,
-    image_url:imageUrl
-  });
-
-  loadReviews();
+  document.getElementById("name").value="";
+  document.getElementById("text").value="";
+  load();
 }
 
-// 📥 LOAD
-async function loadReviews(){
-  const {data}=await supabase.from("reviews")
-  .select("*")
-  .order("created_at",{ascending:false});
+function load(){
+  let data=JSON.parse(localStorage.getItem("r")||"[]");
 
-  document.getElementById("reviews").innerHTML=data.map(r=>`
+  document.getElementById("list").innerHTML=
+  data.map(r=>`
     <div class="review">
-      <h3>${r.name}</h3>
-      <p>${"⭐".repeat(r.rating)}</p>
-      <p>${r.text}</p>
-      ${r.image_url?`<img src="${r.image_url}">`:""}
+      <b>${r.n}</b><br>${r.t}
     </div>
   `).join("");
 }
 
-loadReviews();
+load();
 </script>
 
 </body>
