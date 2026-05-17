@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Street 93 | Pro Max</title>
+<title>Street 93</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
@@ -42,10 +42,10 @@ nav{
   width:100%;
   display:flex;
   justify-content:center;
-  gap:22px;
+  gap:25px;
   padding:14px;
-  background:rgba(0,0,0,0.35);
-  backdrop-filter:blur(14px);
+  background:rgba(0,0,0,0.4);
+  backdrop-filter:blur(12px);
   z-index:100;
 }
 
@@ -53,8 +53,7 @@ nav a{
   color:#fff;
   text-decoration:none;
   font-weight:500;
-  opacity:0.6;
-  transition:0.3s;
+  opacity:0.7;
 }
 
 nav a:hover{
@@ -72,44 +71,48 @@ header{
 }
 
 .hero{
-  max-width:700px;
-  padding:60px 40px;
-  border-radius:25px;
+  padding:50px;
+  border-radius:20px;
   background:rgba(255,255,255,0.04);
   border:1px solid rgba(255,255,255,0.1);
-  backdrop-filter:blur(20px);
+  backdrop-filter:blur(18px);
 }
 
 h1{
-  font-size:clamp(42px,6vw,80px);
+  font-size:clamp(40px,6vw,80px);
   background:linear-gradient(45deg,#fff,#ffb347);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
+p{
+  margin-top:10px;
+  opacity:0.8;
+}
+
 /* SECTIONS */
 section{
-  padding:100px 10%;
+  padding:90px 10%;
 }
 
 h2{
   text-align:center;
-  margin-bottom:40px;
+  margin-bottom:30px;
 }
 
 /* MENU */
 .menu{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:22px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
 }
 
 .card{
-  padding:20px;
-  border-radius:18px;
+  padding:18px;
+  border-radius:16px;
   background:rgba(255,255,255,0.05);
   border:1px solid rgba(255,255,255,0.1);
-  backdrop-filter:blur(10px);
+  backdrop-filter:blur(8px);
   transition:0.3s;
 }
 
@@ -119,35 +122,27 @@ h2{
 }
 
 .card h3{color:#ffb347}
-.card span{color:#ff7a00;font-weight:700;display:block;margin-top:10px}
+.card span{color:#ff7a00;font-weight:700}
 
-/* CONTACT */
-.contact{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:14px;
-}
-
-.contact a{
-  padding:14px 20px;
+/* MAP BUTTON */
+.map-btn{
+  display:inline-block;
+  padding:14px 24px;
+  background:#ff7a00;
   border-radius:14px;
-  background:rgba(255,255,255,0.06);
-  border:1px solid rgba(255,255,255,0.15);
-  text-decoration:none;
   color:#fff;
-  font-weight:600;
+  text-decoration:none;
+  font-weight:700;
   transition:0.3s;
 }
 
-.contact a:hover{
-  transform:translateY(-5px);
-  color:#ffb347;
+.map-btn:hover{
+  transform:scale(1.05);
 }
 
 /* ⭐ REVIEWS */
 .review-box{
-  max-width:600px;
+  max-width:700px;
   margin:auto;
 }
 
@@ -162,6 +157,11 @@ input,textarea{
   color:#fff;
 }
 
+input[type="file"]{
+  padding:10px;
+  background:transparent;
+}
+
 button{
   width:100%;
   margin-top:10px;
@@ -174,12 +174,21 @@ button{
   cursor:pointer;
 }
 
+/* REVIEW CARD */
 .review{
-  margin-top:12px;
-  padding:12px;
-  border-radius:12px;
+  margin-top:15px;
+  padding:14px;
+  border-radius:14px;
   background:rgba(255,255,255,0.04);
   border:1px solid rgba(255,255,255,0.1);
+}
+
+.review img{
+  width:100%;
+  max-height:250px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-top:10px;
 }
 
 /* FOOTER */
@@ -198,7 +207,7 @@ footer{
 <nav>
   <a href="#hero">Street 93</a>
   <a href="#menu">Меню</a>
-  <a href="#contact">Контакты</a>
+  <a href="#map">Карта</a>
   <a href="#reviews">Отзывы</a>
 </nav>
 
@@ -222,24 +231,27 @@ footer{
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <h2>Контакты</h2>
+<!-- MAP -->
+<section id="map" style="text-align:center">
+  <h2>Карта</h2>
 
-  <div class="contact">
-    <a href="tel:+998917613315">📞 Позвонить</a>
-    <a href="https://www.google.com/maps?q=40.9981582,71.5957922" target="_blank">📍 Маршрут</a>
-    <a href="https://www.instagram.com/street.93.restaurant/" target="_blank">📸 Instagram</a>
-  </div>
+  <a class="map-btn"
+     href="https://www.google.com/maps?q=40.9981582,71.5957922"
+     target="_blank">
+     📍 Открыть маршрут
+  </a>
 </section>
 
-<!-- ⭐ REVIEWS -->
+<!-- REVIEWS -->
 <section id="reviews">
   <h2>Отзывы</h2>
 
   <div class="review-box">
+
     <input id="name" placeholder="Ваше имя">
-    <textarea id="text" placeholder="Ваш отзыв"></textarea>
+    <textarea id="text" placeholder="Комментарий"></textarea>
+    <input type="file" id="img">
+
     <button onclick="addReview()">Отправить</button>
 
     <div id="list"></div>
@@ -252,27 +264,46 @@ footer{
 
 <script>
 function addReview(){
-  let n=document.getElementById("name").value;
-  let t=document.getElementById("text").value;
+  let name=document.getElementById("name").value;
+  let text=document.getElementById("text").value;
+  let file=document.getElementById("img").files[0];
 
-  if(!n||!t)return;
+  if(!name||!text) return;
 
-  let data=JSON.parse(localStorage.getItem("r")||"[]");
-  data.unshift({n,t});
-  localStorage.setItem("r",JSON.stringify(data));
+  let reader=new FileReader();
+
+  reader.onload=function(){
+    let img=reader.result;
+
+    let data=JSON.parse(localStorage.getItem("reviews")||"[]");
+    data.unshift({name,text,img});
+    localStorage.setItem("reviews",JSON.stringify(data));
+
+    load();
+  }
+
+  if(file){
+    reader.readAsDataURL(file);
+  }else{
+    let data=JSON.parse(localStorage.getItem("reviews")||"[]");
+    data.unshift({name,text,img:null});
+    localStorage.setItem("reviews",JSON.stringify(data));
+    load();
+  }
 
   document.getElementById("name").value="";
   document.getElementById("text").value="";
-  load();
 }
 
 function load(){
-  let data=JSON.parse(localStorage.getItem("r")||"[]");
+  let data=JSON.parse(localStorage.getItem("reviews")||"[]");
 
   document.getElementById("list").innerHTML=
   data.map(r=>`
     <div class="review">
-      <b>${r.n}</b><br>${r.t}
+      <b>${r.name}</b><br>
+      ${r.text}
+      ${r.img ? `<img src="${r.img}">` : ""}
     </div>
   `).join("");
 }
