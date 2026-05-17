@@ -66,37 +66,15 @@ color:#fff;
 font-weight:700;
 }
 
-/* LAYOUT */
-.menu-page{display:flex;gap:40px;padding:40px 7%;}
-
-.sidebar{
-position:sticky;
-top:120px;
-width:240px;
-display:flex;
-flex-direction:column;
-gap:14px;
+/* CONTENT */
+.menu-content{
+padding:40px 7%;
 }
 
-.sidebar a{
-padding:16px 18px;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-border-radius:16px;
-text-decoration:none;
-color:#fff;
-font-weight:600;
-transition:.3s;
+.hero{
+margin-bottom:40px;
+text-align:center;
 }
-
-.sidebar a:hover{
-background:#ff7a00;
-transform:translateX(8px);
-}
-
-.menu-content{flex:1;}
-
-.hero{margin-bottom:40px;}
 
 .hero h1{
 font-family:Oswald;
@@ -107,13 +85,17 @@ margin-bottom:10px;
 
 .hero p{opacity:.7;letter-spacing:3px;}
 
-.menu-section{margin-bottom:70px;}
+/* SECTION */
+.menu-section{
+margin-bottom:70px;
+}
 
 .menu-section h2{
 font-family:Oswald;
 font-size:42px;
 margin-bottom:28px;
 color:#ffb347;
+text-align:center;
 }
 
 /* GRID */
@@ -174,13 +156,8 @@ margin-bottom:12px;
 
 .footer-banner span{color:#ff2d2d;}
 
-.footer-banner p{opacity:.75;letter-spacing:4px;}
-
 /* MOBILE */
 @media(max-width:900px){
-.menu-page{flex-direction:column;}
-.sidebar{position:relative;width:100%;flex-direction:row;overflow:auto;}
-.sidebar a{white-space:nowrap;}
 .hero h1{font-size:52px;}
 .menu-section h2{font-size:34px;}
 }
@@ -194,15 +171,6 @@ margin-bottom:12px;
 <a href="index.html" class="back">← Назад</a>
 </nav>
 
-<div class="menu-page">
-
-<div class="sidebar">
-<a href="#steak">🥩 Стейки</a>
-<a href="#mangal">🔥 Мангал</a>
-<a href="#salads">🥗 Салаты</a>
-<a href="#drinks">🥤 Напитки</a>
-</div>
-
 <div class="menu-content">
 
 <div class="hero">
@@ -210,7 +178,6 @@ margin-bottom:12px;
 <p>МЯСО • ОГОНЬ • ХАРАКТЕР</p>
 </div>
 
-<!-- STEAK -->
 <section class="menu-section" id="steak">
 <h2>🥩 СТЕЙКИ</h2>
 <div class="food-grid">
@@ -234,7 +201,6 @@ margin-bottom:12px;
 </div>
 </section>
 
-<!-- MANGAL -->
 <section class="menu-section" id="mangal">
 <h2>🔥 МАНГАЛ</h2>
 <div class="food-grid">
@@ -258,7 +224,6 @@ margin-bottom:12px;
 </div>
 </section>
 
-<!-- SALADS -->
 <section class="menu-section" id="salads">
 <h2>🥗 САЛАТЫ</h2>
 <div class="food-grid">
@@ -282,7 +247,6 @@ margin-bottom:12px;
 </div>
 </section>
 
-<!-- DRINKS -->
 <section class="menu-section" id="drinks">
 <h2>🥤 НАПИТКИ</h2>
 <div class="food-grid">
@@ -311,7 +275,6 @@ margin-bottom:12px;
 <p>PREMIUM STEAK HOUSE</p>
 </div>
 
-</div>
 </div>
 
 </body>
