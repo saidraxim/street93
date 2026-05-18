@@ -13,7 +13,6 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
 
 body{color:#fff;overflow-x:hidden;}
-
 html{scroll-behavior:smooth;}
 
 /* BACKGROUND */
@@ -115,8 +114,16 @@ font-size:30px;
 cursor:pointer;
 }
 
-/* REVIEWS */
-.review-box{max-width:700px;margin:auto;}
+/* REVIEWS (MODERN UPGRADE) */
+.review-box{
+max-width:750px;
+margin:auto;
+padding:25px;
+border-radius:20px;
+background:rgba(255,255,255,0.04);
+backdrop-filter:blur(20px);
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+}
 
 input,textarea{
 width:100%;
@@ -126,6 +133,7 @@ border:none;
 border-radius:12px;
 background:rgba(255,255,255,0.08);
 color:#fff;
+outline:none;
 }
 
 button{
@@ -137,17 +145,36 @@ background:linear-gradient(45deg,#ff7a00,#ffb347);
 color:#fff;
 font-weight:bold;
 cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.02);
 }
 
 .stars{display:flex;gap:6px;font-size:30px;cursor:pointer;}
-.stars span{color:#555;}
+.stars span{color:#555;transition:0.2s;}
 .stars span.active{color:#ffb347;}
+.stars span:hover{transform:scale(1.2);color:#ffb347;}
 
 .review{
 margin-top:15px;
-padding:15px;
-border-radius:14px;
+padding:18px;
+border-radius:16px;
 background:rgba(255,255,255,0.06);
+border:1px solid rgba(255,255,255,0.08);
+transition:0.3s;
+}
+
+.review:hover{
+transform:translateY(-3px);
+background:rgba(255,255,255,0.09);
+}
+
+.review img{
+width:100%;
+margin-top:10px;
+border-radius:12px;
 }
 
 /* CONTACT */
@@ -174,7 +201,6 @@ footer{text-align:center;padding:30px;opacity:0.5;}
 
 <body>
 
-<!-- NAV -->
 <nav>
 <div class="logo" onclick="home()">STREET 93</div>
 <div>
@@ -185,7 +211,6 @@ footer{text-align:center;padding:30px;opacity:0.5;}
 </div>
 </nav>
 
-<!-- HERO -->
 <header id="home">
 <div class="hero">
 <h1>Street 93</h1>
@@ -193,29 +218,18 @@ footer{text-align:center;padding:30px;opacity:0.5;}
 </div>
 </header>
 
-<!-- ABOUT -->
 <section id="about">
 <h2>О нас</h2>
 <div class="about">
-Street 93 — это современный ресторан нового поколения, где каждая деталь создана для идеального гастрономического опыта.
-
-Мы используем только свежие продукты, премиальное мясо, натуральные овощи и авторские соусы.
-
-Наша цель — не просто еда, а эмоции, вкус и атмосфера.
-
-Каждое блюдо создаётся с вниманием к деталям и подаётся на ресторанном уровне.
-
-Street 93 — это место, куда хочется возвращаться снова и снова.
+Street 93 — это современный ресторан нового поколения...
 </div>
 </section>
 
-<!-- ATMOSPHERE -->
 <section id="atmosphere">
 <h2>Атмосфера</h2>
 
 <div class="gallery">
 
-<!-- 9 IMAGES (NO SPACE NAMES!) -->
 <img src="atmosfera 1.jpg">
 <img src="atmosfera 2.jpg">
 <img src="atmosfera 3.jpg">
@@ -226,7 +240,6 @@ Street 93 — это место, куда хочется возвращатьс�
 <img src="atmosfera 8.jpg">
 <img src="atmosfera 9.jpg">
 
-<!-- 3 VIDEOS -->
 <video src="video2.mp4" muted></video>
 <video src="video4.mp4" muted></video>
 <video src="video8.mp4" muted></video>
@@ -234,14 +247,10 @@ Street 93 — это место, куда хочется возвращатьс�
 </div>
 </section>
 
-<!-- MODAL -->
 <div class="modal" id="modal">
 <span class="close" onclick="closeVideo()">✖</span>
 <video id="modalVideo" controls autoplay></video>
 </div>
-
-
-<!-- REVIEWS -->
 
 <section id="reviews">
 
@@ -250,33 +259,28 @@ Street 93 — это место, куда хочется возвращатьс�
 <div class="review-box">
 
 <input id="name" placeholder="Ваше имя">
-
 <textarea id="text" placeholder="Ваш отзыв"></textarea>
 
-<!-- STARS -->
-
 <div class="stars">
-
 <span onclick="setRating(1)">★</span>
 <span onclick="setRating(2)">★</span>
 <span onclick="setRating(3)">★</span>
 <span onclick="setRating(4)">★</span>
 <span onclick="setRating(5)">★</span>
-
 </div>
 
 <input type="file" id="img" accept="image/*">
 
-<button onclick="addReview()">
-Отправить отзыв
-</button>
+<div id="preview"></div>
+
+<button onclick="addReview()">Отправить отзыв</button>
 
 <div id="list"></div>
 
 </div>
 
 </section>
-<!-- CONTACT -->
+
 <section id="contact">
 <h2>Контакты</h2>
 
@@ -291,7 +295,6 @@ Street 93 — это место, куда хочется возвращатьс�
 
 <script>
 
-/* VIDEO CLICK */
 const videos=document.querySelectorAll(".gallery video");
 const modal=document.getElementById("modal");
 const modalVideo=document.getElementById("modalVideo");
@@ -329,6 +332,48 @@ s.classList.toggle("active",i<n);
 });
 }
 
+document.getElementById("img").addEventListener("change", function(e){
+const file=e.target.files[0];
+if(!file)return;
+
+const reader=new FileReader();
+reader.onload=()=>{
+document.getElementById("preview").innerHTML=
+`<img src="${reader.result}" style="width:100%;border-radius:12px;margin-top:10px;">`;
+};
+reader.readAsDataURL(file);
+});
+
+async function addReview(){
+let name=document.getElementById("name").value;
+let text=document.getElementById("text").value;
+let imgFile=document.getElementById("img").files[0];
+
+if(!name||!text){
+alert("Fill all");
+return;
+}
+
+let imgData="";
+
+if(imgFile){
+imgData=await new Promise(r=>{
+const reader=new FileReader();
+reader.onload=()=>r(reader.result);
+reader.readAsDataURL(imgFile);
+});
+}
+
+await sb.from("reviews").insert([{name,text,rating,img:imgData}]);
+
+document.getElementById("name").value="";
+document.getElementById("text").value="";
+document.getElementById("img").value="";
+document.getElementById("preview").innerHTML="";
+setRating(0);
+load();
+}
+
 async function load(){
 let {data}=await sb.from("reviews").select("*").order("id",{ascending:false});
 
@@ -337,23 +382,9 @@ document.getElementById("list").innerHTML=data.map(r=>`
 <b>${r.name}</b><br>
 <div>${"★".repeat(r.rating||0)}</div>
 <p>${r.text}</p>
-${r.img ? `<img src="${r.img}" style="width:100%;margin-top:10px;border-radius:12px;">` : ""}
+${r.img?`<img src="${r.img}">`:""}
 </div>
 `).join("");
-}
-
-async function addReview(){
-let name=document.getElementById("name").value;
-let text=document.getElementById("text").value;
-
-if(!name||!text){alert("Fill all");return;}
-
-await sb.from("reviews").insert([{name,text,rating}]);
-
-document.getElementById("name").value="";
-document.getElementById("text").value="";
-setRating(0);
-load();
 }
 
 window.onload=load;
