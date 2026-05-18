@@ -357,7 +357,6 @@ STREET 93
 <div>
 <a href="#about">О нас</a>
 <a href="#atmosphere">Атмосфера</a>
-<a href="menu.html">Меню</a>
 <a href="#reviews">Отзывы</a>
 <a href="#contact">Контакты</a>
 </div>
@@ -487,19 +486,203 @@ Street 93 — это место, куда хочется возвращатьс�
 
 <script>
 
+<script>
+
 /* SUPABASE */
 
 const SUPABASE_URL =
 "https://brypncjzjwfjafjswnbd.supabase.co";
 
 const SUPABASE_KEY =
-"YOUR_SUPABASE_KEY";
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJyeXBuY2p6andmamFmanN3bmJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkwMjA0OTUsImV4cCI6MjA5NDU5NjQ5NX0.Q7-aT2rYdGqP_XxtAz8c-IB31S61s12Lhc4q7QQ-GY8";
 
 const sb =
 supabase.createClient(
 SUPABASE_URL,
 SUPABASE_KEY
 );
+
+/* RATING */
+
+let rating = 0;
+
+/* STAR SELECT */
+
+function setRating(num){
+
+rating = num;
+
+document
+.querySelectorAll(".stars span")
+.forEach((s,i)=>{
+
+if(i < num){
+s.classList.add("active");
+}else{
+s.classList.remove("active");
+}
+
+});
+
+}
+
+/* LOAD REVIEWS */
+
+async function load(){
+
+const twoMonthsAgo = new Date();
+
+twoMonthsAgo.setMonth(
+twoMonthsAgo.getMonth() - 2
+);
+
+let {data} = await sb
+.from("reviews")
+.select("*")
+.order("id",{ascending:false});
+
+const filtered = data.filter(r=>{
+
+if(!r.created_at) return true;
+
+return new Date(r.created_at)
+>=
+twoMonthsAgo;
+
+});
+
+document.getElementById("list").innerHTML =
+filtered.map(r=>`
+
+<div class="review">
+
+<div class="review-top">
+
+<b>${r.name}</b>
+
+<div class="review-date">
+${r.date || ""}
+</div>
+
+</div>
+
+<div class="review-rating">
+${"★".repeat(r.rating || 0)}
+</div>
+
+<div>
+${r.text}
+</div>
+
+${r.img ? `<img src="${r.img}">` : ""}
+
+</div>
+
+`).join("");
+
+}
+
+/* IMAGE UPLOAD */
+
+async function uploadImage(file){
+
+const fileName =
+Date.now() + "_" + file.name;
+
+let {error} = await sb.storage
+.from("reviews")
+.upload(fileName,file);
+
+if(error){
+alert("Ошибка загрузки фото");
+return "";
+}
+
+const {data} =
+sb.storage
+.from("reviews")
+.getPublicUrl(fileName);
+
+return data.publicUrl;
+
+}
+
+/* ADD REVIEW */
+
+async function addReview(){
+
+let name =
+document.getElementById("name").value;
+
+let text =
+document.getElementById("text").value;
+
+let file =
+document.getElementById("img").files[0];
+
+if(!name || !text){
+alert("Заполните все поля");
+return;
+}
+
+let imgUrl = "";
+
+if(file){
+imgUrl = await uploadImage(file);
+}
+
+const now = new Date();
+
+const date =
+now.toLocaleDateString("ru-RU")
++
+" "
++
+now.toLocaleTimeString("ru-RU",{
+hour:"2-digit",
+minute:"2-digit"
+});
+
+await sb
+.from("reviews")
+.insert([{
+
+name,
+text,
+img:imgUrl,
+rating,
+date,
+created_at:new Date()
+
+}]);
+
+document.getElementById("name").value="";
+document.getElementById("text").value="";
+document.getElementById("img").value="";
+
+setRating(0);
+
+load();
+
+}
+
+/* HOME */
+
+function home(){
+
+document
+.getElementById("home")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+setRating(0);
+
+load();
+
+</script>
 
 /* RATING */
 
