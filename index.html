@@ -232,27 +232,33 @@ Street 93 — современный ресторан нового поколе�
 <video id="modalVideo" controls autoplay></video>
 </div>
 
-<!-- REVIEWS -->
-<section id="reviews">
-<h2>⭐ Отзывы</h2>
-
 <div class="review-box">
+
 <input id="name" placeholder="Ваше имя">
+
 <textarea id="text" placeholder="Ваш отзыв"></textarea>
 
+<!-- ⭐ STARS -->
 <div class="stars">
+
 <span onclick="setRating(1)">★</span>
 <span onclick="setRating(2)">★</span>
 <span onclick="setRating(3)">★</span>
 <span onclick="setRating(4)">★</span>
 <span onclick="setRating(5)">★</span>
+
 </div>
 
-<button onclick="addReview()">Отправить</button>
+<!-- 📸 RASM INPUT (FIX) -->
+<input type="file" id="img" accept="image/*">
+
+<button onclick="addReview()">
+Отправить отзыв
+</button>
 
 <div id="list"></div>
+
 </div>
-</section>
 
 <!-- CONTACT -->
 <section id="contact">
