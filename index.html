@@ -35,7 +35,7 @@ body::before{
 
   background:
   linear-gradient(rgba(0,0,0,0.78),rgba(0,0,0,0.9)),
-  url("bg.jpg");
+  url("back.jpg");
 
   background-size:cover;
   background-position:center;
@@ -357,6 +357,7 @@ STREET 93
 <div>
 <a href="#about">О нас</a>
 <a href="#atmosphere">Атмосфера</a>
+<a href="menu.html">Меню</a>
 <a href="#reviews">Отзывы</a>
 <a href="#contact">Контакты</a>
 </div>
@@ -407,16 +408,16 @@ Street 93 — это место, куда хочется возвращатьс�
 
 <div class="gallery">
 
-<img src="atmosfera 1.jpg">
-<img src="atmosfera 2.jpg">
-<img src="atmosfera 3.jpg">
-<img src="atmosfera 4.jpg">
-<img src="atmosfera 5.jpg">
-<img src="atmosfera 6.jpg">
-<img src="atmosfera 7.jpg">
-<img src="atmosfera 8.jpg">
-<img src="atmosfera 9.jpg">
-<img src="atmosfera 10.jpg">
+<img src="atmos1.jpg">
+<img src="atmos2.jpg">
+<img src="atmos3.jpg">
+<img src="atmos4.jpg">
+<img src="atmos5.jpg">
+<img src="atmos6.jpg">
+<img src="atmos7.jpg">
+<img src="atmos8.jpg">
+<img src="atmos9.jpg">
+<img src="atmos10.jpg">
 
 </div>
 
@@ -486,15 +487,13 @@ Street 93 — это место, куда хочется возвращатьс�
 
 <script>
 
-<script>
-
 /* SUPABASE */
 
 const SUPABASE_URL =
 "https://brypncjzjwfjafjswnbd.supabase.co";
 
 const SUPABASE_KEY =
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJyeXBuY2p6andmamFmanN3bmJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkwMjA0OTUsImV4cCI6MjA5NDU5NjQ5NX0.Q7-aT2rYdGqP_XxtAz8c-IB31S61s12Lhc4q7QQ-GY8";
+"YOUR_SUPABASE_KEY";
 
 const sb =
 supabase.createClient(
@@ -536,10 +535,15 @@ twoMonthsAgo.setMonth(
 twoMonthsAgo.getMonth() - 2
 );
 
-let {data} = await sb
+let {data,error} = await sb
 .from("reviews")
 .select("*")
 .order("id",{ascending:false});
+
+if(error){
+console.log(error);
+return;
+}
 
 const filtered = data.filter(r=>{
 
@@ -612,16 +616,21 @@ return data.publicUrl;
 async function addReview(){
 
 let name =
-document.getElementById("name").value;
+document.getElementById("name").value.trim();
 
 let text =
-document.getElementById("text").value;
+document.getElementById("text").value.trim();
 
 let file =
 document.getElementById("img").files[0];
 
 if(!name || !text){
 alert("Заполните все поля");
+return;
+}
+
+if(rating === 0){
+alert("Поставьте оценку");
 return;
 }
 
@@ -643,7 +652,7 @@ hour:"2-digit",
 minute:"2-digit"
 });
 
-await sb
+let {error} = await sb
 .from("reviews")
 .insert([{
 
@@ -656,171 +665,12 @@ created_at:new Date()
 
 }]);
 
-document.getElementById("name").value="";
-document.getElementById("text").value="";
-document.getElementById("img").value="";
-
-setRating(0);
-
-load();
-
-}
-
-/* HOME */
-
-function home(){
-
-document
-.getElementById("home")
-.scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-setRating(0);
-
-load();
-
-</script>
-
-/* RATING */
-
-let rating = 0;
-
-/* STAR SELECT */
-
-function setRating(num){
-
-rating = num;
-
-document
-.querySelectorAll(".stars span")
-.forEach((s,i)=>{
-
-if(i < num){
-s.classList.add("active");
-}else{
-s.classList.remove("active");
-}
-
-});
-
-}
-
-/* LOAD REVIEWS */
-
-async function load(){
-
-let {data} = await sb
-.from("reviews")
-.select("*")
-.order("id",{ascending:false});
-
-document.getElementById("list").innerHTML =
-data.map(r=>`
-
-<div class="review">
-
-<div class="review-top">
-
-<b>${r.name}</b>
-
-<div class="review-date">
-${r.date || ""}
-</div>
-
-</div>
-
-<div class="review-rating">
-${"★".repeat(r.rating || 0)}
-</div>
-
-<div>
-${r.text}
-</div>
-
-${r.img ? `<img src="${r.img}">` : ""}
-
-</div>
-
-`).join("");
-
-}
-
-/* IMAGE UPLOAD */
-
-async function uploadImage(file){
-
-const fileName =
-Date.now() + "_" + file.name;
-
-let {error} = await sb.storage
-.from("reviews")
-.upload(fileName,file);
-
 if(error){
-alert("Ошибка загрузки фото");
-return "";
-}
-
-const {data} =
-sb.storage
-.from("reviews")
-.getPublicUrl(fileName);
-
-return data.publicUrl;
-
-}
-
-/* ADD REVIEW */
-
-async function addReview(){
-
-let name =
-document.getElementById("name").value;
-
-let text =
-document.getElementById("text").value;
-
-let file =
-document.getElementById("img").files[0];
-
-if(!name || !text){
-alert("Заполните все поля");
+alert("Ошибка отправки");
+console.log(error);
 return;
 }
 
-let imgUrl = "";
-
-if(file){
-imgUrl = await uploadImage(file);
-}
-
-const now = new Date();
-
-const date =
-now.toLocaleDateString("ru-RU")
-+
-" "
-+
-now.toLocaleTimeString("ru-RU",{
-hour:"2-digit",
-minute:"2-digit"
-});
-
-await sb
-.from("reviews")
-.insert([{
-
-name,
-text,
-img:imgUrl,
-rating,
-date
-
-}]);
-
 document.getElementById("name").value="";
 document.getElementById("text").value="";
 document.getElementById("img").value="";
@@ -842,6 +692,8 @@ behavior:"smooth"
 });
 
 }
+
+/* START */
 
 setRating(0);
 
