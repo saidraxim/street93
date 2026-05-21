@@ -81,12 +81,17 @@ grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:15px;
 }
 
-.gallery img,.gallery video{
+.gallery img,
+.gallery video,
+.vid{
 width:100%;
 height:240px;
 object-fit:cover;
 border-radius:16px;
 cursor:pointer;
+background:#000;
+display:block;
+}nter;
 }
 
 /* MODAL VIDEO */
@@ -249,31 +254,42 @@ Street 93 — это место, куда хочется возвращатьс�
 <img src="atmosfera 8.jpg">
 <img src="atmosfera 9.jpg">
 
-<video 
-src="video2.mp4"
+<!-- VIDEOS FIXED FOR IPHONE + ANDROID -->
+
+<video
+class="vid"
 poster="video2.jpg"
 muted
 playsinline
 webkit-playsinline
-controls>
+preload="metadata"
+controls
+>
+<source src="video2.mp4#t=0.001" type="video/mp4">
 </video>
 
-<video 
-src="video4.mp4"
+<video
+class="vid"
 poster="video4.jpg"
 muted
 playsinline
 webkit-playsinline
-controls>
+preload="metadata"
+controls
+>
+<source src="video4.mp4#t=0.001" type="video/mp4">
 </video>
 
-<video 
-src="video8.mp4"
+<video
+class="vid"
 poster="video8.jpg"
 muted
 playsinline
 webkit-playsinline
-controls>
+preload="metadata"
+controls
+>
+<source src="video8.mp4#t=0.001" type="video/mp4">
 </video>
 
 </div>
@@ -281,7 +297,13 @@ controls>
 
 <div class="modal" id="modal">
 <span class="close" onclick="closeVideo()">✖</span>
-<video id="modalVideo" controls autoplay></video>
+<video
+id="modalVideo"
+controls
+autoplay
+playsinline
+webkit-playsinline
+></video>
 </div>
 
 <section id="reviews">
@@ -332,12 +354,22 @@ const modal=document.getElementById("modal");
 const modalVideo=document.getElementById("modalVideo");
 
 videos.forEach(v=>{
-v.onclick=()=>{
+
+v.addEventListener("click",()=>{
+
+const source=v.querySelector("source").src;
+
 modal.style.display="flex";
-modalVideo.src=v.src;
-modalVideo.muted=false;
+
+modalVideo.innerHTML=
+`<source src="${source}" type="video/mp4">`;
+
+modalVideo.load();
+
 modalVideo.play();
-}
+
+});
+
 });
 
 function closeVideo(){
